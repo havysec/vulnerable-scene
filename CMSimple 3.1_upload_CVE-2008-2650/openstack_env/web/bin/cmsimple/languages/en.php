@@ -1,0 +1,146 @@
+<?php
+$tx['meta']['codepage']="iso-8859-1";
+$tx['menu']['login']="Login";
+$tx['menu']['mailform']="Mailform";
+$tx['menu']['print']="Print Version";
+$tx['menu']['sitemap']="Sitemap";
+$tx['submenu']['heading']="Submenu";
+$tx['title']['images']="Images";
+$tx['title']['downloads']="Downloads";
+$tx['title']['mailform']="Mailform";
+$tx['title']['search']="Search";
+$tx['title']['settings']="Settings";
+$tx['title']['sitemap']="Sitemap";
+$tx['title']['validate']="Validate links";
+$tx['navigator']['next']=">";
+$tx['navigator']['previous']="<";
+$tx['navigator']['top']="TOP";
+$tx['lastupdate']['text']="Last update";
+$tx['lastupdate']['dateformat']="F d. Y H:i:s";
+$tx['search']['button']="Search";
+$tx['search']['foundin']="found in";
+$tx['search']['notfound']="was not found";
+$tx['search']['pgplural']="pages";
+$tx['search']['pgsingular']="page";
+$tx['search']['result']="The result of your search";
+$tx['mailform']['notsend']="The message could not be sent";
+$tx['mailform']['send']="The message has been sent";
+$tx['mailform']['sender']="Sender e-mail";
+$tx['mailform']['sendbutton']="Send";
+$tx['mailform']['message']="You may send us an e-mail via this mailform.";
+$tx['login']['warning']="This system is for the use of authorized users only.";
+$tx['login']['loggedout']="You have been logged out";
+$tx['log']['dateformat']="Y-m-d H:i:s";
+$tx['log']['loggedin']="logged in";
+$tx['editmenu']['downloads']="DOWNLOADS";
+$tx['editmenu']['help']="HELP";
+$tx['editmenu']['images']="IMAGES";
+$tx['editmenu']['logout']="LOGOUT";
+$tx['editmenu']['edit']="EDIT MODE";
+$tx['editmenu']['normal']="NORMAL MODE";
+$tx['editmenu']['settings']="SETTINGS";
+$tx['editmenu']['validate']="VALIDATE LINKS";
+$tx['action']['delete']="delete";
+$tx['action']['download']="download";
+$tx['action']['edit']="edit";
+$tx['action']['save']="save";
+$tx['action']['upload']="upload";
+$tx['action']['view']="view";
+$tx['result']['created']="created";
+$tx['result']['deleted']="deleted";
+$tx['result']['uploaded']="uploaded";
+$tx['filetype']['folder']="folder";
+$tx['filetype']['file']="file";
+$tx['filetype']['backup']="backup";
+$tx['filetype']['content']="content";
+$tx['filetype']['execute']="execute";
+$tx['filetype']['log']="log";
+$tx['filetype']['stylesheet']="stylesheet";
+$tx['filetype']['template']="template";
+$tx['filetype']['language']="language";
+$tx['filetype']['config']="configuration";
+$tx['images']['usedin']="Used in";
+$tx['files']['totalsize']="Total size";
+$tx['files']['bytes']="bytes";
+$tx['heading']['error']="ERROR";
+$tx['heading']['warning']="WARNING";
+$tx['toc']['dupl']="DUPLICATE HEADING";
+$tx['toc']['empty']="EMPTY HEADING";
+$tx['toc']['missing']="MISSING HEADING";
+$tx['toc']['newpage']="NEW PAGE";
+$tx['error']['401']="Error 401: Unauthorized";
+$tx['error']['404']="Error 404: Not found";
+$tx['error']['tolarge']="is too large! Maximum size is set to";
+$tx['error']['cntlocateheading']="Could not locate heading";
+$tx['error']['cntwriteto']="Could not write to";
+$tx['error']['cntdelete']="Could not delete";
+$tx['error']['cntsave']="Could not save";
+$tx['error']['cntopen']="Could not open";
+$tx['error']['wrongext']="Wrong extension in";
+$tx['error']['alreadyexists']="Already exists";
+$tx['error']['undefined']="Undefined";
+$tx['error']['missing']="Missing";
+$tx['error']['notreadable']="Not readable";
+$tx['error']['notwritable']="Not writeable";
+$tx['error']['mustwritemes']="You must write something";
+$tx['error']['mustwritemail']="You must write a correct e-mail";
+$tx['settings']['backup']="Backup";
+$tx['settings']['ftp']="Use FTP for remote file management";
+$tx['settings']['warning']="Don't mess with this, unless you know, what you are doing!";
+$tx['settings']['systemfiles']="System files";
+$tx['settings']['backupexplain1']="On logout content is backed up and the oldest backup file(s) will be deleted.";
+$tx['settings']['backupexplain2']="The time of backup can be read from the filename: YYYYMMDDHHMMSS";
+$tx['validate']['extfail']="EXTERNAL LINK FAILED";
+$tx['validate']['extok']="EXTERNAL LINK OK";
+$tx['validate']['intfail']="INTERNAL LINK FAILED";
+$tx['validate']['intfilok']="INTERNAL LINK TO FILE OK";
+$tx['validate']['intok']="INTERNAL LINK OK";
+$tx['validate']['mailto']="MAILTO LINK";
+$tx['validate']['notxt']="NO TEXT IN LINK";
+$tx['help']['mailform_email']="If set mailform will be active";
+$tx['editor']['noimages']="No images found in";
+$tx['editor']['changemode']="This function is only available in layout mode. Do you want to change mode?";
+$tx['editor']['buttons']='[
+["ilink","Insert the selected link","Insert the selected hyperlink from selectbox"],
+[""],
+["iimage","Insert the selected image","Insert the selected image from selectbox"],
+["tr"],
+["save","Save","Saves this document"],
+[""],
+["selectall","Select all (Ctrl+A)","Select the entire document"],
+["cut","Cut (Ctrl+X)","Cut the selection to the clipboard"],
+["copy","Copy (Ctrl+C)","Copy the selection to the clipboard"],
+["paste","Paste (Ctrl+V)","Insert clipboard contents"],
+[""],
+["undo","Undo (Ctrl+Z)","Undo the last action"],
+["redo","Redo (Ctrl+Y)","Redo the previously undone action"],
+[""],
+["html","Change mode","Change between lay-out and HTML mode"],
+[""],
+["justifyleft","Justify left","Apply left justification"],
+["justifycenter","Center","Apply centered justification"],
+["justifyright","Justify right","Apply right justification"],
+[""],
+["inserthorizontalrule","Horizontal Rule","Insert Horizontal Rule"],
+[""],
+["createlink","Create or edit hyperlink","Create or edit hyperlink"],
+["unlink","Remove hyperlink","Remove the selected hyperlink"],
+["tr"],
+["h1","Heading 1","Format selected paragraph(s) as Heading 1"],
+["h2","Heading 2","Format selected paragraph(s) as Heading 2"],
+["h3","Heading 3","Format selected paragraph(s) as Heading 3"],
+["h4","Heading 4","Format selected paragraph(s) as Heading 4"],
+["p","Paragraph","Format as normal paragraph level"],
+[""],
+["bold","Bold","Format with bold font style"],
+["italic","Italic","Format with italic font style"],
+["underline","Underlined","Format with underlined font style"],
+[""],
+["removeformat","Remove Format","Remove font style formats"],
+[""],
+["insertunorderedlist","Unsorted list","Create or remove unsorted list"],
+["insertorderedlist","Ordered list","Create or remove ordered list"],
+[""],
+["outdent","Decrease indentation","Decrease the indentation of selected text"],
+["indent","Increase indentation","Increase the indentation of selected text"]
+]';?>

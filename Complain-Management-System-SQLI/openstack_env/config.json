@@ -1,0 +1,23 @@
+{
+    "scene": {
+        "name": "Complain-Management-System-SQLI",
+        "vulns": [""],
+        "tools": ["chrome"],
+        "tag": ["web"],
+        "desc": "web"
+    },
+     "servers": [
+        {
+            "id":"Complain-Management-System-SQLI",
+            "name": "Complain-Management-System-SQLI Target-Server",
+            "imageType":"linux",
+            "image":"ubuntu14-64-web",
+            "role":"target",
+			"flavor":"m2.1c-1g-10g",
+            "initScript":"web/init.sh {FLAG[0]}",
+            "accessMode":[{"protocol":"http","port":80}]
+        }
+    ],
+     "check": [],
+     "attack": []
+}

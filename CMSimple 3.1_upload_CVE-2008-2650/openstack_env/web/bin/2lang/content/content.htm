@@ -1,0 +1,23 @@
+<html><head><title>The name of the site - Content</title><meta name="keywords" content="CMSimple, Content Management System, php">
+<meta name="description" content="CMSimple is a simple content management system for smart maintainance of small commercial or private sites. It is simple - small - smart! It is Free Software licensed under AGPL">
+<meta http-equiv="content-type" content="text/html;charset=iso-8859-1"><meta name="generator" content="CMSimple 3.1 - www.cmsimple.org"><link rel="stylesheet" href="./templates/default/stylesheet.css" type="text/css"></head><body>
+<H1>Welcome</H1>
+<P>CMSimple version 3.1 - April 2. 2008<BR>© 1999-2008 <A href="mailto:peter@harteg.dk">Peter Andreas Harteg</A></P>
+<P>Congratulations on your new installation of CMSimple.</P>
+<P><STRONG>You must keep a convenient and prominently visible feature that displays the </STRONG><A href="http://www.cmsimple.org/?Licence:CMSimple_Legal_Notices">CMSimple Legal Notices</A><STRONG>.</STRONG></P>
+<P><STRONG>Please read and accept the </STRONG><A href="http://www.cmsimple.org/?Licence:CMSimple_Legal_Notices">CMSimple Legal Notices</A><STRONG> or delete this installation.</STRONG></P>
+<P>Default login is 'test' ('admin'/'test' if security type is wwwaut)<BR>- remember to change login under settings.</P>
+<P>Please read about <A href="http://www.cmsimple.com/?Installer%27s_Manual:File_permissions">File permissions</A> and <A href="http://www.cmsimple.dk/?Installer%27s_Manual:Security_issues">Security issues</A> in the <A href="http://www.cmsimple.dk/?Installer%27s_Manual">Installer's Manual</A>.</P>
+<P>Please visit <A href="http://www.cmsimple.com/">www.cmsimple.com</A> and consider purchasing a commercial licence for CMSimple, which may give you a lot of benefits compared to using CMSimple under AGPL. These benefits includes removal of copyleft conditions, change of Legal Notices requirement and access to support in user forum.</P>
+<P>#CMSimple $sponsor=array('com'=&gt;array(array('pokerice.com','play poker online'),array('pokerroom.com/poker/texas-holdem.html','texas holdem'),array('pokerroom.com','texas holdem'),array('bloghosting.nu','blog'),array('searchenginemarketing.fm','search engine marketing'),array('howtoplaytexas.com','texas hold em')),'de'=&gt;array(array('pokerice.com/de/','poker')),'dk'=&gt;array(array('zazzle.dk','top 100')),'fr'=&gt;array(array('dayblog.fr','blog'),array('pokerice.com/fr/','poker'),array('hold-em.fr','hold em')),'uk'=&gt;array(array('xider.co.uk','carlsberg xider')),'se'=&gt;array(array('ucme.se','Hitta väder'),array('smsalana.mobi','smslån')),'all'=&gt;array(array('247sportsbook.com','sports betting, sportsbook, bookmaker, betting, odds'),array('searchlisten.com','search music, music, odd'),array('pokerice.com','free online poker')));$domain=str_replace(".","",strrchr($_SERVER['HTTP_HOST'],"."));$num=count(@$sponsor[$domain]);if($num==0){$domain='all';$num=count(@$sponsor[$domain]);}$num=rand(0,$num-1);$output.='&lt;p&gt;The distribution of CMSimple at CMSimple.ORG is sponsored by this link:&lt;br /&gt;&lt;a href="http://www.'.$sponsor[$domain][$num]['0'].'"&gt;'.$sponsor[$domain][$num]['1'].'&lt;/a&gt;&lt;/p&gt;';#</P>
+<H1>How to create pages</H1>
+<P>The headings are used for splitting up the content file. An H1, H2 or H3 heading will dynamically split the document into new pages in the table of contents. An H4-heading is used as a heading within a page. See the following pages... </P>
+<H2>An H2 heading</H2>
+<P>An H2 heading splits into a new page</P>
+<H3>An H3 heading</H3>
+<P>An H3 heading splits into a new page</P>
+<H4>An H4 heading</H4>
+<P>An H4 heading does not by default split into a new page</P>
+<H1>How to delete a page</H1>
+<P>When you delete a document's heading or an entire page, normally an empty heading is left in the document - remove this by using the paragraph button or by using the HTML/Layout button to get hold of the HTML-code for the heading, which is to be deleted.</P>
+</body></html>

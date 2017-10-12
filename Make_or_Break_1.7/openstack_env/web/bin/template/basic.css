@@ -1,0 +1,50 @@
+ /* General page style */
+
+a:link {color: 006699; text-decoration:none;}    /* unvisited link */
+
+a:visited {color: 006699; text-decoration:none;} /* visited link */
+
+a:hover {color: 006699; text-decoration:underline;}   /* mouse over link */
+
+a:active {color: 006699; text-decoration:underline;}  /* selected link */
+
+body {
+	background-image:url('./basic/water_drops.jpg');
+	background-attachment: fixed;
+	background-repeat:no-repeat;
+}
+
+
+table.table {
+	border: 1px #006699 solid;
+	 /*width: 200;*/
+	border-collapse: collapse;
+}
+
+tr.table_header {
+	background-color: #006699;
+	color: #FFFFFF;
+}
+td.table_header {
+	background-color: #006699;
+	color: #FFFFFF;
+}
+
+
+tr.row1 {
+	background-color: #FFD991;
+}
+
+tr.row2 {
+	background-color: #FFC991;
+}
+
+tr.row3 {
+	background-color: #FFB991;
+}
+
+
+td.cell_content {
+	background-color: #FFD991;
+	color: #000000;
+}

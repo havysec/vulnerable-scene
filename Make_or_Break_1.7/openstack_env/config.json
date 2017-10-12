@@ -1,0 +1,24 @@
+{
+    "scene": {
+        "name": {"cn":"makeorbreak","en":"makeorbreak"},
+        "vulns": ["CVE"],
+        "tools": ["chrome"],
+        "tag": ["makeorbreak"],
+        "desc": {"cn":"makeorbreak","en":"makeorbreak"},
+        "flagCount":1
+    },
+     "servers": [
+         {
+            "id":"makeorbreak",
+            "name": {"cn":"Web 靶机1","en":"Web-Target Server1"},
+            "imageType":"linux",
+            "image":"ubuntu14-64",
+            "role":"target",
+            "installScript":"web/install.sh",
+            "initScript":"web/init.sh {FLAG[0]}",
+            "accessMode":[{"protocol":"http","port":80}]
+        }
+    ],
+     "check": [              ],
+        "attack": [                   ]
+}

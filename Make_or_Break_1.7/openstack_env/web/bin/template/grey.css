@@ -1,0 +1,45 @@
+ /* General page style */
+
+body {background-color:#F5F5F5;}
+
+a:link {color: 000080; text-decoration:none;}    /* unvisited link */
+
+a:visited {color: 000080; text-decoration:none;} /* visited link */
+
+a:hover {color: 0000FF; text-decoration:underline;}   /* mouse over link */
+
+a:active {color: 000080; text-decoration:underline;}  /* selected link */
+
+table.table {
+	border: 1px #D0D0D0 solid;
+	 /*width: 200;*/
+	border-collapse: collapse;
+}
+
+tr.table_header {
+	background-color: #D0D0D0;
+	color: #000000;
+}
+td.table_header {
+	background-color: #D0D0D0;
+	color: #000000;
+}
+
+
+tr.row1 {
+	background-color: #DFDEDB;
+}
+
+tr.row2 {
+	background-color: #E8E8E8;
+}
+
+tr.row3 {
+	background-color: #CCCCCC;
+}
+
+
+td.cell_content {
+	background-color: #DFDEDB;
+	color: #000000;
+}

@@ -1,0 +1,46 @@
+ /* General page style */
+body {background-color:#333333;}
+
+a:link {color: FFCC33; text-decoration:none;}    /* unvisited link */
+
+a:visited {color: FFCC33; text-decoration:none;} /* visited link */
+
+a:hover {color: FFFFFF; text-decoration:underline;}   /* mouse over link */
+
+a:active {color: FFCC33; text-decoration:underline;}  /* selected link */
+body {color:FFFFFF;}
+
+table.table {
+	border: 1px #000000 solid;
+	 /*width: 200;*/
+	border-collapse: collapse;
+}
+
+tr.table_header {
+	background: url('./black/tbl_h_c.gif') repeat;
+	background-color: #000000;
+	color: #FFCC33;
+}
+td.table_header {
+	background-color: #0066FF;
+	color: #FFCC33;
+}
+
+
+tr.row1 {
+	background-color: #121212;
+}
+
+tr.row2 {
+	background-color: #212121;
+}
+
+tr.row3 {
+	background-color: #222222;
+}
+
+
+td.cell_content {
+	background-color: #121212;
+	color: #FFCC33;
+}

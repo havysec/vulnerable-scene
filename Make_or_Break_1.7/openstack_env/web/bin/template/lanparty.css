@@ -1,0 +1,51 @@
+ /* General page style */
+
+a:link {color: CC990B; text-decoration:none;}    /* unvisited link */
+
+a:visited {color: CC990B; text-decoration:none;} /* visited link */
+
+a:hover {color: 006699; text-decoration:underline;}   /* mouse over link */
+
+a:active {color: CC990B; text-decoration:underline;}  /* selected link */
+
+body {
+	color: C0C0C0;
+	background-image:url('./lanparty/dark_bg.jpg');
+	background-attachment: fixed;
+	background-repeat:repeat;
+}
+
+
+table.table {
+	border: 1px #006699 solid;
+	 /*width: 200;*/
+	border-collapse: collapse;
+}
+
+tr.table_header {
+	background: url('./lanparty/cellpic3.gif') repeat;
+	color: #FFFFFF;
+}
+td.table_header {
+	background-color: #ffffff;
+	color: #FFFFFF;
+}
+
+
+tr.row1 {
+	background-color: #444C56;
+}
+
+tr.row2 {
+	background-color: #303842;
+}
+
+tr.row3 {
+	background-color: #363D47;
+}
+
+
+td.cell_content {
+	background-color: #444C56;
+	color: #ffffff;
+}

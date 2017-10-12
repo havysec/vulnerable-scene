@@ -1,0 +1,104 @@
+<?php
+/*
+CMSimple version 3.1 - April 2. 2008
+Small - simple - smart
+© 1999-2008 Peter Andreas Harteg - peter@harteg.dk
+
+This file is part of CMSimple.
+For licence see notice in /cmsimple/cms.php and http://www.cmsimple.dk/?Licence
+*/
+?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+  <head><?php echo head();?></head>
+  <body bgcolor="#808080" <?php echo onload();?>>
+    <a id="TOP" name="TOP"></a>
+    <table align="center" width="750" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td valign="top" colspan="2">
+          <table align="center" width="100%" border="0" cellpadding="10" cellspacing="0" bgcolor="black" style="background-image: url(<?php echo $pth['folder']['templateimages']?>top.jpg);">
+            <tr>
+              <td valign="bottom" class="sitename" height="80">
+                <font color="white"><?php echo sitename();?></font>
+              </td>
+              <td valign="top" align="right">
+                <table align="center" width="100%" border="0" cellpadding="10" cellspacing="0">
+                  <tr>
+                    <td valign="top" align="right" class="searchbox"><?php echo searchbox();?></td>
+                  </tr>
+                </table>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td valign="top" width="200" bgcolor="#c0c0c0">
+          <table align="center" width="100%" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+              <td valign="top"><?php echo toc();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="menu"><?php echo sitemaplink();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="menu"><?php echo printlink();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="menu"><?php echo mailformlink();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="menu"><?php echo languagemenu();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="login"><?php echo loginlink();?></td>
+            </tr>
+            <tr>
+              <td valign="top" class="menu"><?php echo lastupdate();?></td>
+            </tr>
+            <!-- YOU ARE NOT ALLOWED TO HIDE, DELETE OR MODIFY THE LEGAL NOTICES FEATURE: -->
+            <tr>
+              <td valign="top" class="menu"><?php echo legallink();?></td>
+            </tr>
+            <!-- The legallink() feature must be kept as a prominent menu item under AGPL -->
+          </table>
+        </td>
+        <td valign="top" width="550" bgcolor="white">
+          <table align="center" width="100%" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+              <td valign="top" class="locator" bgcolor="#808080"><?php echo locator();?></td>
+            </tr>
+            <tr>
+              <td valign="top">
+              <?php echo editmenu();?><?php echo content();?><?php echo submenu();?>
+                <p>
+                  &nbsp;
+                </p>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+      <tr>
+        <td bgcolor="#808080" align="center" class="navigator">
+          <!--
+          Please keep the "Powered by CMSimple"-link if you use CMSimple at your site.
+          It's a nice token of gratitude, and your help in promoting the CMSimple name is appreciated.
+          -->
+          <a href="http://www.cmsimple.org/" class="navigator">Powered by CMSimple</a>
+          <!-- IF REMOVE OR HIDE: Please consider to purchase a commercial licence - see http://www.cmsimple.com -->
+        </td>
+        <td bgcolor="black" valign="top">
+          <table width="100%" border="0" cellpadding="5" cellspacing="0">
+            <tr>
+              <td width="33%" class="navigator" valign="top"><?php echo previouspage();?></td>
+              <td align="center" width="33%" class="navigator" valign="top"><?php echo top();?></td>
+              <td align="right" width="33%" class="navigator" valign="top"><?php echo nextpage();?></td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>

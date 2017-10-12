@@ -1,0 +1,8 @@
+<table class="table" width="50%">
+	<tr class="table_header">
+		<td>&nbsp;</td>
+	</tr>
+	<tr class="row1">
+		<td>&nbsp;</td>
+	</tr>
+</table>

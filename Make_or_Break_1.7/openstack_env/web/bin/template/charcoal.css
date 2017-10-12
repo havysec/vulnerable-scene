@@ -1,0 +1,47 @@
+ /* General page style */
+body {background-color:#333333;}
+
+a:link {color: FFFFFF; text-decoration:none;}    /* unvisited link */
+
+a:visited {color: FFFFFF; text-decoration:none;} /* visited link */
+
+a:hover {color: FFCC33; text-decoration:underline;}   /* mouse over link */
+
+a:active {color: FFFFFF; text-decoration:underline;}  /* selected link */
+body {color:FFFFFF;}
+
+table.table {
+	border: 1px #000000 solid;
+	 /*width: 200;*/
+	border-collapse: collapse;
+}
+
+tr.table_header {
+	background: url('./charcoal/bg_navbar.gif') repeat;
+	background-color: #000000;
+	color: #FFFFFF;
+}
+td.table_header {
+	background-color: #0066FF;
+	color: #FFFFFF;
+}
+
+
+tr.row1 {
+	background-color: #1E1E1E;
+}
+
+tr.row2 {
+	background-color: #303030;
+}
+
+tr.row3 {
+	background-color: #3E3E3E;
+}
+
+
+td.cell_content {
+	background: url('./charcoal/bg_content.gif') repeat;
+
+	color: #000000;
+}

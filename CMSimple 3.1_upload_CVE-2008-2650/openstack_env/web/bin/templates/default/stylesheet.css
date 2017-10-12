@@ -1,0 +1,202 @@
+BODY, TD {
+	color: black;
+	font: 9pt Verdana, Geneva, Arial, Helvetica;
+}
+H1, H2, H3 {
+	font-size: 16pt;
+	font-weight: normal;
+	margin-bottom: 6px;
+}
+H4 {
+	font-size: 12pt;
+	font-weight: normal;
+	margin-bottom: 6px;
+}
+ul.menulevel1, ul.menulevel2, ul.menulevel3, ul.menulevel4, ul.menulevel5, ul.sitemaplevel1, ul.sitemaplevel2, ul.sitemaplevel3, ul.sitemaplevel4, ul.sitemaplevel5, ul.submenu, ul.search {
+	padding-left: 0;
+	margin-left: 0;
+}
+form {
+	margin: 0;
+}
+IMG {
+	border: 0;
+}
+li {
+	line-height: 1.5;
+}
+.doc {
+	list-style: none;
+	padding-left: 15px;
+	background: url(../../index.php?image=doc) no-repeat;
+}
+.docs {
+	list-style: none;
+	padding-left: 15px;
+	background: url(../../index.php?image=docs) no-repeat;
+}
+.sdoc {
+	list-style: none;
+	padding-left: 15px;
+	background: url(../../index.php?image=sdoc) no-repeat;
+}
+.sdocs {
+	list-style: none;
+	padding-left: 15px;
+	background: url(../../index.php?image=sdocs) no-repeat;
+}
+a {
+	text-decoration: none;
+	font-weight: bold;
+}
+a:link, a:visited {
+	color: gray;
+}
+a:active, a:hover {
+	color: black;
+}
+.sitename {
+	font-weight: normal;
+	font-size: 20pt;
+}
+.menulevel1 {
+	font-size: 8pt;
+	color: gray;
+}
+.menulevel1 a {
+	font-weight: normal;
+	color: black;
+}
+.menulevel1 a:link, .menulevel1 a:visited {
+	color: black;
+}
+.menulevel1 a:active, .menulevel1 a:hover {
+	color: black;
+}
+.menulevel2 {
+	font-size: 8pt;
+	color: gray;
+}
+.menulevel2 a {
+	font-weight: normal;
+	color: black;
+}
+.menulevel2 a:link, .menulevel2 a:visited {
+	color: black;
+}
+.menulevel2 a:active, .menulevel2 a:hover {
+	color: black;
+}
+.menulevel3 {
+	font-size: 8pt;
+	color: gray;
+}
+.menulevel3 a {
+	font-weight: normal;
+	color: black;
+}
+.menulevel3 a:link, .menulevel3 a:visited {
+	color: black;
+}
+.menulevel3 a:active, .menulevel3 a:hover {
+	color: black;
+}
+.sitemaplevel1, .sitemaplevel2, .sitemaplevel3 {
+	font-size: 9pt;
+}
+.sitemaplevel1 a, .sitemaplevel2 a, .sitemaplevel3 a {
+	font-weight: normal;
+	color: black;
+}
+.sitemaplevel1 a:link, .sitemaplevel2 a:link, .sitemaplevel3 a:link, .sitemaplevel1 a:visited, .sitemaplevel2 a:visited, .sitemaplevel3 a:visited {
+	color: black;
+}
+.sitemaplevel1 a:active, .sitemaplevel2 a:active, .sitemaplevel3 a:active, .sitemaplevel1 a:hover, .sitemaplevel2 a:hover, .sitemaplevel3 a:hover {
+	color: black;
+}
+.submenu {
+	font-size: 9pt;
+}
+.submenu a {
+	font-weight: normal;
+	color: black;
+}
+.submenu a:link, .submenu a:visited {
+	color: black;
+}
+.submenu a:active, .submenu a:hover {
+	color: black;
+}
+.search a {
+	font-weight: normal;
+	color: black;
+}
+.search a:link, .search a:visited {
+	color: black;
+}
+.search a:active, .search a:hover {
+	color: black;
+}
+.locator {
+	font-size: 8pt;
+	color: white;
+}
+.locator a {
+	font-weight: normal;
+	text-decoration: underline;
+}
+.locator a:link, .locator a:visited, .locator a:active, .locator a:hover {
+	color: white;
+}
+.menu {
+	font-weight: bold;
+	font-size: 8pt;
+	color: white;
+}
+.menu a {
+	text-decoration: underline;
+	color: white;
+}
+.menu a:link, .menu a:visited, .menu a:active, .menu a:hover {
+	color: white;
+}
+.login {
+	font-weight: bold;
+	font-size: 8pt;
+	color: grey;
+}
+.login a, .login a:link, .login a:visited, .login a:active, .login a:hover {
+	color: gray;
+}
+.navigator {
+	font-weight: bold;
+	font-size: 10pt;
+	color: white;
+}
+.navigator a:link, .navigator a:visited {
+	color: #c0c0c0;
+}
+.navigator a:active, .navigator a:hover {
+	color: white;
+}
+.edit {
+	font-size: 8pt;
+	color: black;
+	background: buttonface;
+}
+.edit a:link, .edit a:visited, .edit a:active, .edit a:hover {
+	font-weight: normal;
+	color: black;
+}
+input, select {
+	font-size: 8pt;
+}
+textarea {
+	width: 98%;
+	background: white;
+	font: 8pt Verdana, Geneva, Arial, Helvetica;
+}
+.searchbox .text, .searchbox .submit {
+	border: 2px solid #c0c0c0;
+	background: white;
+}
