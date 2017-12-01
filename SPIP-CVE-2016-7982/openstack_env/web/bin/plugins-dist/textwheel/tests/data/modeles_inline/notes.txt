@@ -1,0 +1,7 @@
+This is a text[[with a footnote <textwheel1|inline>]]
+
+This is a text[[<a> with a named footnote <textwheel1|inline>]]
+
+This is a text[[with a footnote with autolink http://example.com <textwheel1|inline>]]
+
+This is a text[[with a footnote with link [->http://example.com] <textwheel1|inline>]]

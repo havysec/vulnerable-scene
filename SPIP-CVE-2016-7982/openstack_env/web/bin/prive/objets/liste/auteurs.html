@@ -1,0 +1,65 @@
+[(#SET{defaut_tri,#ARRAY{
+	statut,1,
+	multi nom,1,
+	id_auteur,1,
+	site,1,
+	compteur_articles,-1,
+	points,-1
+}})
+]<B_liste_aut>
+#SET{afficher_lettres,#TRI|=={'multi nom'}|oui}
+#SET{debut,#ENV{debutaut,#EVAL{_request("debutaut");}}}
+#ANCRE_PAGINATION
+<div class="liste-objets auteurs">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{info_1_auteur,info_nb_auteurs}})</strong></caption>]
+	<thead>
+
+		#SET{p,''}
+		<BOUCLE_lettre(AUTEURS){tout}{id_auteur?}{where?}{statut?}{recherche?}{par multi nom}{id_auteur==#GET{afficher_lettres}|?{'.*','A'}}>[
+		(#NOM**|initiale|unique|oui)
+		[(#SET{p,#GET{p}|concat{
+		#SELF|parametre_url{debutaut,@#ID_AUTEUR}|ancre_url{paginationaut}|afficher_initiale{#NOM**|initiale{},#COMPTEUR_BOUCLE,#GET{debut},#ENV{nb,10}}
+		}})]
+		]#SAUTER{#ENV{nb,10}|moins{#COMPTEUR_BOUCLE|=={1}|?{2,1}}}</BOUCLE_lettre>[
+		(#SET{p,
+			#GET{p}|concat{
+				#REM|afficher_initiale{#REM,#TOTAL_BOUCLE,#GET{debut},#ENV{nb,10}}
+			}
+		})]</B_lettre>
+		[<tr><td colspan="6"><p class='pagination'>(#GET{p})</p></td></tr>]
+
+		[<tr><td colspan="6"><p class='pagination'>(#PAGINATION{prive})</p></td></tr>]
+		<tr class='first_row'>
+			<th class='statut' scope='col'>[(#TRI{statut,#CHEMIN_IMAGE{auteur-16.png}|balise_img{<:lien_trier_statut|attribut_html:>},ajax})]</th>
+			<th class='messagerie' scope='col'></th>
+			<th class='nom' scope='col' colspan='2'>[(#TRI{multi nom,<:info_nom:>,ajax})]</th>
+			<th class='email' scope='col'>[(#TRI{email,<:email:>,ajax})]</th>
+			<th class='nombre' scope='col'>[(#TRI{compteur_articles,<:info_articles:>,ajax})]</th>
+			<th class='id' scope='col'>[(#TRI{id_auteur,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_aut(AUTEURS){tout}{id_auteur?}{id_mot?}{where?}{statut?}{recherche?}{tri #ENV{par,multi nom},#GET{defaut_tri}}{pagination #ENV{nb,10} aut}{!compteur_articles_filtres #ENV{filtre_statut_articles,poubelle}}>
+		[(#LANG|changer_typo)]
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})][ (#EXPOSE|unique)][ (#NOM**|initiale|=={#ENV{i}}|et{#ENV{i}}|?{on}|unique)]">
+			<td class='statut'>[(#STATUT|puce_statut{auteur})]</td>
+			<td class="messagerie">[<a href="(#ID_AUTEUR|auteur_lien_messagerie{#EN_LIGNE,#STATUT,#IMESSAGE})">[(#CHEMIN{images/m_envoi.gif}|balise_img{<:info_envoyer_message_prive:>})]</a>]</td>
+			<td class='nom[ (#NOM|non)vide]'[(#LOGO_AUTEUR|non)colspan='2']><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]"[ title="(#BIO*|couper{200}|attribut_html)"]>[(#RANG). ][(#NOM|trim|sinon{#BIO*|couper{80}|trim}|sinon{<:info_numero_abbreviation:>#ID_AUTEUR})]</a>[ <small>((#STATUT|=={0minirezo}|et{#WEBMESTRE|=={oui}}|?{<:statut_webmestre:>}))</small>][ <small>((#STATUT|=={0minirezo}|et{#AUTORISER{'','','',#ID_AUTEUR}|non}|?{<:statut_admin_restreint:>}))</small>]</td>
+			[<td class='logo'><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]" style="background-image:url\((#LOGO_AUTEUR|image_passe_partout{40,40}|extraire_attribut{src}))"></a></td>]
+			<td class='email'>[<a href='mailto:(#EMAIL)'>[(#EMAIL|couper{30})]</a>]</td>
+			<td class='nombre'>[(#COMPTEUR_ARTICLES|singulier_ou_pluriel{info_1_article,info_nb_articles})][<br /><span>(#PIPELINE{'compter_contributions_auteur',#ARRAY{args,#ARRAY{id_auteur,#ID_AUTEUR},data,#ARRAY{}}}|implode{'<br />'})</span>]</td>
+			<td class='id'>[(#AUTORISER{modifier,auteur,#ID_AUTEUR}|?{
+				<a href="[(#URL_ECRIRE{auteur_edit,id_auteur=#ID_AUTEUR})]">#ID_AUTEUR</a>,
+				#ID_AUTEUR
+			})]</td>
+		</tr>
+	</BOUCLE_liste_aut>
+	[(#REM|changer_typo)]
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_liste_aut>[
+<div class="liste-objets auteurs caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_aut>

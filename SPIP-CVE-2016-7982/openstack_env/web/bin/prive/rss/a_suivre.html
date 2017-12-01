@@ -1,0 +1,32 @@
+#HTTP_HEADER{Content-Type: text/xml; charset=#CHARSET}#CACHE{900}<BOUCLE0(AUTEURS){tout}{id_auteur=#ENV{id}}{lang_select}><?php
+if ([(#ID_AUTEUR|securiser_acces{#ENV{cle},rss,#ENV{op}, #ENV{args}}|?{1,0})]) {
+?><?xml version="1.0" encoding="#CHARSET" ?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:thr="http://purl.org/syndication/thread/1.0">
+<channel xml:lang="#LANG">
+	<title>[&#91;(#NOM_SITE_SPIP|texte_backend)&#93;] RSS (<:icone_a_suivre|texte_backend:>)</title>
+	<link>[(#URL_ECRIRE|url_absolue|texte_backend)]</link>
+	<description></description>
+	<language>#LANG</language>
+<BOUCLE_A(ARTICLES){!par date}{statut=prop}{0,10}>
+	<item>
+		<title><:info_article_propose|texte_backend:> : [(#TITRE|texte_backend)]</title>
+		<link>[(#URL_ECRIRE{article, id_article=#ID_ARTICLE}|url_absolue|texte_backend)]</link>
+		<guid isPermaLink="true">[(#URL_ECRIRE{articles, id_article=#ID_ARTICLE}|url_absolue|texte_backend)]</guid>
+		<dc:date>[(#DATE|date_iso)]</dc:date>
+		<dc:format>text/html</dc:format>
+		[<dc:language>(#LANG|texte_backend)</dc:language>]
+	<BOUCLE_AA(AUTEURS){id_article}{0,1}><dc:creator>[(#NOM|texte_backend)][ &lt;(#EMAIL|texte_backend)&gt;]</dc:creator></BOUCLE_AA>
+		<description>[(#INTRODUCTION|texte_backend)]</description>
+	</item>
+</BOUCLE_A>
+<BOUCLE_objets(DATA){source table,#REM|lister_tables_objets_sql}>
+	#SET{fond,#VAL{prive/rss/a_suivre-}|concat{#VALEUR{table_objet}}}
+	[(#GET{fond}|trouver_fond|oui)#INCLURE*{fond=#GET{fond}}]
+</BOUCLE_objets>
+</channel>
+</rss><?php
+} else {
+include_spip('inc/minipres'); 
+echo minipres();
+}?></BOUCLE0>
+#FILTRE{trier_rss}

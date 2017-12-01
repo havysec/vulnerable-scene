@@ -1,0 +1,11 @@
+<quote>
+----
+
+paragraph <textwheel1|inline>
+
+-* li <textwheel1|inline>
+
+----
+
+paragraph <textwheel1|inline>
+</quote>

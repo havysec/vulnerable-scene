@@ -1,0 +1,45 @@
+<div style="float:left;width:200px;">
+	#SET{close,''}
+	#SET{prev,''}
+	#SET{next,''}
+	<ul>
+	<BOUCLE_menu(DATA){source tableau,#ENV{aide}|aide_menu}>
+		[(#VALEUR{1}|=={1}|oui)
+		#GET**{close}
+		<div class='liste'><h3>[(#VALEUR{2})]</h3>
+			<ul class="liste-items">
+			#SET{close,'</ul></div>'}
+		][(#VALEUR{1}|=={2}|oui)
+			[(#GET{next}|=={next}|oui)#SET{next,#VALEUR}]
+			<li class="item[(#VALEUR{2}|=={#ENV{aide}}|oui)on#SET{next,next}]"><a
+							onclick="jQuery(this).closest('#cboxLoadedContent').scrollTop(0);"
+							href='[(#SELF|parametre_url{aide,#VALEUR{2}})]#contenu-aide' class="ajax">[(#VALEUR{3})]</a></li>
+			[(#GET{next}|non)#SET{prev,#VALEUR}]
+		]
+	</BOUCLE_menu>
+		#GET**{close}
+	</ul>
+</div>
+[(#GET{next}|non)#SET{prev,''}]
+<div class="contenu-aide" id="contenu-aide" lang="[(#EVAL{_request('var_lang_r')}|aide_changer_langue{#ENV{lang_r}})]" style="position:relative;margin-left:220px;">
+	[(#ENV{aide}|aide_extrait_section|image_reduire{500}|sinon{
+		[<div style='text-align:center;'>
+			(#CHEMIN_IMAGE{logo-spip.gif}|balise_img{SPIP})
+			<div style='font-variant: small-caps;'>
+			Syst&egrave;me de publication pour l'Internet
+			</div>
+		</div>
+		<p>
+		#SET{doc,#EVAL{$GLOBALS}|table_valeur{home_server}|concat{/,#EVAL{$GLOBALS}|table_valeur{spip_lang}}}
+		<:info_copyright_doc{spipnet=#GET{doc},spipnet_affiche=#GET{doc}}:>
+		</p>]
+	})]
+	<p>
+		[<a onclick="jQuery(this).closest('#cboxLoadedContent').scrollTop(0);"
+				href="[(#SELF|parametre_url{aide,#GET{prev}|table_valeur{2}})]#contenu-aide" class="ajax">&lt; (#GET{prev}|table_valeur{3})</a> | ]
+		[<a onclick="jQuery(this).closest('#cboxLoadedContent').scrollTop(0);"
+				href="[(#SELF|parametre_url{aide,#GET{next}|table_valeur{2}})]#contenu-aide" class="ajax">(#GET{next}|table_valeur{3}) &gt;</a>]
+	</p>
+</div>
+
+

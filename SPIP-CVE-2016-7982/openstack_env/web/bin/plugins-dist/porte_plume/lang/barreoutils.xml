@@ -1,0 +1,54 @@
+<traduction module="barreoutils" gestionnaire="salvatore" url="http://trad.spip.net" source="svn://zone.spip.org/spip-zone/_core_/plugins/porte_plume/lang/" reference="fr">
+	<langue code="ar" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=ar" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="George" lien="http://trad.spip.net/auteur/جورج-قندلفت" />
+	</langue>
+	<langue code="de" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=de" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="klaus++" lien="http://trad.spip.net/auteur/klaus" />
+	</langue>
+	<langue code="en" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=en" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="kent1" lien="http://trad.spip.net/auteur/kent1" />
+	</langue>
+	<langue code="es" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=es" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="alf" lien="http://trad.spip.net/auteur/alf" />
+		<traducteur nom="dani" lien="http://trad.spip.net/auteur/dani" />
+	</langue>
+	<langue code="fa" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=fa" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Davood Hossein" lien="http://trad.spip.net/auteur/davood-hossein" />
+	</langue>
+	<langue code="fr" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=fr" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+	</langue>
+	<langue code="fr_fem" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=fr_fem" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="denisb" lien="http://trad.spip.net/auteur/denisb" />
+	</langue>
+	<langue code="fr_tu" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=fr_tu" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Cerf" lien="http://trad.spip.net/auteur/cerf" />
+	</langue>
+	<langue code="it" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=it" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Cap" lien="http://trad.spip.net/auteur/cap" />
+		<traducteur nom="phante" lien="http://trad.spip.net/auteur/phante" />
+	</langue>
+	<langue code="nl" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=nl" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Hanjo" lien="http://trad.spip.net/auteur/hanjo" />
+		<traducteur nom="Suske" lien="http://trad.spip.net/auteur/suske" />
+	</langue>
+	<langue code="oc_ni_mis" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=oc_ni_mis" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="sylvain" lien="http://trad.spip.net/auteur/sylvain" />
+	</langue>
+	<langue code="pt" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=pt" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Cláudia Anjos Lopes" lien="http://trad.spip.net/auteur/claudia_a_lopes" />
+	</langue>
+	<langue code="pt_br" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=pt_br" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Ricardo Porto" lien="http://trad.spip.net/auteur/ricardo-porto" />
+		<traducteur nom="telopa" lien="http://trad.spip.net/auteur/telopa" />
+	</langue>
+	<langue code="ru" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=ru" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
+		<traducteur nom="Serge Markitanenko" lien="http://trad.spip.net/auteur/serge-markitanenko" />
+	</langue>
+	<langue code="sk" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=sk" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="jaro" lien="http://trad.spip.net/auteur/jaro" />
+	</langue>
+	<langue code="uk" url="http://trad.spip.net/tradlang_module/barreoutils?lang_cible=uk" total="81" traduits="81" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="olly" lien="http://trad.spip.net/auteur/olly" />
+	</langue>
+</traduction>

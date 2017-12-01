@@ -1,0 +1,14 @@
+paragraph:
+-* li <textwheel1|block>
+-* li <textwheel1|block>
+
+paragraph:
+
+-* li <textwheel1|block>
+<p>paragraph in list item <textwheel1|block></p>
+-* li <textwheel1|block>
+LF in list item <textwheel1|block>
+-* li <textwheel1|block>
+
+Double LF in list item <textwheel1|block>
+-* li <textwheel1|block>

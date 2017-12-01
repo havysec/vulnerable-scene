@@ -1,0 +1,18 @@
+<quote> quote
+the rest of it avec de la typo
+</quote>
+
+<quote>
+quote
+the rest of it avec de la typo
+</quote>
+
+<blockquote>
+quote
+the rest of it avec de la typo
+</blockquote>
+
+<poesie>
+quote
+the rest of it avec de la typo
+</poesie>

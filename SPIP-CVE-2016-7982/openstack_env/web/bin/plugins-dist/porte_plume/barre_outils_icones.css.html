@@ -1,0 +1,26 @@
+#CACHE{7*24*3600}
+#HTTP_HEADER{Content-Type: text/css; charset=utf-8}
+#HTTP_HEADER{Vary: Accept-Encoding}
+[(#VAL|barre_outils_css_icones)]
+
+/* roue ajax */
+.ajaxLoad{
+		position:relative;
+}
+.ajaxLoad:after {
+		content:"";
+		display:block;
+		width:40px;
+		height:40px;
+		border:1px solid #eee;
+		background:#fff url('[(#CHEMIN{images/searching.gif}|url_absolue|protocole_implicite)]') center no-repeat;
+		position:absolute;
+		left:50%;
+		top:50%;
+		margin-left:-20px;
+		margin-top:-20px;
+}
+.fullscreen .ajaxLoad:after {
+		position:fixed;
+		left:75%;
+}

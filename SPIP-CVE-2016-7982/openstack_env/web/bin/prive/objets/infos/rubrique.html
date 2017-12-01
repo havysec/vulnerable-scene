@@ -1,0 +1,51 @@
+<BOUCLE_rub(RUBRIQUES){id_rubrique=#ENV{id}}{statut?}{!lang_select}>
+<div class='infos'>
+<div class='numero'><:titre_numero_rubrique:><p>#ID_RUBRIQUE</p></div>
+
+
+[(#REM)
+
+	Lister les elements qui justifient le statut de la rubrique
+
+]
+<B_admins>
+		<h3><:info_administrateurs:></h3>
+		<ul class="liste-items auteurs">
+		<BOUCLE_admins(AUTEURS){id_rubrique}{statut=0minirezo}{tout}{pagination 10}>
+			<li class="item auteur"><a href='[(#ID_AUTEUR|generer_url_entite{auteur})]'>[(#CHEMIN_IMAGE{auteur-0minirezo-16.png}|balise_img)] #NOM</a></li>
+		</BOUCLE_admins>
+		</ul>
+		[<p class="pagination">(#PAGINATION{prive})</p>]
+</B_admins>
+
+<div class='nb_elements'>
+<BOUCLE_arts(ARTICLES){id_rubrique}> </BOUCLE_arts><div>[(#TOTAL_BOUCLE|singulier_ou_pluriel{info_articles_un,info_articles_nb})]</div></B_arts>
+<BOUCLE_rubs(RUBRIQUES){id_parent}> </BOUCLE_rubs><div>[(#TOTAL_BOUCLE|singulier_ou_pluriel{info_rubriques_un,info_rubriques_nb})]</div></B_rubs>
+<!--nb_elements-->
+</div>
+
+[(#AUTORISER{supprimer,rubrique,#ID_RUBRIQUE}|oui)
+	[(#URL_ACTION_AUTEUR{supprimer_rubrique,#ID_RUBRIQUE,#ID_PARENT|?{#URL_ECRIRE{rubrique,id_rubrique=#ID_PARENT},#URL_ECRIRE{rubriques}}}|icone_horizontale{<:icone_supprimer_rubrique:>,rubrique,del})]
+]
+
+
+[(#REM)
+
+	Bouton voir en ligne
+
+]<BOUCLE_publie(RUBRIQUES){id_rubrique}>
+	[(#VAL{redirect}
+		|generer_url_action{type=rubrique&id=#ID_RUBRIQUE}
+		|parametre_url{var_mode,calcul}
+		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
+</BOUCLE_publie>
+	[(#AUTORISER{previsualiser,rubrique,#ID_RUBRIQUE})
+		[(#VAL{redirect}
+			|generer_url_action{type=rubrique&id=#ID_RUBRIQUE}
+			|parametre_url{var_mode,preview}
+			|icone_horizontale{<:previsualiser:>,preview})]
+	]
+<//B_publie>
+
+</div>
+</BOUCLE_rub>

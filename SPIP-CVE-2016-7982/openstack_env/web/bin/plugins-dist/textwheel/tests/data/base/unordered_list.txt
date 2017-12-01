@@ -1,0 +1,9 @@
+-* li
+-* li
+
+mixed markers:
+
+-* li
+-*li
+- puce
+-puce

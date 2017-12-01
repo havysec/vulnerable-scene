@@ -1,0 +1,3 @@
+[link avec de la typo !->http://example.com] and [another link avec de la typo !->/tests/]
+
+[<code>link avec de la typo !</code>->http://example.com]

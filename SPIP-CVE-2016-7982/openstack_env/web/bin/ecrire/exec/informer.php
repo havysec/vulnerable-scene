@@ -1,0 +1,48 @@
+<?php
+
+/***************************************************************************\
+ *  SPIP, Systeme de publication pour l'internet                           *
+ *                                                                         *
+ *  Copyright (c) 2001-2016                                                *
+ *  Arnaud Martin, Antoine Pitrou, Philippe Riviere, Emmanuel Saint-James  *
+ *                                                                         *
+ *  Ce programme est un logiciel libre distribue sous licence GNU/GPL.     *
+ *  Pour plus de details voir le fichier COPYING.txt ou l'aide en ligne.   *
+\***************************************************************************/
+
+/**
+ * Gestion d'affichage ajax d'une rubrique sélectionnée dans le mini navigateur
+ *
+ * @package SPIP\Core\Exec
+ */
+
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
+
+include_spip('inc/actions');
+
+/**
+ * Affiche en ajax des informations d'une rubrique selectionnée dans le mini navigateur
+ *
+ * @uses inc_informer_dist()
+ * @uses ajax_retour()
+ **/
+function exec_informer_dist() {
+	$id = intval(_request('id'));
+	$col = intval(_request('col'));
+	$exclus = intval(_request('exclus'));
+	$do = _request('do');
+
+	if (preg_match('/^\w*$/', $do)) {
+		if (!$do) {
+			$do = 'aff';
+		}
+
+		$informer = charger_fonction('informer', 'inc');
+		$res = $informer($id, $col, $exclus, _request('rac'), _request('type'), $do);
+	} else {
+		$res = '';
+	}
+	ajax_retour($res);
+}

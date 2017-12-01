@@ -1,0 +1,59 @@
+[(#SET{defaut_tri,#ARRAY{
+	id_article,1
+	date,#ENV{date_sens,-1},
+	titre,1,
+	points,-1
+}})
+]<B_liste_art>
+#ANCRE_PAGINATION
+<div class="liste-objets articles traductions">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{info_1_article,info_nb_articles}})</strong></caption>]
+	<thead>
+		<tr class='first_row'>
+			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+			<th class='trad' scope='col'>&nbsp;</th>
+			<th class='titre principale' scope='col'>[(#TRI{titre,<:info_titre:>,ajax})]</th>
+			<th class='langue' scope='col'><:langue:></th>
+			<th class='id' scope='col'>[(#TRI{id_article,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_art(ARTICLES){id_trad}{statut==.*}{tout}{where?}{recherche?}{tri #ENV{par,date},#GET{defaut_tri}}{pagination #ENV{nb,10}}{!lang_select}>
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+			<td class='statut'>[(#STATUT|puce_statut{article,#ID_ARTICLE,#ID_RUBRIQUE})]</td>
+			<td class="trad">[(#ENV{id_trad}|=={#ID_ARTICLE}|oui)[(#CHEMIN_IMAGE{langue-16.png}|balise_img)]]
+				[(#ENV{editable}|oui)
+				[(#ENV{id_trad}|=={#ID_ARTICLE}|non)
+				[(#SET{titre,[<:info_numero_abbreviation:>#ID_ARTICLE (#TITRE) - [(#LANG|traduire_nom_langue)]]})]
+				[(#SET{titre,#VAL{trad_definir_reference}|_T{#ARRAY{titre,#GET{titre}}}})]
+				<button type='submit'
+								name='changer_reference_trad&#91;#ID_ARTICLE&#93;'
+								title="[(#GET{titre}|attribut_html)]"
+								value='#ID_ARTICLE'>[(#CHEMIN_IMAGE{langues-off-12.gif}
+					|balise_img{#GET{titre}})]</button>]
+				]
+			</td>
+			<td class='titre principale'><span
+							[(#ENV{id_trad}|=={#ID_ARTICLE}|oui)class="on"]
+							dir="#LANG_DIR"
+							lang="#LANG">[(#EXPOSE|?{#TITRE,<a
+							[hreflang="(#ENV{lang}|=={#LANG}|non|?{#LANG})"]
+							href="[(#ID_ARTICLE|generer_url_entite{article})]"
+							title="<:info_numero_abbreviation|attribut_html:> #ID_ARTICLE">[(#RANG). ]#TITRE</a>})]</span>
+				[(#ENV{id_trad}|=={#ID_ARTICLE}|oui)<:trad_reference:>]
+			</td>
+			<td class='langue'>[(#LANG|traduire_nom_langue)]</td>
+			<td class='id'>[(#AUTORISER{modifier,article,#ID_ARTICLE}|?{
+				<a href="[(#URL_ECRIRE{article_edit,id_article=#ID_ARTICLE})]">#ID_ARTICLE</a>,
+				#ID_ARTICLE
+			})]</td>
+		</tr>
+	</BOUCLE_liste_art>
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{prive})</p>]
+</div>
+</B_liste_art>[
+<div class="liste-objets articles caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_art>

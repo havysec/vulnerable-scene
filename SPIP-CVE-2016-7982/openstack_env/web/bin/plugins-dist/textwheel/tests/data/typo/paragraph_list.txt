@@ -1,0 +1,14 @@
+paragraph:
+-* li avec de la typo !
+-* li avec de la typo !
+
+paragraph:
+
+-* li avec de la typo !
+<p>paragraph in list item avec de la typo !</p>
+-* li avec de la typo !
+LF in list item avec de la typo !
+-* li avec de la typo !
+
+Double LF in list item avec de la typo !
+-* li avec de la typo !

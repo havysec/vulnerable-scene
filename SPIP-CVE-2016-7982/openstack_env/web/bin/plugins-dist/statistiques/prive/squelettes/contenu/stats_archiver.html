@@ -1,0 +1,28 @@
+[(#AUTORISER{webmestre}|sinon_interdire_acces)]
+
+<h1 class="grostitre"><:statistiques:archiver_et_nettoyer:></h1>
+
+
+[(#BOITE_OUVRIR{[(#CHEMIN_IMAGE{statistiques-24.png}|balise_img{'',cadre-icone})]<:statistiques:archiver:>})]
+
+<p><:statistiques:archiver_concatener_explications:></p>
+<ul class='spip'>
+	<li><:statistiques:archiver_concatener_ignorer{nb=2}:></li>
+	<li><:statistiques:archiver_concatener_par_mois{nb=2}:></li>
+	<li><:statistiques:archiver_concatener_par_an{nb=5}:></li>
+</ul>
+<p><:statistiques:archiver_operation_longue:></p>
+
+#BOITE_PIED
+	[(#BOUTON_ACTION{<:statistiques:archiver:>,#URL_ACTION_AUTEUR{statistiques_archiver,archiver_visites_articles,#SELF}})]
+#BOITE_FERMER
+
+
+[(#BOITE_OUVRIR{[(#CHEMIN_IMAGE{statistiques-24.png}|balise_img{'',cadre-icone})]<:statistiques:archiver_nettoyer:>})]
+
+<p><:statistiques:archiver_nettoyer_explications:></p>
+
+#BOITE_PIED
+	[(#BOUTON_ACTION{<:statistiques:archiver_nettoyer_referers_articles:>,#URL_ACTION_AUTEUR{statistiques_archiver,nettoyer_referers_articles,#SELF}})]
+	[(#BOUTON_ACTION{<:statistiques:archiver_nettoyer_visites_articles:>,#URL_ACTION_AUTEUR{statistiques_archiver,nettoyer_visites_articles,#SELF}})]
+#BOITE_FERMER

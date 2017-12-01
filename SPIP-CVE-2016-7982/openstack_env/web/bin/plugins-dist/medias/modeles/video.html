@@ -1,0 +1,41 @@
+<BOUCLE_tous(DOCUMENTS types_documents) {id_document=#ID} {tout}>[
+(#REM) on trouvera plusieurs variable de hauteur/largeur
+- les balises #HAUTEUR et #LARGEUR
+- #ENV{hauteur} et {largeur} correspondant <emb|hauteur=xx...>
+- #GET{hauteur} et #GET{largeur} correspondent prioritairement a #ENV,
+  puis #LARGEUR/HAUTEUR sauf si il y a un controleur
+]
+#SET{largeur,#ENV{largeur, #LARGEUR|?{#LARGEUR,480}}|max{120}}
+#SET{hauteur,#ENV{hauteur, #HAUTEUR|?{#HAUTEUR,300}}|max{75}}
+<div	class='spip_document_#ID_DOCUMENT spip_document_video spip_documents[ spip_documents_(#ENV{align})]'
+	style='[(#ENV{align}|match{^(left|right)$}|oui)float:#ENV{align};][width:(#GET{largeur})px]'>
+<div class="video-intrinsic-wrapper" style='height:0;width:100%;padding-bottom:[(#GET{hauteur}|div{#GET{largeur}}|mult{100}|round{2})]%;position:relative;'>
+	<div class="video-wrapper" style="position: absolute;top:0;left:0;width:100%;height:100%;">
+		<video class="mejs mejs-#ID_DOCUMENT [ mejs-(#ENV{skin})]"
+		       data-id="[(#VAL{mejs-#ID_DOCUMENT}|concat{#ENV{skin}}|md5)]"
+		       data-mejsoptions='{"alwaysShowControls": true,"pluginPath":"[(#CHEMIN{lib/mejs/flashmediaelement.swf}|dirname)/]"[,"loop":(#ENV{loop}|?{true,false})],"videoWidth":"100%","videoHeight":"100%"[,"startVolume":"(#ENV{volume})"]}'
+		       width="100%"
+		       height="100%"
+		       poster="[(#LOGO_DOCUMENT{vignette}|image_reduire{#GET{largeur},0}|extraire_attribut{src})]"
+		       controls="controls"
+		       preload="none"
+					 [autoplay="autoplay"(#ENV{autoplay}|oui)]
+			>
+	    <source type="[(#EXTENSION|in_array{#LISTE{mp4,webm,ogv}}|?{[(#MIME_TYPE|replace{application/,video/})],#MIME_TYPE})]" src="#FICHIER" />
+			<!-- Flash fallback for non-HTML5 browsers without JavaScript -->
+		  <object width="#GET{largeur}" height="#GET{hauteur}" type="application/x-shockwave-flash" data="#CHEMIN{lib/mejs/flashmediaelement.swf}">
+	      <param name="movie" value="#CHEMIN{lib/mejs/flashmediaelement.swf}" />
+	      <param name="flashvars" value="controls=true&amp;file=#FICHIER" />
+	      <!-- Image as a last resort -->
+			  [(#LOGO_DOCUMENT|image_reduire{#GET{largeur},0}|vider_attribut{class}|inserer_attribut{alt,'Impossible de lire la video'})]
+		  </object>
+		</video>
+	</div>
+</div>
+[<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>]
+[<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
+[<script>/*<!\[CDATA\[*/var mejspath='[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]',mejscss='[(#CHEMIN{lib/mejs/mediaelementplayer.min.css}|timestamp)]';
+(#INCLURE{javascript/mejs-init.min.js})/*\]\]>*/</script>]
+[(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]
+</div>
+</BOUCLE_tous>

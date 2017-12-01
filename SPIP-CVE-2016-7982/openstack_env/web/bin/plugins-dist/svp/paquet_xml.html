@@ -1,0 +1,9 @@
+[(#HTTP_HEADER{Content-Type: text/html; charset=#CHARSET})][(#REM)
+]<BOUCLE_paquet(PAQUETS){id_paquet}{id_depot > 0}>[(#REM)
+]<BOUCLE_depot(DEPOTS){id_depot}>[(#REM)
+][(#SET{url,#URL_ARCHIVES|concat{/,#NOM_ARCHIVE|basename{.zip},.xml}})
+][(#SET{content,#GET{url}|recuperer_url|table_valeur{page}})
+][(#PLUGIN{COLORATION_CODE}|non|?{#GET{content}|entites_html|wrap{<pre>}})][(#REM)
+][(#PLUGIN{COLORATION_CODE}|oui|?{#GET{content}|appliquer_filtre{coloration_code_color, xml, code, span}|wrap{<div class='xml'>}})][(#REM)
+]</BOUCLE_depot>[(#REM)
+]</BOUCLE_paquet>

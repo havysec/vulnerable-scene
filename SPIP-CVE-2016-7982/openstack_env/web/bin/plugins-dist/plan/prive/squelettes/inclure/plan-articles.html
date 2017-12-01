@@ -1,0 +1,44 @@
+
+<BOUCLE_nb_items(ARTICLES)
+	{id_rubrique}
+	{statut IN #SESSION{statut}|statuts_articles_visibles}
+	{statut ?}
+	{lang_select=non}
+	{pagination 1}>
+	#SET{total,#GRAND_TOTAL}
+	#SET{lister,#PLAN_AFFICHER_LISTE}
+</BOUCLE_nb_items>
+
+[(#ENV{conteneur}|=={non}|non)
+	<ul class="menu-items articles">
+		<li id="articles-rubrique-#ID_RUBRIQUE"
+			class="item group[ (#GET{lister}|non)jstree-closed]"
+			data-jstree='{"type":"box_article"}' data-objet="article">
+			<strong>[(#GET{total}|objet_afficher_nb{article})]</strong>
+]
+
+			<B_items>
+				<ul class="menu-items articles">
+			<BOUCLE_items(ARTICLES)
+				{id_rubrique} {par titre}
+				{statut IN #SESSION{statut}|statuts_articles_visibles}
+				{statut ?}
+				{lang_select=non}
+				{si #GET{lister}}
+				>
+				<li id="article-#ID_ARTICLE" class="item" data-jstree='{"type":"article"}' data-objet="article">
+					<a href="[(#ID_ARTICLE|generer_url_entite{article})]"
+						[hreflang="(#ENV{lang}|=={#LANG}|non|?{#LANG})"]
+						title="[(#VAL{article}|objet_info{texte_objet}|_T) #ID_ARTICLE]">
+						[(#STATUT|puce_statut{article}) ][(#TITRE|couper{80}|sinon{<:info_sans_titre:>})]
+					</a>
+				</li>
+			</BOUCLE_items>
+			</ul>
+			</B_items>
+
+[(#ENV{conteneur}|=={non}|non)
+		</li>
+	</ul>
+]
+</B_nb_items>

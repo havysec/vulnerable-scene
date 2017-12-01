@@ -1,0 +1,43 @@
+<h1 class="none"><:icone_accueil:></h1>
+#SET{recentwhere,''}
+<BOUCLE_haspostdate(ARTICLES){statut=publie}{0,1}>
+[(#CONFIG{post_dates}|=={non}|et{#SESSION{statut}|=={0minirezo}|oui})
+	[(#SET{recentwhere,[NOT ((#VAL{date}|quete_condition_postdates))]})]
+	<INCLURE{fond=prive/objets/liste/articles,titre=<:info_article_a_paraitre:>,statut=publie,par=date,date_sens=1,nb=5,where=#GET{recentwhere},env,ajax} />
+	[(#SET{recentwhere,[(#VAL{date}|quete_condition_postdates)]})]
+]
+</BOUCLE_haspostdate>
+
+[(#REM)
+
+	Les articles recents
+
+]
+<INCLURE{fond=prive/objets/liste/articles,titre=<:articles_recents:>,statut=publie,par=date,where=#GET{recentwhere},nb=5,env,ajax} />
+
+
+[(#REM)
+
+	Vos articles en cours
+
+]
+[(#SET{titre,#URL_ECRIRE{articles,id_auteur=#SESSION{id_auteur}}|afficher_plus_info|concat{<:info_en_cours_validation:>}})]
+<INCLURE{fond=prive/objets/liste/articles,titre=#GET{titre},statut=prepa,id_auteur=#SESSION{id_auteur},par=date,env,ajax} />
+
+[(#REM)
+
+	En cours de validation
+
+][
+	[(#BOITE_OUVRIR{<:texte_en_cours_validation:>,'basic highlight'})]
+	(#PIPELINE{accueil_encours,#INCLURE{fond=prive/objets/liste/articles,titre=<:info_articles_proposes:>,statut=prop,id_rubrique,par=date,ajax,env}})
+
+	[(#VAL{a_suivre}|bouton_spip_rss)]
+
+	#BOITE_FERMER
+]
+
+
+[(#REM|afficher_enfant_rub|image_reduire{245,0})
+<div class='nettoyeur'></div>
+]

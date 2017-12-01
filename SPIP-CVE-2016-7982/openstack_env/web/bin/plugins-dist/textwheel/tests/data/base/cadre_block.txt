@@ -1,0 +1,9 @@
+Une ligne avant
+<cadre>
+<?php
+
+$message = 'Hello World';
+echo $message;
+
+</cadre>
+Et ensuite une ligne

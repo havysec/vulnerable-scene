@@ -1,0 +1,143 @@
+#SET{vspip, #EVAL{$GLOBALS['spip_version_branche']}}
+#SET{autoriser_plugins_ajouter,#AUTORISER{plugins_ajouter}}
+#SET{autoriser_webmestre,#AUTORISER{webmestre}}
+[(#SET{image_verrou,[(#CHEMIN_IMAGE{cadenas-16.png}|balise_img{<:svp:plugin_info_verrouille:>,picto_verrou}|inserer_attribut{title,<:svp:plugin_info_verrouille:>})]})]
+[(#SET{erreur_attente,[- <span class="svp_message">(#GET{autoriser_plugins_ajouter}|?{<:svp:info_plugin_attente_dependance:>,<:svp:info_plugin_attente_dependance_interdit:>})</span> ]})]
+[(#SET{erreur_incompatible,- <span class="svp_message"><:svp:info_plugin_incompatible:></span>})]
+<B_plugins>
+[(#GET{incompatibles})
+	[(#ENV{afficher_incompatibles,''}|non)
+	<a id="afficher_incompatibles" href="[(#SELF|parametre_url{afficher_incompatibles,1})]"><:svp:afficher_les_plugins_incompatibles:></a>
+	]
+	[(#ENV{afficher_incompatibles,''}|oui)
+	<a id="afficher_incompatibles" href="[(#SELF|parametre_url{afficher_incompatibles,''})]"><:svp:cacher_les_plugins_incompatibles:></a>
+	]
+]
+<div class="liste plugins" id="liste_plugins">
+	<ul class="liste-items">
+	<BOUCLE_plugins(PAQUETS plugins){tout}{par multi nom, paquets.prefixe}{!par constante, actif}{id_depot=0}{actif ?}{constante ?IN #ENV{constante}}>
+		#SET{incompatible, #COMPATIBILITE_SPIP|plugin_version_compatible{#GET{vspip}, spip}|non}
+		#SET{verrou,#CONSTANTE|=={_DIR_PLUGINS_DIST}|oui}
+		#SET{actif,#ACTIF|=={oui}|oui}
+		#SET{attente,#ATTENTE|=={oui}|oui}
+		[(#GET{incompatible})#SET{incompatibles,' '}]
+		[(#GET{incompatible}|non|ou{#ENV{afficher_incompatibles,''}}|ou{#GET{verrou}}|ou{#GET{actif}}|ou{#GET{attente}})
+		#SET{obsolete,#OBSOLETE|=={oui}|oui}
+		#SET{details,#ENV{id_paquet,''}|=={#ID_PAQUET}|oui}
+		<li class="item[ (#GET{actif}|?{actif,inactif})][(#GET{obsolete}|ou{#GET{attente}}|ou{#GET{incompatible}}|oui) disabled][(#GET{incompatible}) incompatible][(#GET{verrou}) verrou][(#MAJ_VERSION|oui|et{#GET{autoriser_plugins_ajouter}|oui}|oui)up]"[
+			id="(#PREFIXE|strtolower)-#COMPTEUR_BOUCLE"][ data-id_paquet="(#ID_PAQUET)"]>
+			[(#GET{incompatible}|non|ou{#GET{attente}}|et{#GET{verrou}|non})
+				[(#GET{obsolete}|non)
+				<div class="check">
+					<input type="checkbox" class="checkbox select_plugin" name="ids_paquet\[\]" value="#ID_PAQUET"
+						[(#ID_PAQUET|in_any{#ENV{ids_paquet}}) checked="checked"] />
+				</div>]
+				[(#REM) si la configuration le permet, on peut activer un plugin obsolete ]
+				[(#GET{obsolete}|et{#GET{incompatible}|non})
+					[(#CONFIG{svp/autoriser_activer_paquets_obsoletes}|=={oui}|oui)
+						<div class="check">
+							<input type="checkbox" class="checkbox select_plugin" name="ids_paquet\[\]" value="#ID_PAQUET"
+								[(#ID_PAQUET|in_any{#ENV{ids_paquet}}) checked="checked"] />
+						</div>
+					]
+				]
+			]
+
+			[(#REM) <!-- Resume du plugin -->]
+			<div class="resume">
+				<h3 class="nom"><a href="[(#SELF|parametre_url{id_paquet,#GET{details}|?{'',#ID_PAQUET}})]" rel="info">[(#NOM|extraire_multi|svp_importer_charset)]</a></h3>
+				<span class="version">[(#VERSION)]</span>
+				<span class="etat">[ - (#ETAT)]</span>
+				[(#SET{erreur,[<span class="svp_message">(#GET{obsolete})<:svp:info_plugin_obsolete:></span> ]})]
+				[(#GET{attente}) [(#SET{erreur,#GET{erreur}|concat{#GET{erreur_attente}}})]   ]
+				[(#GET{incompatible})[(#SET{erreur,#GET{erreur}|concat{#GET{erreur_incompatible}}})]]
+				[(#SET{slogan,#GET{erreur}|ltrim{'-'}|trim})]
+				[(#GET{slogan}|non)[(#SET{slogan,#SLOGAN|extraire_multi|typo})]]
+				[(#GET{slogan}|non)[(#SET{slogan,#DESCRIPTION|extraire_multi|propre|PtoBR|explode{'<br />'}|reset})]]
+				<div class="short">[(#GET{slogan}|couper{80}|svp_importer_charset)]</div>
+				[(#LOGO|et{#GET{incompatible}|non})<div class="icon">
+					[(#CONSTANTE|constant|concat{#SRC_ARCHIVE/#LOGO}|balise_img)]
+				</div>]
+			</div>
+
+			<div class="actions">
+			[(#REM) on peut desactiver un plugin - qu'il soit obsolete ou pas ]
+			[(#GET{verrou}|non|et{#GET{incompatible}|non}|oui)
+				[(#GET{actif})
+					<input type="submit" name="[(#ID_PAQUET|svp_nom_action{off})]" class="submit" value="<:svp:bouton_desactiver:>" />
+					[(#INSTALLE|=={oui}|et{#GET{autoriser_webmestre}}|oui)
+						<input type="submit" name="[(#ID_PAQUET|svp_nom_action{stop})]" class="submit" value="<:svp:bouton_desinstaller:>" />
+					]
+				]
+			]
+			[(#GET{obsolete}|non|et{#GET{verrou}|non}|et{#GET{incompatible}|non}|oui)
+				[(#GET{actif}|non|ou{#GET{attente}})
+					[(#GET{actif}|non|ou{#GET{attente}|et{#GET{autoriser_plugins_ajouter}|oui}}|oui)
+					<input type="submit" name="[(#ID_PAQUET|svp_nom_action{on})]" class="submit" value="<:svp:bouton_activer:>" />]
+				]
+				[(#MAJ_VERSION|oui|et{#GET{autoriser_plugins_ajouter}|oui}|oui)
+					<input type="submit" name="[(#ID_PAQUET|svp_nom_action{up})]" class="submit" value="<:svp:bouton_up:>" />
+				]
+			]
+			[(#REM) si la configuration le permet, on peut activer un plugin obsolete ]
+			[(#GET{obsolete}|et{#GET{verrou}|non}|et{#GET{incompatible}|non}|oui)
+				[(#GET{actif}|non|et{#CONFIG{svp/autoriser_activer_paquets_obsoletes}|=={oui}})
+					<input type="submit" name="[(#ID_PAQUET|svp_nom_action{on})]" class="submit" value="<:svp:bouton_activer:>" />
+				]
+			]
+			[(#GET{actif}|non|et{[(#SRC_ARCHIVE|couper{5}|=={auto/})]})
+				<input type="submit" name="[(#ID_PAQUET|svp_nom_action{kill})]" class="submit" value="<:svp:bouton_supprimer:>" />
+			]
+			[(#GET{verrou})
+				<span class="svp_message"><:svp:info_verrouille:></span>
+			]
+			</div>
+			[(#GET{actif}|et{#GET{attente}|non}|oui) #SET{prefixe,#PREFIXE|strtolower}
+				[(#CHEMIN_IMAGE{ok-16.png}|balise_img{<:svp:plugin_info_actif:>,picto_actif}|inserer_attribut{title,<:svp:plugin_info_actif:>})]
+				[(#INCLURE{fond=prive/squelettes/inclure/cfg,script=configurer_#GET{prefixe},nom=#NOM})]
+			]
+			[(#GET{verrou}|?{#GET{image_verrou}})]
+			[(#MAJ_VERSION|oui|et{#GET{autoriser_plugins_ajouter}|oui}|oui)
+			[(#CHEMIN_IMAGE{update-16.png}|balise_img{<:svp:plugin_info_up:>,picto_up}|inserer_attribut{title,<:svp:plugin_info_up{version=#MAJ_VERSION}:>})]
+			]
+			[(#GET{obsolete}|ou{#GET{incompatible}}|ou{#GET{attente}}|oui)
+				[(#SET{image,#GET{attente}|?{erreur-16.png,plugin-dis-16.png}})]
+				[(#GET{obsolete}) [(#SET{err, <:svp:info_plugin_obsolete:>})]]
+				[(#GET{incompatible}) [(#SET{err, <:svp:info_plugin_incompatible:>})]]
+				[(#CHEMIN_IMAGE{#GET{image}}|balise_img{#GET{err}, picto_err}|inserer_attribut{title, #GET{err}})]
+			]
+			[(#GET{details})
+				[(#INCLURE{fond=prive/squelettes/inclure/plugin_detail,id_paquet,ajax=detail_#ID_PAQUET,env})]
+			]
+			]
+		</li>
+	</BOUCLE_plugins>
+	</ul>
+</div>
+</B_plugins>
+
+<script type="text/javascript">
+/*<![CDATA[*/
+	(function($){
+		$('#liste_plugins').on('click','li.item a[rel=info]',function(){
+			var li = $(this).parents('li').eq(0);
+			var id_paquet = li.data('id_paquet');
+			// premier clic, on charge le contenu du bloc details en ajax
+			if (!$('div.details',li).html()) {
+				$(this).ajaxReload({args: {'id_paquet':id_paquet}}, {callback:function(){
+					li.addClass('on');
+				}});
+			}
+			// clics suivants, masquer ou afficher les details
+			if ($('div.details',li).toggle().is(':visible'))
+				li.addClass('on');
+			else
+				li.removeClass('on');
+			return false;
+		});
+		$('.plugins li.item input.checkbox').change(function(){
+			$(this).parents('form').eq(0).find('.boutons').slideDown();
+		});
+	})(jQuery);
+/*]]>*/
+</script>

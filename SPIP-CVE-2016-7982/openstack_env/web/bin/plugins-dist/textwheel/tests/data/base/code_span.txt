@@ -1,0 +1,9 @@
+a <code>code span</code>
+
+<code>this is also a codespan</code> trailing text
+
+<code>and look at this one</code>
+
+single &lt;code&gt; in a code span: <code><code></code>
+
+&lt; in a code span: <code><</code>

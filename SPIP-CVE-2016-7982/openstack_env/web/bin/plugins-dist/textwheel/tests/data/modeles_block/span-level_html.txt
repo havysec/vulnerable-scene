@@ -1,0 +1,7 @@
+an <b>important <textwheel1|block></b> <a href=''>link <textwheel1|block></a>
+
+broken <textwheel1|block><br/>
+line and auto-broken <textwheel1|block>
+line <textwheel1|block>
+
+<b>inline tag <textwheel1|block></b> at the beginning

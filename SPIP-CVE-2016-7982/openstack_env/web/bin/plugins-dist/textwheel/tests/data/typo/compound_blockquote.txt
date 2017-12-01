@@ -1,0 +1,11 @@
+<quote>
+----
+
+paragraph avec de la typo !
+
+-* li avec de la typo !
+
+----
+
+paragraph avec de la typo !
+</quote>

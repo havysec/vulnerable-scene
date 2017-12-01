@@ -1,0 +1,12 @@
+{underscore <textwheel1|block>}, {asterisk <textwheel1|block>}, {one two <textwheel1|block>}, {three four <textwheel1|block>}, {a <textwheel1|block>}, {b <textwheel1|block>}
+
+{{strong <textwheel1|block>}} and {em <textwheel1|block>} and {{strong <textwheel1|block>}} and {em <textwheel1|block>}
+
+{line <textwheel1|block>
+line <textwheel1|block>
+line <textwheel1|block>}
+
+
+an empty emphasis {} {{}} is not an emphasis
+
+{mixed {{double and <textwheel1|block>} single asterisk <textwheel1|block>}} spans <textwheel1|block>

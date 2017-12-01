@@ -1,0 +1,14 @@
+<cadre>
+<?php
+
+$message = 'fenced code block';
+echo $message;
+</cadre>
+
+<code>
+tilde
+</code>
+
+<cadre class="php">
+echo 'language identifier';
+</cadre>

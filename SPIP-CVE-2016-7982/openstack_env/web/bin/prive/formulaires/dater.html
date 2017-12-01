@@ -1,0 +1,66 @@
+<div class="formulaire_spip formulaire_#FORM formulaire_#FORM-#ENV{objet}-#ENV{id,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV*{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		[(#REM) declarer les hidden qui declencheront le service du formulaire
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+	]
+		<div class="editer-groupe">
+			#SET{name,date}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+			<div class="editer long_label editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+				<label for="#GET{name}">[(#ENV{_label_date})] #AIDER{artdate}</label>[
+				<span class='erreur_message'>(#GET{erreurs})</span>
+				]
+				<span class="affiche"[(#ENV{_saisie_en_cours}|et{#ENV{_editer_date}}|oui)style="display:none;"]>[(#ENV*{afficher_#GET{name}}|affdate)]</span>
+	[(#ENV{editable})
+				<span class="toggle_box_link"[(#ENV{_saisie_en_cours}|oui)style="display:none;"]>&#91;<button
+					  class="link"
+					  name="_saisie_en_cours" value="X"
+						onclick="var f=jQuery(this).parents('form').eq(0);f.find('.editer .input.editable').show('fast').siblings('span').add(jQuery(this).parent()).hide('fast');f.find('.boutons').show('fast');f.find('input.date').eq(0).focus();return false;"
+						><:bouton_changer:><i class="over"> \(#ENV{_label_date}\)</i></button>&#93;</span>
+				<span class="input[(#ENV{_editer_date}|oui)editable]"[(#ENV{_saisie_en_cours}|et{#ENV{_editer_date}}|non)style="display:none;"]>
+					<input type="text" class="text date" name="#GET{name}_jour" id="#GET{name}_jour" value="#ENV{#GET{name}_jour}" size="10"/>
+					<input type="text" class="text heure time" name="#GET{name}_heure" id="#GET{name}_heure" value="#ENV{#GET{name}_heure}" size="5"/>
+				</span>
+	]
+			</div>
+			[(#ENV{_editer_date_anterieure}|oui)
+				#SET{name,date_redac}#SET{erreurs,#ENV**{erreurs}|table_valeur{#GET{name}}}
+				<div class="editer long_label editer_[(#GET{name})][ (#GET{obli})][ (#GET{erreurs}|oui)erreur]">
+					<label for="#GET{name}"><:texte_date_publication_anterieure:> #AIDER{artdate_redac}</label>[
+					<span class='erreur_message'>(#GET{erreurs})</span>
+					]
+					<span class="affiche"[(#ENV{_saisie_en_cours}|oui)style="display:none;"]>[(#ENV*{afficher_#GET{name}}|affdate|sinon{<:jour_non_connu_nc:>})]</span>
+	[(#ENV{editable})
+					<span class="input editable"[(#ENV{_saisie_en_cours}|non)style="display:none;"]>
+						<span class="saisie_redac"[(#ENV{sans_redac}|oui)style="display:none;"]>
+							<input type="text" class="text date" name="#GET{name}_jour" id="#GET{name}_jour" value="#ENV{#GET{name}_jour}" size="10"/>
+							<input type="text" class="text heure time" name="#GET{name}_heure" id="#GET{name}_heure" value="#ENV{#GET{name}_heure}" size="5"/>
+							<br />
+						</span>
+						<span class="choix">
+							<input type="checkbox" name="sans_redac" value="1"[(#ENV{sans_redac}|oui)checked="checked"] id="sans_redac"
+								onclick="jQuery(this).blur();"
+								onchange="if (jQuery(this).prop('checked')) jQuery(this).parent().siblings().hide('fast'); else jQuery(this).parent().siblings().show('fast');"
+							/><label for="sans_redac"><:texte_date_publication_anterieure_nonaffichee:></label>
+						</span>
+	]
+					</span>
+				</div>
+			]
+		</div>
+	[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+	<!--extra-->
+	[(#ENV{editable})
+		<p class='boutons'[(#ENV{_saisie_en_cours}|non)style="display:none;"]>
+			<span class='image_loading'>&nbsp;</span>
+			<input type='submit' class='over' name='changer' value='<:bouton_changer:>' />
+			<input type='submit' class='submit' name='annuler' value='<:bouton_annuler:>' />
+			<input type='submit' class='submit' name='changer' value='<:bouton_changer:>' />
+		</p>
+	</div></form>
+	]
+</div>
+<INCLURE{fond=formulaires/dateur/inc-dateur,heure_pas} />

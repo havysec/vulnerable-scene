@@ -1,0 +1,37 @@
+[(#AUTORISER{configurer,_admin_vider}|oui)
+#BOITE_OUVRIR{#CHEMIN_IMAGE{cache-24.png}|balise_img{'',cadre-icone}|concat{#VAL{taille_repertoire_cache}|_T}|wrap{'<h3>'},'simple','titrem'}
+
+	<div id="placehoder_taille_cache"><p>&nbsp;</p></div>
+	<script type="text/javascript">
+		jQuery(function(){jQuery('#placehoder_taille_cache').animateLoading().load('[(#URL_ACTION_AUTEUR{calculer_taille_cache,skel}|replace{&amp;,&})]');});
+	</script>
+	<noscript>
+		<iframe src="#URL_ACTION_AUTEUR{calculer_taille_cache,skel}" style="width: 100%;height: 3em;overflow: hidden;"></iframe>
+	</noscript>
+	#SET{quota,#EVAL{$GLOBALS}|table_valeur{quota_cache}}
+	<p>
+		[(#GET{quota}|non) <:taille_cache_infinie:>]
+		[(#GET{quota}|oui)
+			#SET{quota,#GET{quota}|mult{1024}|mult{1024}|taille_en_octets}
+			<:taille_cache_maxi{octets=#GET{quota}}:>
+		]
+		(<:cache_modifiable_webmestre:>)
+	</p>
+
+	#SET{cache_inhib,#CONFIG{cache_inhib}|sinon{0}|>{#REM|time}|oui}
+
+	[(#GET{cache_inhib}|oui)
+	<div><strong><:info_cache_desactive:></strong>
+	</div>
+	]
+
+#BOITE_PIED
+	[(#GET{cache_inhib}|non)
+		[(#BOUTON_ACTION{<:bouton_cache_desactiver:>,#URL_ACTION_AUTEUR{purger,inhibe_cache,#SELF},ajax})]
+	]
+	[(#GET{cache_inhib}|oui)
+ 		[(#BOUTON_ACTION{<:bouton_cache_activer:>,#URL_ACTION_AUTEUR{purger,reactive_cache,#SELF},ajax})]
+	]
+	[(#BOUTON_ACTION{<:bouton_vider_cache:>,#URL_ACTION_AUTEUR{purger,cache,#SELF},ajax})]
+#BOITE_FERMER
+]

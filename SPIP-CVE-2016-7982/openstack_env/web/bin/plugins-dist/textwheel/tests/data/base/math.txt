@@ -1,0 +1,5 @@
+<math>
+On peut placer des fractions, telles que ${1\over z}$
+utiliser des lettres grecques comme $\alpha$
+Et aussi utiliser les {raccourcis} SPIP
+</math>

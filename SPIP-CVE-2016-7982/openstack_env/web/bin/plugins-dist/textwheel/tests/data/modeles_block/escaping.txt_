@@ -1,0 +1,9 @@
+escaped \{emphasis\}.
+
+<code>escaped \{emphasis\} in a code span</code>
+
+<code>
+escaped \{emphasis\} in a code block
+</code>
+
+\\ \` \~ \{ \} \[->\] \( \) \> \# \+ \- \. \!

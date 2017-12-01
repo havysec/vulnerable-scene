@@ -1,0 +1,38 @@
+<script type="text/javascript">
+(function($){
+$(document).ready(function(){
+	$('#racine').spiptree({
+		drag: [(#AUTORISER{configurer}|?{true,false})],
+		statut: "#ENV{statut}",
+		textes: {
+			deplacement: {
+				confirmation: <:plan:confirmer_deplacement|json_encode:>,
+				reussi: <:plan:deplacement_reussi|json_encode:>,
+				reussis: <:plan:deplacements_reussis|json_encode:>,
+				echec: <:plan:deplacement_en_echec|json_encode:>,
+				echecs: <:plan:deplacements_en_echec|json_encode:>,
+			}
+		},
+		urls: {
+			plan: "[(#VAL{plan}|generer_url_action{"", 1})]",
+			deplacer: "[(#VAL{deplacer_objets}|generer_url_action{"", 1})]"
+		},
+		default: {
+			icon: "rubrique"
+		},
+		objets: [
+			<BOUCLE_objets(DATA){source table,#REM|plan_lister_objets_rubrique}{", "}>
+			{
+				icon: "[(#VALEUR|objet_type)]",
+				type: "[(#VALEUR|objet_type)]"
+			}
+			</BOUCLE_objets>
+		]
+	});
+});
+})(jQuery);
+</script>
+
+<div id="racine">
+<INCLURE{fond=prive/squelettes/inclure/plan-rubriques, id_parent=0, statut, objet, lister}>
+</div>

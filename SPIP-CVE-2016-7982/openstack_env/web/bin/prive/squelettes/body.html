@@ -1,0 +1,36 @@
+[(#PIPELINE{body_prive,[(#VAL{<body class="#ENV{type-page,page}[ #ENV{type-page,page}_(#ENV{composition,''})][ statut_(#SESSION{statut})][ auteur_(#SESSION{id_auteur})] [(#REM|init_body_class)][(#ENV{type-page,page}|match{_edit$}|oui)edition]">})]})]
+	<INCLURE{fond=prive/squelettes/inclure/barre-nav,lang,recherche,plugins=(#REM|parametres_css_prive)}>
+	<div id="page">
+		<INCLURE{fond=prive/objets/liste/auteurs_enligne}>
+		[(#SESSION{id_auteur}|alertes_auteur)]
+		<div class="largeur">
+			<div id="haut">
+				<div id="chemin">
+					<INCLURE{fond=prive/squelettes/hierarchie/#ENV{type-page},ajax=hierarchie,env}>
+				</div>
+				[(#REM)<!--
+				Ici, # INCLURE car top/xx peut affecter la globale 'pleine_largeur'
+				-->]
+				#INCLURE{fond=prive/squelettes/top/#ENV{type-page},ajax=top,env}
+			</div>
+			<div id="conteneur" class="[(#LARGEUR_ECRAN)]">
+				<div id="navigation" class='lat' role='contentinfo'>
+					<INCLURE{fond=prive/squelettes/navigation/#ENV{type-page},ajax=navigation,env}>
+				[(#EVAL{$GLOBALS}|table_valeur{spip_ecran}|=={large}|oui)
+				</div>
+				<div id="extra" class='lat' role='complementary'>]
+					<INCLURE{fond=prive/squelettes/extra/#ENV{type-page},ajax=extra,env}>
+				</div>
+				<div id="contenu" role='main'>
+					<INCLURE{fond=prive/squelettes/contenu/#ENV{type-page},ajax=contenu,env}>
+				</div>
+			</div>
+			<br class="nettoyeur" />
+		</div>
+		<div id="pied">
+			<div class="largeur">
+			<INCLURE{fond=prive/squelettes/inclure/pied}>
+			</div>
+		</div>
+	</div>
+</body>

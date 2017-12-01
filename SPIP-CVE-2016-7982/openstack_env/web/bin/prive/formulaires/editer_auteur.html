@@ -1,0 +1,116 @@
+<div class="formulaire_spip formulaire_editer formulaire_editer_auteur formulaire_editer_auteur-#ENV{id_auteur,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur}) <:info_recommencer:></p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'><div>
+		[(#REM) declarer les hidden qui declencheront le service du formulaire 
+		parametre : url d'action ]
+		#ACTION_FORMULAIRE{#ENV{action}}
+		<input type='hidden' name='id_auteur' value='#ENV{id_auteur}' />
+		[<input type='hidden' name='redirect' value='(#ENV**{redirect})' />]
+		<div class="editer-groupe">
+			<div class="editer editer_nom obligatoire[ (#ENV**{erreurs}|table_valeur{nom}|oui)erreur]">
+				<label for="nom"><:titre_cadre_signature_obligatoire:></label>[
+				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{nom})</span>
+				][<p class='explication'>(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_nom_pseudo:>,<:entree_nom_pseudo_2:>})</p>]
+				<input type='text' class='text' name='nom' id='nom' placeholder="<:ecrire:item_nouvel_auteur|attribut_html:>" value="[(#ENV**{nom})]" />
+			</div>
+			[(#REM)
+				Modification de l'email
+				ou message disant que seuls les admins peuvent le modifier
+			]
+			<div class="editer editer_email[ (#ENV**{erreurs}|table_valeur{email}|oui)erreur]">
+				[<label for="email">(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_adresse_email:>,<:entree_adresse_email_2:>})</label>][
+				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{email})</span>
+				]<input type='text' class='text' name='email' id='email' value="[(#ENV**{email})]" />
+			</div>
+			<div class="editer editer_bio[ (#ENV**{erreurs}|table_valeur{bio}|oui)erreur]">
+				[<label for="bio">(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_infos_perso:>,<:entree_infos_perso_2:>})</label>][
+				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{bio})</span>
+				]<p class="explication"><:entree_biographie:></p>
+				<textarea name='bio' id='bio' rows='4' cols='40'>[(#ENV**{bio})]</textarea>
+			</div>
+			[(#REM)
+				Cle PGP
+			]
+			<div class="editer editer_pgp[ (#ENV**{erreurs}|table_valeur{pgp}|oui)erreur]">
+				[<label for="pgp">(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_cle_pgp:>,<:entree_cle_pgp_2:>})</label>][
+				<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{pgp})</span>
+				]<textarea name='pgp' id='pgp' rows='4' cols='40'>[(#ENV**{pgp})]</textarea>
+			</div>
+			[(#REM)
+				Statut
+			]
+			[(#AUTORISER{modifier,auteur,#ID_AUTEUR,'',#ARRAY{statut,'?'}}|oui)
+			<div class='editer editer_statut'>
+				#INCLURE{fond=formulaires/inc-instituer_auteur,statut=#ENV**{statut,#EVAL{_STATUT_AUTEUR_CREATION}},id_auteur,webmestre}
+			</div>]
+			[(#REM)
+				Site Web : nom et url
+			]
+			<div class='editer_liens_sites fieldset'>
+				<fieldset>
+					<legend><:info_site_web:></legend>
+					<div class="editer-groupe">
+						<div class="editer editer_nom_site[ (#ENV**{erreurs}|table_valeur{nom_site_auteur}|oui)erreur]">
+							[<label for="nom_site">(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_nom_site:>,<:entree_nom_site_2:>})</label>][
+							<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{nom_site_auteur})</span>
+							]<input type='text' class='text' name='nom_site' id='nom_site' value="[(#ENV**{nom_site})]" />
+						</div>
+						<div class="editer editer_url_site[ (#ENV**{erreurs}|table_valeur{url_site}|oui)erreur]">
+							[<label for="url_site">(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_url:>,<:entree_url_2:>})</label>][
+							<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{url_site})</span>
+							]<input type='text' class='text' name='url_site' id='url_site' value="[(#ENV**{url_site})]" />
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			[(#REM)
+				Identifiants (nom, mot de passe)
+			]
+			<div class='editer_identification fieldset'>
+				<fieldset>
+					[<legend>(#ENV{id_auteur}|=={#SESSION{id_auteur}}|?{<:entree_identifiants_connexion:>,<:entree_identifiants_connexion_2:>})</legend>]
+					[(#REM) Avertissement en cas de modifs de ses propres donnees ]
+					[(#ENV{config}|table_valeur{edit_login}
+						|or{#ENV{config}|table_valeur{edit_pass}}
+						|and{#SESSION{id_auteur}|=={#ENV{id_auteur}}}|oui)
+						<div class='notice'><:texte_login_precaution:></div>
+					]
+					<div class="editer-groupe">
+						[(#REM) Un redacteur n'a pas le droit de modifier son login ! ]
+						<div class='editer editer_new_login[ (#ENV**{erreurs}|table_valeur{login}|oui)erreur]'>
+							[(#ENV{config}|table_valeur{edit_login}|oui)
+								<label for='new_login'><:item_login:></label>[
+								<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{login})</span>
+								]<p class='explication'>(<:info_login_trop_court_car_pluriel{nb=#EVAL{_LOGIN_TROP_COURT}}:>)</p>
+								<input autocomplete="off" type='text' class='text' name='new_login' id='new_login' value="[(#ENV**{new_login})]" />
+							]
+							[(#ENV{config}|table_valeur{edit_login}|non)
+								<label for='login'><:item_login:>
+								</label><p class='explication'>(<:info_non_modifiable:>)</p>
+								<input type='text' class='text' disabled='disabled' name='login' id='login' value="[(#ENV**{login})]" />
+							]
+						</div>
+						[(#ENV{config}|table_valeur{edit_pass}|oui)
+						<div class='editer editer_new_pass[ (#ENV**{erreurs}|table_valeur{new_pass}|oui)erreur]'>
+							<label for='new_pass'><:entree_nouveau_passe:></label>[
+							<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{new_pass})</span>
+							]<p class='explication'>(<:info_passe_trop_court_car_pluriel{nb=#EVAL{_PASS_LONGUEUR_MINI}}:>)</p>
+							<input type='password' autocomplete="off" class='password' name='new_pass' id='new_pass' value="" />
+						</div>
+						<div class='editer editer_new_pass2'>
+							<label for='new_pass2'><:info_confirmer_passe:></label>[
+							<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{new_pass2})</span>
+							]<input type='password' autocomplete="off" class='password' name='new_pass2' id='new_pass2' value="" />
+						</div>]
+					</div>
+				</fieldset>
+			</div>
+		</div>
+		[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+		<!--extra-->
+		<p class='boutons'><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+	</div></form>
+	]
+</div>

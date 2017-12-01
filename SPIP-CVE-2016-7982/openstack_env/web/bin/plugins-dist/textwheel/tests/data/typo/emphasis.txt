@@ -1,0 +1,12 @@
+{underscore avec de la typo !}, {asterisk avec de la typo !}, {one two avec de la typo !}, {three four avec de la typo !}, {a avec de la typo !}, {b avec de la typo !}
+
+{{strong avec de la typo !}} and {em avec de la typo !} and {{strong avec de la typo !}} and {em avec de la typo !}
+
+{line avec de la typo !
+line avec de la typo !
+line avec de la typo !}
+
+
+an empty emphasis {} {{}} is not an emphasis
+
+{mixed {{double and avec de la typo !} single asterisk avec de la typo !}} spans avec de la typo !

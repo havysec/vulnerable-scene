@@ -1,0 +1,14 @@
+<cadre>
+<?php
+
+$message = 'fenced code block avec de la typo !';
+echo $message;
+</cadre>
+
+<code>
+tilde avec de la typo !
+</code>
+
+<cadre class="php">
+echo 'language identifier avec de la typo !';
+</cadre>

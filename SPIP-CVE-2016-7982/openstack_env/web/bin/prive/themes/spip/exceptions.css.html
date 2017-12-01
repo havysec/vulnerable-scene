@@ -1,0 +1,89 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Note: l'entete "Vary:" sert a repousser l'entete par
+	defaut "Vary: Cookie,Accept-Encoding", qui est (un peu)
+	genant en cas de "rotation du cookie de session" apres
+	un changement d'IP (effet de clignotement).
+
+	ATTENTION: il faut absolument le charset sinon Firefox croit que
+	c'est du text/html !
+	<style>
+]
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+/* * ***************************************************/
+/* directives specifiques a une page */
+#navigation .sous_navigation {margin-top:[(#ENV{margin-bottom}|mult{1.5})em]}
+/* exec=admin_plugin */
+.liste-plugins.formulaire_spip {border:0;background:none;padding:0;}
+.liste-plugins .liens {padding:6px;background:#ddd; margin-#ENV{left}: -6px; margin-#ENV{right}: -7px;}
+#liste_plugins .boutons { margin: -6px; }
+.liste-plugins .liste-items {margin-left: -6px; margin-right: -6px;}
+.liste-plugins .liste-items .item {position:relative;padding-#ENV{left}:76px; padding-#ENV{right}: 10px;}
+.liste-plugins .liste-items .item.actif {background:#eee;}
+.liste-plugins .liste-items .item.actif:hover {background:#e8e8e8;}
+.liste-plugins .liste-items .item.on {background:[#(#ENV{claire}|couleur_eclaircir)];}
+.liste-plugins .liste-items .item.disabled {filter:alpha(opacity=60); -moz-opacity:0.6; opacity: 0.6;}
+.liste-plugins .liste-items .item.error {margin:0;background-image:none;}
+
+.liste-plugins .liste-items .item .resume {min-height:32px;}
+
+.liste-plugins .liste-items .item .short {color:#666;font-size:0.95em;}
+.liste-plugins .liste-items .item .check {float:#ENV{left};margin-#ENV{left}:-70px;position:relative;display:inline;}
+.liste-plugins .liste-items .item .check input {margin:0;}
+.liste-plugins .liste-items .item .check label {display:none;}
+
+.liste-plugins .liste-items .item .download {float:#ENV{left};margin-#ENV{left}:-70px;position:relative;display:inline;}
+
+.liste-plugins .liste-items .item h3 {display:inline;}
+.liste-plugins .liste-items .item h3 a {color:#444;}
+.liste-plugins .liste-items .item.actif h3 a {color:#ENV{foncee};}
+
+.liste-plugins .liste-items .item .icon {position:absolute;top:3px;#ENV{left}:34px;width:32px;height:32px;overflow:hidden;}
+.liste-plugins .liste-items .item .icon img {max-width: 32px;height: auto;}
+.liste-plugins .liste-items .item .actions {float:#ENV{right};visibility:hidden;}
+.liste-plugins .liste-items .item:hover .actions {visibility:visible;}
+
+.liste-plugins .liste-items .item .picto_err,
+.liste-plugins .liste-items .item .cfg_link { position:absolute; #ENV{right}:4px; top:4px; }
+
+.liste-plugins .liste-items .item .details dl {float:#ENV{left};width:62%;margin-bottom:0;}
+.liste-plugins .liste-items .item .details dl.tech {float:#ENV{right}; width:32%;font-size:0.9em;word-wrap:break-word;text-align:#ENV{right};}
+.liste-plugins .liste-items .item .details dl.description dt {float:#ENV{left};padding-#ENV{right}:0.5em;}
+.liste-plugins .liste-items .item .details dd {margin-bottom:0;}
+
+.install-plugins {position: relative;}
+.install-plugins .result {font-weight: bold;}
+
+.erreur_message-plugins {border:1px solid red;background:#f0d0d0;font-weight:normal;padding:10px;font-size:0.9em;}
+.erreur_message-plugins >ul {list-style:none;}
+.erreur_message-plugins .info_todo {margin:10px 0;}
+
+#liste_plug { border: solid 1px #ENV{foncee}; padding:3px; background-color:white; height: 200px; overflow:auto;overflow-y: auto; }
+
+
+/* editer_auteurs */
+.option_separateur_statut_auteur { background: #ENV{claire}; }
+.option_auteur { background: #e4e4e4; }
+
+/* exec/articles */
+
+/* exec/rubriques */
+#contenu div.gauche { width: 49%; float: #ENV{left}; }
+#contenu div.droite { width: 49%; float: #ENV{right}; }
+
+/* exec/auteur_infos */
+.auteur .infos .statut {margin:5px 0;border-bottom :1px solid #eee;}
+.auteur .infos .statut ul {margin-bottom:0;}
+
+.configurer_preferences #extra {display: none;}
+.configurer_preferences.large #extra {display: block;}
+
+/* exec/accueil/accueil-information (ticket #2598) */
+#navigation .accueil_informations .item:hover {background:none;}
+#navigation .accueil_informations .item.on:hover {background-color:[#(#ENV{claire}|couleur_eclaircir|couleur_eclaircir)];}
+#navigation .accueil_informations h4 .plus_info {display:none;}

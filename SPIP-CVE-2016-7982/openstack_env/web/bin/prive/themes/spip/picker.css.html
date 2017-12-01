@@ -1,0 +1,134 @@
+[(#REM)
+
+	Ce squelette definit les styles de l'espace prive
+
+	Note: l'entete "Vary:" sert a repousser l'entete par
+	defaut "Vary: Cookie,Accept-Encoding", qui est (un peu)
+	genant en cas de "rotation du cookie de session" apres
+	un changement d'IP (effet de clignotement).
+
+	ATTENTION: il faut absolument le charset sinon Firefox croit que
+	c'est du text/html !
+	<style>
+]
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+#SET{claire,##ENV{couleur_claire,edf3fe}}
+#SET{foncee,##ENV{couleur_foncee,3874b0}}
+#SET{left,#ENV{ltr}|choixsiegal{left,left,right}}
+#SET{right,#ENV{ltr}|choixsiegal{left,right,left}}
+
+/* Ancien selecteur de rubriques */
+.selecteur_parent{font-size: 90%; width: 99%;} /* appliquee sur le <select> */
+option.selec_rub { background-position: [(#GET{left})] center; background-image: url(#CHEMIN_IMAGE{rubrique-12.png}); background-repeat: no-repeat; padding-#GET{left}: 16px; }
+option.niveau_1 { font-weight: bold; background: #GET{claire}; background-image: url(#CHEMIN_IMAGE{secteur-12.png}); background-repeat:  no-repeat; color: #444;}
+option.niveau_2 { background:#eee; color: #202020; border-bottom: 1px solid #GET{claire}; }
+option.niveau_3 { background:#eee; color: #404040; }
+option.niveau_4 { background:#eee; color: #606060; }
+option.niveau_5 { background:#eee; color: #808080; }
+option.niveau_6 { background:#eee; color: #a0a0a0; }
+
+
+/* plongeur */
+div.petite-racine { margin-bottom: -5px; }
+div.petite-racine, a.petite-racine { background: [(#ENV{ltr}|choixsiegal{left,1,99})%] no-repeat; background-image: url(#CHEMIN_IMAGE{racine-12.png}); padding-#GET{left}: 15px; background-color: #fff; border: 1px solid #GET{foncee}; border-bottom: 0; width: 134px; }
+div.petite-rubrique, a.petite-rubrique { background: [(#ENV{ltr}|choixsiegal{left,1,99})%] no-repeat; background-image: url(#CHEMIN_IMAGE{rubrique-12.png}); padding-#GET{left}: 15px; }
+div.petit-secteur, a.petit-secteur { background: [(#ENV{ltr}|choixsiegal{left,1,99})%] no-repeat; background-image: url(#CHEMIN_IMAGE{secteur-12.png}); padding-#GET{left}: 15px; }
+div.rub-ouverte, a.rub-ouverte { padding-#GET{right}: 10px; background: url([(#CHEMIN_IMAGE{triangle-droite[(#GET{rtl})].gif})]) [(#GET{right})] center no-repeat; }
+/* selecteur ajax */
+#choix_parent_principal { background: #fff; border: 1px solid #GET{foncee}; position: relative; height: 170px; overflow: auto; margin-top:5px;}
+.recherche_rapide_parent {margin-top: -25px;float:right; }
+.rubrique_actuelle {height: 25px; }
+#selection_rubrique .informer { background: #fff; }
+.informer-auteur { background: #fff; padding: 5px; border-top: 0; }
+
+#choix_parent .item { color: #666; background-color: #fff; }
+#choix_parent_principal .item { padding: 2px; display: block; }
+#choix_parent .item.on { color: #000; background-color: #ccc; }
+#choix_parent .item.on a {color:#000;}
+#choix_parent .item:hover a { color: #000; cursor: pointer; }
+
+/* ----- */
+
+/* Les éléments propres à chaque objet */
+<BOUCLE_objets(POUR){tableau (#REM|lister_tables_objets_sql)}>
+[(#SET{petite_icone, [(#CHEMIN_IMAGE{#VALEUR{icone_objet}-12.png}|sinon{[(#CHEMIN_IMAGE{#VALEUR{icone_objet}-16.png}|image_reduire{12}|extraire_attribut{src})]})]})]
+ul.item_picked li.#VALEUR{type} {padding-#GET{left}:15px;background-image:url(#GET{petite_icone});}
+.item_picker .[(#VALEUR{table_objet})] .type_objet {padding-#GET{left}:15px; background:url(#GET{petite_icone}) no-repeat[ (#GET{left}) ]center;}
+.item_picker .frame ul li.#VALEUR{type} {background:url(#GET{petite_icone}) no-repeat[ (#GET{left}) ]2px;}
+</BOUCLE_objets>
+
+/* Styles des éléments déjà sélectionnés */
+ul.item_picked,fieldset ul.item_picked {list-style:none;margin:0;padding:0;float:left;}
+ul.item_picked li {margin:0 2px 2px;padding:2px;background:#eee;border:1px solid #GET{claire};float:#GET{left};clear:none;background-repeat:no-repeat;background-position: [(#GET{left}) ]center;}
+ul.item_picked li span.sep {display:none;}
+ul.item_picked li label {margin:0;display:inline;float:none;}
+.js ul.item_picked li .checkbox {display: none;}
+
+ul.item_picked.select li {padding:2px 0;border:0;font-weight:bold;background:none;float:none;}
+ul.item_picked.select ul > li {float:#GET{left};}
+ul.item_picked.changing {}
+
+/* Le bouton pour ouvrir le sélecteur */
+.picker_bouton {float:#GET{right};clear:both;}
+
+/* Styles de la partie contenant le sélecteur */
+.item_picker {clear:#GET{left};font-size:0.95em;}
+.item_picker .navigateur{border:1px solid #GET{claire};padding:0.2em;width:20em;} /* pas trop large pour une meilleure lecture */
+.item_picker .chemin {background:#GET{claire}; margin:0 0 0.25em 0;padding:0.3em;clear:both;}
+.item_picker .chemin .on {margin:0;}
+.item_picker a.choisir_ici {display:block;text-align:center;margin:0.2em 0;}
+.item_picker a.choisir_ici span{padding-#GET{left}:18px;background:transparent url('#CHEMIN_IMAGE{ajouter-16.png}') no-repeat [ (#GET{left}) ] center;}
+.item_picker .liste {margin:0;max-height:300px;overflow:auto;}
+.item_picker .liste .type_objet {margin:0;}
+.selecteur_type_unique .item_picker .liste .type_objet{display:none;}
+.item_picker .liste ul {list-style:none;margin:0;padding:0;}
+.item_picker .liste li {display:block;clear:both;line-height:1.1em;list-style:none;margin:0;padding:0;position:relative;}
+.item_picker .liste li:hover {background-color:[#(#GET{claire}|couleur_eclaircir)];}
+.item_picker .liste a.ouvrir {color:black;text-decoration:none;display:block;line-height:16px;margin-#GET{right}:20px;padding:0.3em 0;padding-#GET{left}:2px;padding-#GET{right}:20px;background:transparent url('#CHEMIN_IMAGE{fleche-droite-16.png}') no-repeat [ (#GET{right}) ] 0.3em;}
+.item_picker .liste a.choisir {display:block;width:16px;height:16px;position:absolute;#GET{right}:0;top:0;padding:0.3em 2px;text-indent:-10000px;background:url('#CHEMIN_IMAGE{ajouter-16.png}') no-repeat center center;}
+.item_picker .liste a:hover,.item_picker .liste a:focus {background-color:#GET{claire};}
+
+.item_picker .frame {background:#fff;border:1px solid #GET{foncee};width:159px;height:400px;float:#GET{left};overflow:auto;position:relative;}
+.cadre .cadre_padding .item_picker .frame {width:153px;}
+.fiche_objet .cadre .cadre_padding .item_picker .frame {width:148px;}
+.item_picker .frame.total_3 {margin-#GET{left}:-58px;border-#GET{left}:3px solid #GET{foncee};}
+.item_picker .frame.frame_0 {margin-#GET{left}:0;z-index:1000;}
+.item_picker .frame.frame_1 {z-index:1010;}
+.item_picker .frame.frame_2 {z-index:1020;}
+.item_picker .frame.frame_3 {z-index:1030;}
+.item_picker .frame.frame_4 {z-index:1040;}
+
+.item_picker .frame .frame_close {float:#GET{right};}
+.item_picker .frame h2 {margin:0;padding:5px;background:[#(#GET{claire}|couleur_eclaircir)];font-size:1.3em;}
+.item_picker .frame .pagination {font-size:0.9em;}
+
+.item_picker .frame ul {list-style:none;margin:0;padding:0;}
+.item_picker .frame ul li {display:block;clear:both;list-style:none;margin:0;padding:0 2px;padding-#GET{left}:15px;padding-#GET{right}:16px;position:relative;}
+
+.item_picker .frame ul li:hover,.item_picker .frame ul li.on {background-color:[#(#GET{claire}|couleur_eclaircir)];}
+.item_picker .frame a:hover,.item_picker .frame a:hover .ouvrir,.item_picker .frame a:hover .add {background-color:#GET{claire};}
+
+.item_picker .frame ul li .ouvrir {position:absolute;display:block;top:0px;#GET{right}:0px;}
+.item_picker .frame ul >li .add {float:#GET{left};clear:#GET{left};}
+.item_picker .frame ul li a {display:block;}
+.item_picker .frame a {text-decoration:none;}
+
+.browser .choix_rapide {font-size:0.9em;}
+.browser #picker_id {padding:0;margin:0 5px;border:1px solid;}
+
+
+/* 
+   Selecteurs de rubrique / article 
+   ayant une classe li.selecteur_item 
+   n'ont pas de marge a gauche pour occuper toute la largeur 
+*/
+.formulaire_spip li.selecteur_item {
+	padding-#GET{left}:10px;background:#fff;
+}
+.formulaire_spip li.selecteur_item label {
+	margin-#GET{left}:0;display:block;float:left;padding:2px 0;
+}
+

@@ -1,0 +1,67 @@
+#SET{statuts_auteurs,#VAL{_STATUT_AUTEUR_RUBRIQUE}|constant|explode{','}}
+<label for="statut"><:info_statut_auteur:></label>
+<select name="statut"
+				id="statut"
+				onchange="update_saisie_statut_auteur(this,this.options[this.selectedIndex].value);"
+				>
+<BOUCLE_statuts(POUR){tableau #VAL{tous}|auteurs_lister_statuts{0}}{valeur!=nouveau}>
+	<option value="#VALEUR"[(#STATUT|=={#VALEUR}|oui)selected="selected"]>[&gt;(#VALEUR|=={5poubelle}|oui)][(#VALEUR|traduire_statut_auteur)]</option>
+</BOUCLE_statuts>
+	[(#STATUT|=={nouveau})
+	<option value="#STATUT" selected="selected">[(#STATUT|traduire_statut_auteur)]</option>
+	]
+</select>
+[(#AUTORISER{modifier,auteur,#ID_AUTEUR,'',#ARRAY{webmestre,'?'}}|oui)
+	<div class="choix choix-webmestre[(#STATUT|=={0minirezo}|non)none-js]">
+		<input type="checkbox" name="webmestre" id="webmestre" value="oui"[(#ENV{webmestre}|=={oui}|oui)checked="checked"]/>
+		<label for="webmestre"><:info_admin_statuer_webmestre:></label>
+		<input type='hidden' name='saisie_webmestre' value='1' />
+	</div>
+]
+<div class="rubriques_restreintes[(#STATUT|in_array{#GET{statuts_auteurs}}|non)none-js]">
+	[(#SET{label,<:info_restreindre_rubrique:>})]
+	<B_restreint>
+			<p><:info_auteur_gere_rubriques:></p>
+			<ul id='liste_rubriques_restreintes' class="item_picked">
+				<BOUCLE_restreint(RUBRIQUES){id_auteur}{statut==.*}{si #ENV{statut}|in_array{#GET{statuts_auteurs}}}>
+					<li class="rubrique"><input type='checkbox' class="checkbox" name='restreintes[]' checked="checked" value='#ID_RUBRIQUE' />
+						<label><a href="[(#ID_RUBRIQUE|generer_url_entite{rubrique})]" target="_blank">[(#TITRE|sinon{<:info_sans_titre:>})]</a></label>
+						[<a href="#" onclick="jQuery(this).parent().remove();return false;" class="removelink">(#CHEMIN_IMAGE{supprimer-12.png}|balise_img)</a>]
+					</li>
+				</BOUCLE_restreint>
+			</div>
+			<input type='hidden' name='restreintes[]' value='0' />
+		[(#SET{label,<:info_ajouter_rubrique:>})]
+	</B_restreint>
+		[(#STATUT|=={0minirezo}|oui)
+			<p><:info_auteur_gere_toutes_rubriques:></p>
+		]
+			<ul id='liste_rubriques_restreintes' class="item_picked"></ul>
+	<//B_restreint>
+	<div class="nettoyeur"></div>
+	<div class="instituer_auteur choix">
+		[(#AUTORISER{modifier,auteur,#ID_AUTEUR,'',#ARRAY{restreintes,1}}|oui)
+			[(#ID_AUTEUR**|choisir_rubriques_admin_restreint{#GET{label},'#liste_rubriques_restreintes',#CHEMIN_IMAGE{supprimer-12.png}|balise_img})]
+		]
+	</div>
+</div>
+
+
+[(#REM)
+Masquer/afficher le selecteur de rubriques restreintes, ou le choix webmestre
+]
+<script type="text/javascript">/*<![CDATA[*/
+function update_saisie_statut_auteur(node,value){
+	var statut_auteur_rubrique="[(#GET{statuts_auteurs}|implode{|})]";
+	var reg = new RegExp("^("+statut_auteur_rubrique+")$");
+	if (value.match(reg))
+		jQuery(node).siblings('.rubriques_restreintes:hidden').slideDown();
+	else
+		jQuery(node).siblings('.rubriques_restreintes:visible').slideUp();
+
+	if (value=='0minirezo')
+		jQuery(node).next('.choix-webmestre:hidden').slideDown();
+	else
+		jQuery(node).next('.choix-webmestre:visible').slideUp();
+}
+/*]]>*/</script>

@@ -1,0 +1,7 @@
+This is a text[[with a footnote avec de la typo !]]
+
+This is a text[[<a> with a named footnote avec de la typo !]]
+
+This is a text[[with a footnote with autolink http://example.com avec de la typo !]]
+
+This is a text[[with a footnote with link [->http://example.com] avec typo !]]

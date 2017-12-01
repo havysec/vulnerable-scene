@@ -1,0 +1,23 @@
+<div>
+{parent <textwheel1|block>}
+<div>
+{child <textwheel1|block>}
+</div>
+<pre>
+{adopted child <textwheel1|block>}
+</pre>
+</div>
+
+<html>
+<div>
+{parent <textwheel1|block>}
+<div>
+{child <textwheel1|block>}
+</div>
+<pre>
+{adopted child <textwheel1|block>}
+</pre>
+</div>
+</html>
+
+{outside <textwheel1|block>}

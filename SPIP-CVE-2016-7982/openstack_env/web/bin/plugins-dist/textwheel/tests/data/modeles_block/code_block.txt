@@ -1,0 +1,9 @@
+Une ligne avant <textwheel1|block>
+<code>
+<?php
+
+$message = 'Hello World <textwheel1|block>';
+echo $message;
+
+</code>
+Et ensuite une ligne <textwheel1|block>

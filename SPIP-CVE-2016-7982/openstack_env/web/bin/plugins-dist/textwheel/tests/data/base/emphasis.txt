@@ -1,0 +1,12 @@
+{underscore}, {asterisk}, {one two}, {three four}, {a}, {b}
+
+{{strong}} and {em} and {{strong}} and {em}
+
+{line
+line
+line}
+
+
+an empty emphasis {} {{}} is not an emphasis
+
+{mixed {{double and} single asterisk}} spans

@@ -1,0 +1,9 @@
+<quote> quote <textwheel1|block>
+
+subquote:
+<quote>quote <textwheel1|block>
+
+here i am <textwheel1|block>
+</quote>
+and other quote <textwheel1|block>
+</quote>

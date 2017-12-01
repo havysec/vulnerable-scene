@@ -1,0 +1,7 @@
+an <b>important avec de la typo !</b> <a href=''>link avec de la typo !</a>
+
+broken avec de la typo !<br/>
+line and auto-broken avec de la typo !
+line avec de la typo !
+
+<b>inline tag avec de la typo !</b> at the beginning

@@ -1,0 +1,23 @@
+{
+    "scene": {
+        "name": "redis未授权导致的getshell",
+        "vulns": [""],
+        "tools": ["chrome"],
+        "tag": ["web"],
+        "desc": "web"
+    },
+     "servers": [
+        {
+            "id":"redis未授权导致的getshell",
+            "name": "redis未授权导致的getshell Target-Server",
+            "imageType":"linux",
+            "image":"ubuntu14-64-web",
+            "role":"target",
+			"flavor":"m2.1c-1g-10g",
+            "initScript":"web/init.sh {FLAG[0]}",
+            "accessMode":[{"protocol":"nc","port":6379},{"protocol":"ssh","port":22}]
+        }
+    ],
+     "check": [],
+     "attack": []
+}

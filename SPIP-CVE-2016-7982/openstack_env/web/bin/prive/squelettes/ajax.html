@@ -1,0 +1,7 @@
+[(#REM)
+
+ Appels ajax sur un bloc
+
+]
+#SET{zajax,#VAL{var_zajax}|_request|replace{\W,''}}
+<INCLURE{fond=prive/squelettes/#GET{zajax}|concat{'/',#ENV{type-page}},ajax=#GET{zajax},espace_prive=1,env}>

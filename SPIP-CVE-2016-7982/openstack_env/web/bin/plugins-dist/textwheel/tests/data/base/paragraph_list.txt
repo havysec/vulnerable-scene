@@ -1,0 +1,14 @@
+paragraph:
+-* li
+-* li
+
+paragraph:
+
+-* li
+<p>paragraph in list item</p>
+-* li
+LF in list item
+-* li
+
+Double LF in list item
+-* li

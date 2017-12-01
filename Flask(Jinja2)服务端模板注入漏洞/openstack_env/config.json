@@ -1,0 +1,24 @@
+{
+    "scene": {
+        "name": "Flask（Jinja2） 服务端模板注入漏洞",
+        "vulns": [""],
+        "tools": ["chrome"],
+        "tag": ["web"],
+        "desc": "web"
+    },
+     "servers": [
+        {
+            "id":"Flask（Jinja2） 服务端模板注入漏洞",
+            "name": "Flask（Jinja2） 服务端模板注入漏洞 Target-Server",
+            "imageType":"linux",
+            "image":"ubuntu14-64-web",
+            "role":"target",
+			"flavor":"m2.1c-1g-10g",
+			"installScript":"web/install.sh",
+            "initScript":"web/init.sh {FLAG[0]}",
+            "accessMode":[{"protocol":"http","port":8000}]
+        }
+    ],
+     "check": [],
+     "attack": []
+}

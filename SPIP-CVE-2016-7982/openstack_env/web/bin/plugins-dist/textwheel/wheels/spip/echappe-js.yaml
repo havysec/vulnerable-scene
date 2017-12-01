@@ -1,0 +1,68 @@
+--- # Syntaxe des raccourcis SPIP, version 0.0.1
+    #
+    # Si on nomme une regle, elle devient surchargeable
+
+-
+  if_str: "<script"
+  match: "{<script.*?($|</script.)}isS"
+  is_wheel: y
+  replace:
+    -
+      type: all
+      replace: htmlspecialchars
+      is_callback: Y
+    -
+      type: all
+      replace: nl2br
+      is_callback: Y
+    -
+      type: all
+      replace: "<code class=\"echappe-js\">$0</code>"
+
+-
+  if_str: "<iframe"
+  match: "{<iframe.*?($|</iframe.)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<embed"
+  match: "{<embed.*?($|</embed.)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<object"
+  match: "{<object.*?($|</object.)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<img"
+  match: "{<img.*?($|>)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<image"
+  match: "{<image.*?($|>)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<body"
+  match: "{<body.*?($|>)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<bgsound"
+  match: "{<bgsound.*?($|>)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss
+
+-
+  if_str: "<meta"
+  match: "{<meta.*?($|>)}isS"
+  is_callback: Y
+  replace: echappe_anti_xss

@@ -1,0 +1,13 @@
+<traduction module="tw" gestionnaire="salvatore" url="http://trad.spip.net" source="svn://zone.spip.org/spip-zone/_core_/plugins/textwheel/lang/" reference="fr">
+	<langue code="en" url="http://trad.spip.net/tradlang_module/334?lang_cible=en" total="3" traduits="3" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Benitron" lien="http://trad.spip.net/auteur/benitron" />
+	</langue>
+	<langue code="es" url="http://trad.spip.net/tradlang_module/334?lang_cible=es" total="3" traduits="3" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Raquel S. Bujaldón" lien="http://trad.spip.net/auteur/raquel-s-bujaldon" />
+	</langue>
+	<langue code="fr" url="http://trad.spip.net/tradlang_module/334?lang_cible=fr" total="3" traduits="3" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+	</langue>
+	<langue code="nl" url="http://trad.spip.net/tradlang_module/334?lang_cible=nl" total="3" traduits="3" relire="0" modifs="0" nouveaux="0" pourcent="100.00">
+		<traducteur nom="Hanjo" lien="http://trad.spip.net/auteur/hanjo" />
+	</langue>
+</traduction>

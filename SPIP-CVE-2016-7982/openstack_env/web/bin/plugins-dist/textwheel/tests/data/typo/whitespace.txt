@@ -1,0 +1,5 @@
+This is a unsecable&nbsp;space avec de la typo !
+This is two unsecable&nbsp;&nbsp;spaces avec de la typo !
+This is another unsecable~space avec de la typo !
+This is two unsecable~~spaces avec de la typo !
+This is three unsecable~~~spaces avec de la typo !

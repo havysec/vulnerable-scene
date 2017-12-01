@@ -1,0 +1,23 @@
+<div>
+{parent avec de la typo !}
+<div>
+{child avec de la typo !}
+</div>
+<pre>
+{adopted child avec de la typo !}
+</pre>
+</div>
+
+<html>
+<div>
+{parent avec de la typo !}
+<div>
+{child avec de la typo !}
+</div>
+<pre>
+{adopted child avec de la typo !}
+</pre>
+</div>
+</html>
+
+{outside avec de la typo !}

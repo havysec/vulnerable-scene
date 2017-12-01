@@ -1,0 +1,90 @@
+/* Les boutons d'admin survolent la page (sauf # FORMULAIRE_ADMIN) */
+.spip-admin-bloc,
+.spip-admin-float { z-index: 100; position: fixed; right: 20%; top: 0; white-space: nowrap; }
+
+/* Couleurs et design des boutons d'admin */
+.spip-admin-boutons { margin: 0; padding: .4em 1em; background: #666; border: 0; font-weight: bold; border-radius: 0 0 .3em .3em; opacity: .7; }
+.spip-admin-boutons,
+a.spip-admin-boutons,
+.spip-admin-boutons a { color: #FFF; text-decoration: none; }
+a:focus.spip-admin-boutons,
+.spip-admin-boutons a:focus,
+a:hover.spip-admin-boutons,
+.spip-admin-boutons a:hover { opacity: 1; }
+a:active.spip-admin-boutons,
+.spip-admin-boutons a:active { background-color: #333; opacity: 1; }
+.spip-admin-boutons:hover { background: #000; } 
+
+/* Style pour le mode debug */
+#spip-debug-toggle {position:absolute; top:4px; right:80px; width:24px;height:20px; cursor:pointer; z-index:1000;}
+#spip-debug, #spip-debug-header { background-color: #f0f0f0; font-family: Verdana, Geneva, sans-serif; position:absolute;top:30px;left:0;width:100%;height:100%;z-index:10000; font-size:1em; text-align:left; }
+#spip-debug ul table { font-size: 80%; }
+#spip-debug fieldset { background-color: #fff; font-family: Courier, "Courier New", monospace; font-size: 12px; margin-bottom: 1em; display: block; padding: .5em; }
+#spip-debug fieldset fieldset { background-color: #ccf; font-family: Verdana, Geneva, sans-serif; font-size: 80%; width:99%; margin-left: auto; }
+#spip-debug legend { background-color: #fff; border: solid 1px #f00; padding: 1px 1em; font-family: Verdana, Geneva, sans-serif; font-weight: bold; display: block; text-transform: none; }
+#spip-debug legend a { font-weight: normal; }
+#spip-debug fieldset fieldset legend { border: solid 1px #00F; font-weight: normal; }
+#spip-debug a { text-decoration: none; color: blue; }
+#spip-debug a:hover { text-decoration: underline; background-color: transparent; color: red; }
+#spip-debug fieldset table {font-family: Courier,"Courier New",monospace; font-size: 12px; line-height:.7em; margin-bottom: 0; }
+#spip-debug fieldset table th, #spip-debug fieldset table td, #spip-debug fieldset table caption {padding: 0.5em; }
+
+#debug_boucle fieldset { background-color: #ccf; padding-bottom: 1em; line-height: 1.5em; }
+#debug_boucle fieldset div { width: 80%; }
+#debug_boucle fieldset fieldset { background-color: #fff; font-family: Verdana, Geneva, sans-serif; padding: 0.5em 1.5em; }
+#spip-debug code { background-color: #ccf; line-height:1.3em;}
+
+#spip-boucles { min-height: 200px; max-height: 50%; margin: 0 0 1em 0; padding: .5em; overflow: -moz-scrollbars-vertical; overflow-y: auto; border-top: 1px solid #39F; border-bottom: 2px solid #666; }
+
+.spip-env fieldset { background-color: #fff; border: solid 1px #008; margin: 2px 2em; }
+.spip-env legend { background-color: #fff; border: solid 1px #f00; padding: 1px 1em; font-weight: bold; }
+.spip-env fieldset div { overflow: auto; }
+.spip-env fieldset div table tbody tr:nth-child(2n) th, .spip-env fieldset div table tbody tr:nth-child(2n) td, .spip-env fieldset div table tbody tr.even th, .spip-env fieldset div table tbody tr.even td { background: none repeat scroll 0 0 #ccccff; }
+
+.inclure_blocs {
+	padding:0 !important;
+	margin:0 !important;
+	border:0 !important;
+	border-bottom:2px solid #FEFF7F !important;
+	background:url(images/fond-inclure.png) repeat top left !important;
+}
+.inclure_blocs > h6 {background:#FEFF7F;color:#000000;margin:0;padding:2px;margin-bottom:2px;font-family: Courier, "Courier New", monospace;font-size: 0.8em;}
+.inclure_blocs > h6:hover,
+.inclure_blocs.hover {
+	background-color: #FDFF1F !important;
+}
+
+#debug-nav {position:absolute;top:90px;right:10px;width:200px;border:0; background:#f0d9d9; padding:20px; filter:alpha(opacity=90); -moz-opacity:0.9; opacity: 0.90; z-index: 1000; text-align: left; font-family: Verdana, Geneva, sans-serif; font-size: 12px; }
+#debug-nav caption {background:red;color:#fff;font-size:1.3em;font-weight:bold;padding:7px;}
+#debug-nav td,#debug-nav th {border-collapse: collapse;border:1px solid #999;}
+#debug-nav th {background:#000;color:#fff;font-weight:bold;border-color:#333;}
+
+#debug-profile {font-size:0.8em;position:absolute;top:20px;width:100%;border:1px; background:#eee; padding:20px; filter:alpha(opacity=90); -moz-opacity:0.9; opacity: 0.90; z-index: 1000; text-align: left; }
+#debug-profile > caption {background:#ccc;color:#000;font-size:1.3em;font-weight:bold;padding:7px;}
+#debug-profile > caption table {font-size:0.7em;background:#fff;color:#333;padding:10px;margin-top:10px;}
+#debug-profile > caption table td {border-bottom:1px solid #999;}
+#debug-profile > caption table td.time {padding:0 5px;}
+
+#debug-profile > tbody > tr > th {border-bottom:1px solid #999;}
+#debug-profile > tbody > tr > td {vertical-align: top;border-bottom:1px solid #999;border-right:1px solid #999;}
+#debug-profile > tbody table caption {}
+#debug-nav td,#debug-nav th {border-collapse: collapse;border:1px solid #999;}
+#debug-nav th {background:#000;color:#fff;font-weight:bold;border-color:#333;}
+
+#debug-profile table.explain {font-size:0.8em;width:100%;background:#e0e0e0;}
+#debug-profile table.explain caption {font-size:1.1em;background:#fff;text-align:left;padding:5px;font-weight:bold;}
+#debug-profile table.explain caption br {display:none;}
+
+#debug-profile table.explain td,#debug-profile table.explain th {border-bottom:1px solid #999;padding:0 5px;}
+#debug-profile table.explain th {padding:0 5px;color:#444;}
+
+.spip-debug-arg {font-family: Courier, "Courier New", monospace; font-weight: bold;}
+.liste-reqs .spip-debug-arg {display:block;float:left;width:3em;text-align:right;}
+
+/* Couleurs et design de la previsu */
+.spip-previsu { background-color: #333; color: #eeeeee;font-size: 18px; text-transform: uppercase;position: absolute; top: 0px; left: 0px;padding: 10px 50px; background-position: 5px 5px;background-repeat: no-repeat;display:block;opacity: 0.8;-moz-opacity: 0.8;filter: alpha(opacity=80);}
+
+/* Debug des traductions */
+.debug-traduction {color: #264409;background-color:#E6EFC2;}
+.debug-traduction-prive {color: #514721;background-color:#FFF6BF;}
+.debug-traduction-erreur {background-color: #fbe3e4; color: #8a1f11;}

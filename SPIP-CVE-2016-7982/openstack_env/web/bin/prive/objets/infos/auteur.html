@@ -1,0 +1,48 @@
+<BOUCLE_auteur(AUTEURS){id_auteur=#ENV{id}}{statut?}{!lang_select}>
+<div class='infos'>
+<div class='numero'><:titre_cadre_numero_auteur:><p>#ID_AUTEUR</p></div>
+
+<div class="statut">
+[<p>[(#ID_AUTEUR|=={#SESSION{id_auteur}}|?{<:info_statut_auteur_2:>,<:info_statut_auteur:>})] <strong>(#STATUT|traduire_statut_auteur{#BIO*})</strong></p>]
+[(#REM) Cette autorisation porte sur l'auteur parcouru dans la boucle ! ]
+[(#AUTORISER{webmestre,'',0,#ID_AUTEUR}|oui)
+	[<p>(#SESSION{id_auteur}|=={#ID_AUTEUR}|?{<:info_admin_je_suis_webmestre:>,<:info_admin_webmestre:>})</p>]
+]
+[(#SESSION{id_auteur}|=={#ID_AUTEUR}|et{#AUTORISER{webmestre}|non}|et{#AUTORISER{etrewebmestre}|oui})
+	[(#VAL{_ID_WEBMESTRES}|defined|oui)
+		#SET{options,#VAL{_FILE_OPTIONS}|constant|basename}
+		<:info_webmestre_forces{file_options=#GET{options}}:>
+	]
+	[(#VAL{_ID_WEBMESTRES}|defined|non)
+		[(#BOUTON_ACTION{<:info_admin_etre_webmestre:>,[(#URL_ACTION_AUTEUR{etre_webmestre,[(#REM|time)],#SELF})]})]
+	]
+]
+<INCLURE{fond=prive/objets/infos/inc-auteur-rubriques,id_auteur,statut} />
+<div class='nb_elements'>
+<BOUCLE_arts(ARTICLES){id_auteur}{statut!=poubelle}> </BOUCLE_arts>
+[(#STATUT|<>{'6forum'}|?{' ', ''})[<div>(#TOTAL_BOUCLE|singulier_ou_pluriel{info_articles_un,info_articles_nb})</div>]]
+</B_arts>
+[(#STATUT|<>{'6forum'}|?{' ', ''})<div class="noinfo">#TOTAL_BOUCLE <:info_article:></div>]
+<//B_arts>
+<!--nb_elements-->
+</div>
+</div>
+
+[(#REM)
+
+	Bouton voir en ligne
+
+]<BOUCLE_publie(AUTEURS){id_auteur}>
+	[(#VAL{redirect}
+		|generer_url_action{type=auteur&id=#ID_AUTEUR}
+		|parametre_url{var_mode,calcul}
+		|icone_horizontale{<:icone_voir_en_ligne:>,racine})]
+</BOUCLE_publie>
+	[(#AUTORISER{previsualiser,auteur,#ID_AUTEUR,'',#ARRAY{statut,''}})
+		[(#VAL{redirect}
+			|generer_url_action{type=auteur&id=#ID_AUTEUR}
+			|parametre_url{var_mode,preview}
+			|icone_horizontale{<:previsualiser:>,preview})]
+	]
+<//B_publie>
+</BOUCLE_auteur>

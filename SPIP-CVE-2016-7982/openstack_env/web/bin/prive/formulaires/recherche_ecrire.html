@@ -1,0 +1,34 @@
+<div class="formulaire_spip formulaire_recherche" role='search'>
+<form action="[(#ENV{action})]" method="get"><div>
+	[(#ENV{action}|form_hidden)]
+	[<input type="hidden" name="lang" value="(#ENV{lang})" />]
+	<label for="#ENV{_id_champ,recherche}"><:info_rechercher_02:></label>
+	<input type="text"
+				 class="text[(#ENV{recherche}|oui) cancelable]"
+				 size="10"
+				 name="recherche"
+				 id="#ENV{_id_champ,recherche}"
+				 placeholder="<:info_rechercher|attribut_html:>"[
+				 value="(#ENV{recherche})"]
+	/>[<a
+	(#ENV{recherche}|oui)
+		class="cancel[ (#ENV{class,''})]"
+		href="[(#ENV{action}|parametre_url{'recherche',''})]"
+		onclick="$(this).siblings('input.text').val('')"
+		title='<:annuler_recherche|attribut_html:>'>[(#CHEMIN_IMAGE{fermer-16.png}
+	|balise_img
+	|inserer_attribut{alt,<:annuler_recherche:>})]</a>]<input type='image'
+					 src='[(#CHEMIN_IMAGE{rechercher-20.png})]'
+					 class="image"
+					 alt='<:info_rechercher|attribut_html:>'
+					 onclick="return recherche_submit_#ENV{_id_champ,recherche}.apply(this);"
+	/><a class="none[ (#ENV{class,''})] refresh" href="[(#ENV{action}|parametre_url{'recherche',''})]"><:info_rechercher:></a>
+</div></form>
+<script type="text/javascript">/*<![CDATA[*/
+function recherche_submit_#ENV{_id_champ,recherche}(){
+$.placeholderLabel.disable_placeholder_fields.apply($(this).parents('form').eq(0));
+var a=$(this).siblings('a.refresh');
+a.attr('href',parametre_url(a.attr('href'),'recherche',$(this).siblings('input.text').val())).followLink();
+return false;
+}/*]]>*/</script>
+</div>

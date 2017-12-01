@@ -1,0 +1,17 @@
+#HTTP_HEADER{Content-type:application/json;charset=#CHARSET}
+#SET{q,#VAL{%}|concat{#ENV{term,''}|replace{\s+,%},%}}
+#SET{data,#LISTE}
+<BOUCLE_auteur(AUTEURS){nom like #GET{q}}{0,20}{tout}>
+	[(#SET{data,[(#GET{data}|push{[(#ARRAY{
+		id,[(#NOM|textebrut)],
+		label,[(#NOM|textebrut)],
+		value,#ID_AUTEUR})]})]})]
+</BOUCLE_auteur>
+[(#CONFIG{messagerie/autoriser_email}|=={oui}|et{#ENV{term}|email_valide})
+	[(#SET{data,[(#GET{data}|push{[(#ARRAY{
+		id,#ENV{term},
+		label,#ENV{term},
+		value,#ENV{term}})]})]})]
+]<//B_auteur>
+[(#GET{data}|json_encode)]
+#FILTRE{trim}

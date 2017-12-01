@@ -1,0 +1,164 @@
+/* --------------------------------------------------------------
+
+   spip.css
+   Styles associes au code genere par SPIP
+
+
+-------------------------------------------------------------- */
+
+/* Neutraliser conflit spip / tinytypo */
+ul, ol {list-style:none;margin-left:0; }
+blockquote {   border:none; padding-left:3em;  }
+blockquote:before { content:"";  /* à terme supprimer l'image quote.png et reintegrer le bon sur blocquote.spip_poesie */ }
+s, strike,del, .del { opacity:1;}
+
+/* Compatibilite ancienne dist */
+.on {font-weight:bold;}
+
+/* Listes SPIP */
+ul.spip,
+ol.spip { margin-left: 50px; }
+@media (max-width: 640px) {
+	ul.spip,
+	ol.spip { margin-left: 1.5em; }
+}
+ul.spip { list-style-type: square; }
+li ul.spip { list-style-type: disc; }
+li li ul.spip { list-style-type: circle; }
+ol.spip { list-style-type: decimal; }
+
+dl.spip dt,
+dl.spip dd { padding-left: 50px; }
+dl.spip dt { clear: both; }
+dl.spip dd {}
+
+/* Tableaux SPIP */
+table.spip { width: 100%; }
+table.spip caption {}
+table.spip tr.row_first th {}
+table.spip tr.odd td {}
+table.spip tr.even td {}
+
+/* Citations, code et poesie */
+blockquote.spip { min-height: 40px; background: url(img/quote.png) no-repeat; }
+.spip_poesie { border-left: 1px solid; }
+.spip_poesie div { margin-left: 50px; text-indent: -50px; }
+.spip_code,
+.spip_cadre {   
+   font-family: 'Courier New', Courier, monospace; 
+   font-size: 1em;  
+   margin:0 .2em;
+}
+
+.spip_code {   
+   border: 1px solid #dfdfcd;
+   background-color: rgba(227,227,211,0.5);
+   color: #3b3b25;
+   text-shadow: 0 1px 0 #fdfdfc;      
+}
+
+.spip_cadre { 
+   background:#333;
+   color:#fff;
+   border-radius:0.5em;
+   border:0;
+}
+
+textarea.spip_code, 
+textarea.spip_cadre {
+   padding: 1em; 
+   width:98%;
+}
+
+/* Logos, documents et images */
+.spip_logo { float:right; margin: 0 0 10px 10px; padding:0; border: none; }
+
+.spip_logo { margin: 0 0 10px 10px; padding: 0; border: none; }
+.spip_logo_center { clear: both; display: block; margin: 0 auto 1.5em auto; }
+.spip_logo_left { float: left; margin-right: 1.5em; margin-bottom: 1.5em; }
+.spip_logo_right { float: right; margin-left: 1.5em; margin-bottom: 1.5em; }
+
+.spip_documents { margin-bottom: 1.5em; padding: 0; background: none; max-width: 100%;}
+.spip_documents,
+.spip_documents_center,
+.spip_doc_titre,
+.spip_doc_descriptif { margin-right: auto; margin-left: auto; text-align: center; }
+.spip_documents_center { clear: both; display: block; width: 100%; }
+.spip_documents_left { float: left; margin-right: 1.5em; }
+.spip_documents_right { float: right; margin-left: 1.5em; }
+.spip_doc_titre {}
+.spip_doc_descriptif { clear: both; }
+.spip_doc_credits { font-size:x-small; clear: both; }
+
+@media (max-width: 640px) { 
+	  /* fixer une largeur maximale  de 100 % aux elements potentiellement problematiques */ 
+ 		.spip_documents,.spip_doc_titre,.spip_doc_descriptif { max-width: 100% !important; } 
+} 
+
+/* Modeles par defaut */
+.spip_modele { float: right; display: block; width: 25%; margin: 0 0 1.5em 1.5em; padding: 1.5em; background-color: #EEE; }
+
+/* Formulaires */
+.formulaire_spip {}
+.formulaire_spip li { clear: both; margin-bottom: 0.75em; }
+.formulaire_spip .boutons { clear: both; margin: 0; padding: 0; text-align: right; }
+.formulaire_spip .boutons input,
+.formulaire_spip .boutons button {}
+.formulaire_spip input.text, 
+.formulaire_spip textarea {padding:.2em;border:solid 1px #aaa;}
+@media print {
+	.formulaire_spip { display: none; }
+}
+
+/* Barre typo */
+.markItUp .markItUpHeader ul .markItUpSeparator { display: none; }
+
+/* Previsu */
+.previsu { margin-bottom: 1.5em; padding: 0.75em; border: 2px dashed #F57900; }
+fieldset.previsu legend { color: #F57900; }
+
+/* Reponses */
+.reponse_formulaire { margin-bottom: 1.5em; padding: 0.75em; border: 2px solid #ddd; }
+.reponse_formulaire_ok { background: #e6efc2; color: #264409; border-color: #c6d880; }
+.reponse_formulaire_erreur { background: #fbe3e4; color: #8a1f11; border-color: #fbc2c4; }
+.reponse_formulaire_ok a { color: #264409; }
+.reponse_formulaire_erreur a { color: #8a1f11; }
+
+.erreur_message { color: red; }
+
+li.erreur input[type="text"], li.erreur input.text,
+li.erreur input[type="password"], li.erreur input.password,
+li.erreur textarea { background-color: #fbe3e4; border-color: #fbc2c4; }
+
+.spip_surligne { background-color: yellow; }
+
+/* Formulaire de recherche */
+.formulaire_recherche * { display: inline; }
+
+/* Paragraphes */
+div.spip, ul.spip, ol.spip, .spip_poesie, .spip_cadre, div.spip_code, .spip_documents.spip_documents_center { margin-bottom: 1.5em; }
+
+/* Pagination */
+.pagination { clear: both; text-align: center; }
+.pagination .disabled {visibility:hidden;}
+@media print {
+	.pagination { display: none; }
+}
+
+/* Liens de SPIP */
+a.spip_note { font-weight: bold; } /* liens vers notes de bas de page */
+a.spip_in {} /* liens internes */
+a.spip_mail {}
+a.spip_out {} /* liens sortants */
+a.spip_url {} /* liens url sortants */
+a.spip_glossaire {} /* liens vers encyclopedie */
+
+/* Boutons d'admin */
+.ie6 .spip-admin,
+.ie6 #spip-admin { display: none; }
+@media print {
+	.spip-admin,
+	#spip-admin { display: none; }
+}
+
+/* fin */

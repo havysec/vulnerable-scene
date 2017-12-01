@@ -1,0 +1,33 @@
+[(#AUTORISER{webmestre}|sinon_interdire_acces)]
+[(#ENV{table}|oui)
+<INCLURE{fond=prive/vertebres:#ENV{table},env,ajax} />
+<style type="text/css">
+	th .tri {margin-top: 0;}
+	td {max-height: 200px;overflow-y: scroll;}
+</style>
+]
+
+<hr />
+#SET{lettre_old,''}
+#SET{radical_old,''}
+<B_t>
+	<div class="toutes_les_tables">
+<BOUCLE_t(POUR){tableau #REM|sql_alltable}{'<br /> '}{par valeur}>
+		[(#SET{radical,#VALEUR|explode{_}|reset})][(#SET{lettre,#VALEUR|explode{_}|table_valeur{1}|initiale})]
+		[(#GET{radical}|!={#GET{radical_old}}|oui)#SET{radical_old,#GET{radical}}<h3>#GET{radical}</h3>]
+		[(#GET{lettre}|!={#GET{lettre_old}}|oui)#SET{lettre_old,#GET{lettre}}<h4>#GET{lettre}</h4>]
+		<a href="#URL_ECRIRE{vertebres,table=#VALEUR}">#VALEUR</a>
+</BOUCLE_t>
+	</div>
+	<style type="text/css">
+		.toutes_les_tables {
+			-o-columns: auto 200px;
+			-webkit-columns: auto 200px;
+			-moz-columns: auto 200px;
+			columns: auto 200px;
+		}
+		.toutes_les_tables h3 { margin-bottom:.5em; margin-top:1em; }
+		.toutes_les_tables h3:first-child { margin-top:0; }
+		.toutes_les_tables h4 { margin-bottom:0; margin-top:.5em; }
+	</style>
+</B_t>

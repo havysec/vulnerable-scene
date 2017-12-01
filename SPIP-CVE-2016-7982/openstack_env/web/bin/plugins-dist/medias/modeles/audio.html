@@ -1,0 +1,21 @@
+<BOUCLE_tous (DOCUMENTS types_documents) {id_document=#ID} {tout}>
+#SET{largeur,#ENV{largeur, #LARGEUR|?{#LARGEUR,400}}|max{120}}
+<div	class='spip_document_#ID_DOCUMENT spip_document_audio spip_documents[ spip_documents_(#ENV{align})]'
+	style='[(#ENV{align}|match{^(left|right)$}|oui)float:#ENV{align};][width:(#GET{largeur})px]'>
+	[(#LOGO_DOCUMENT{vignette}|image_reduire{#GET{largeur},0}|vider_attribut{class})]
+<div class="audio-wrapper"[ style='width:(#GET{largeur})px;max-width:100%;']>
+	<audio class="mejs mejs-#ID_DOCUMENT [ mejs-(#ENV{skin})]"
+	       data-id="[(#VAL{mejs-#ID_DOCUMENT}|concat{#ENV{skin}}|md5)]"
+	       src="#FICHIER"
+	       type="#MIME_TYPE"
+	       data-mejsoptions='{"alwaysShowControls": true[,"loop":(#ENV{loop}|?{true,false})],"audioWidth":"100%"[,"audioHeight":"(#ENV{hauteur})"][,"startVolume":"(#ENV{volume})"]}'
+	       controls="controls"
+				 [autoplay="autoplay"(#ENV{autoplay}|oui)]></audio>
+</div>
+[<div class='spip_doc_titre'><strong>(#TITRE)</strong></div>]
+[<div class='spip_doc_descriptif'>(#DESCRIPTIF|PtoBR)[(#NOTES|PtoBR)]</div>]
+[<script>/*<!\[CDATA\[*/var mejspath='[(#CHEMIN{lib/mejs/mediaelement-and-player.min.js}|timestamp)]',mejscss='[(#CHEMIN{lib/mejs/mediaelementplayer.min.css}|timestamp)]';
+(#INCLURE{javascript/mejs-init.min.js})/*\]\]>*/</script>]
+[(#ENV{skin}|oui)[<style>(#INCLURE{#CHEMIN{css/mejs-skin-#ENV{skin}.css}|sinon{#CHEMIN{lib/mejs/mejs-skins.css}}|url_absolue_css})</style>]]
+</div>
+</BOUCLE_tous>

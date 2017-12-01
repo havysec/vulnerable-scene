@@ -1,0 +1,25 @@
+<paquet
+	prefix="jqueryui"
+	categorie="outil"
+	version="1.11.4"
+	etat="stable"
+	compatibilite="[3.1.0;3.1.*]"
+	logo="images/jqueryui-128.png"
+>
+
+	<nom>jQuery UI</nom>
+	<!-- Animations, effets et widgets jQuery -->
+
+	<auteur>Collectif SPIP</auteur>
+	<credit lien="http://jqueryui.com/about">jQuery UI Team</credit>
+
+	<pipeline nom="jqueryui_plugins" action="" />
+
+	<pipeline nom="jquery_plugins" inclure="jqueryui_pipelines.php" />
+	<pipeline nom="insert_head_css" inclure="jqueryui_pipelines.php" />
+	<pipeline nom="header_prive" inclure="jqueryui_pipelines.php" />
+	<pipeline nom="header_prive_css" inclure="jqueryui_pipelines.php" />
+
+	<chemin path="prive" />
+	<chemin path="" />
+</paquet>

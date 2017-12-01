@@ -1,0 +1,19 @@
+[link|title->http://example.com] and [another link|title->/tests/]
+
+[link{de}->http://example.com] and [another link{de}->/tests/]
+
+[link|{de}->http://example.com] and [another link|{de}->/tests/]
+
+[link{em}->http://example.com] and [another link{em}->/tests/]
+
+[link|{em}->http://example.com] and [another link|{em}->/tests/]
+
+[link|title with {em}->http://example.com] and [another link|title with {em}->/tests/]
+
+[link|title with {{bold}}->http://example.com] and [another link|title with {{bold}}->/tests/]
+
+[link|title{fr}->http://example.com] and [another link|title{fr}->/tests/]
+
+[link with {em}|title{fr}->http://example.com] and [another link with {em}|title{fr}->/tests/]
+
+[link|title with <b>bold</b>->http://example.com] and [another link|title with <b>bold</b>->/tests/]

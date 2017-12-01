@@ -1,0 +1,10 @@
+#SET{nav,#INCLURE{fond=prive/squelettes/inclure/menu-navigation,
+	menu=menu_configuration,
+	bloc=navigation,
+	env}}
+[(#GET{nav}|match{execfound}|oui)
+#GET{nav}
+[(#BOITE_OUVRIR{#VAL{avis_attention}|_T|wrap{<h4>},'info'})]
+<p><:texte_inc_config:></p>
+#BOITE_FERMER
+]

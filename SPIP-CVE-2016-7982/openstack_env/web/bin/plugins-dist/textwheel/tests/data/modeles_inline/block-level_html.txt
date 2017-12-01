@@ -1,0 +1,15 @@
+<div>{contenu} <textwheel1|inline></div>
+
+<html><div>{contenu} <textwheel1|inline></div></html>
+
+mise en forme:
+
+<div>
+{contenu} <textwheel1|inline>
+</div>
+
+<html>
+<div>
+{contenu} <textwheel1|inline>
+</div>
+</html>

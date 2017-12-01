@@ -1,0 +1,9 @@
+<quote> quote avec de la typo !
+
+subquote:
+<quote>quote avec de la typo !
+
+here i am avec de la typo !
+</quote>
+and other quote avec de la typo !
+</quote>

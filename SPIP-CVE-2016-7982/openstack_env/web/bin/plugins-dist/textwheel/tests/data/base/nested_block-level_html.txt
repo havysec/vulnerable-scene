@@ -1,0 +1,23 @@
+<div>
+{parent}
+<div>
+{child}
+</div>
+<pre>
+{adopted child}
+</pre>
+</div>
+
+<html>
+<div>
+{parent}
+<div>
+{child}
+</div>
+<pre>
+{adopted child}
+</pre>
+</div>
+</html>
+
+{outside}

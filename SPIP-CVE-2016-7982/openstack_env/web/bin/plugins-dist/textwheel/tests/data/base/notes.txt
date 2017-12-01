@@ -1,0 +1,7 @@
+This is a text[[with a footnote]]
+
+This is a text[[<a> with a named footnote]]
+
+This is a text[[with a footnote with autolink http://example.com]]
+
+This is a text[[with a footnote with manual link [->http://example.com]]]

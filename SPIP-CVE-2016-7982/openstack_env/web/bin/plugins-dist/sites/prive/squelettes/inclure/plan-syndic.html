@@ -1,0 +1,39 @@
+
+<BOUCLE_nb_items(SITES)
+	{id_rubrique} {par nom_site}
+	{statut==.*}{statut ?}
+	{pagination 1}>
+	#SET{total,#GRAND_TOTAL}
+	#SET{lister,#PLAN_AFFICHER_LISTE}
+</BOUCLE_nb_items>
+
+[(#ENV{conteneur}|=={non}|non)
+	<ul class="menu-items sites syndic">
+		<li id="syndic-rubrique-#ID_RUBRIQUE"
+			class="item group[ (#GET{lister}|non)jstree-closed]"
+			data-jstree='{"type":"box_site"}' data-objet="site">
+			<strong>[(#GET{total}|objet_afficher_nb{site})]</strong>
+]
+
+			<B_items>
+				<ul class="menu-items syndic">
+			<BOUCLE_items(SITES)
+				{id_rubrique} {par nom_site}
+				{statut==.*}{statut ?}
+				{si #GET{lister}}
+				>
+				<li id="site-#ID_SYNDIC" class="item" data-jstree='{"type":"site"}' data-objet="site">
+					<a href="[(#ID_SYNDIC|generer_url_entite{site})]"
+						title="[(#VAL{site}|objet_info{texte_objet}|_T) #ID_SYNDIC]">
+						[(#STATUT|puce_statut{site}) ][(#NOM_SITE|couper{80}|sinon{<:info_sans_titre:>})]
+					</a>
+				</li>
+			</BOUCLE_items>
+				</ul>
+			</B_items>
+
+[(#ENV{conteneur}|=={non}|non)
+		</li>
+	</ul>
+]
+</B_nb_items>

@@ -1,0 +1,11 @@
+[link <textwheel1|inline>->http://example.com] and [another link <textwheel1|inline>->/tests/]
+
+[<code>link <textwheel1|inline></code>->http://example.com]
+
+[<textwheel1|inline>->http://example.com]
+
+[<textwheel1|inline> and text->http://example.com]
+
+[text and <textwheel1|inline> and text->http://example.com]
+
+[<textwheel1|inline> and text <textwheel1|inline>->http://example.com]

@@ -1,0 +1,19 @@
+[link|title avec de la typo!->http://example.com] and [another link|title avec de la typo!->/tests/]
+
+[link avec de la typo!{de}->http://example.com] and [another link avec de la typo!{de}->/tests/]
+
+[link avec de la typo!|{de}->http://example.com] and [another link avec de la typo!|{de}->/tests/]
+
+[link{em avec de la typo!}->http://example.com] and [another link{em avec de la typo!}->/tests/]
+
+[link|{em avec de la typo!}->http://example.com] and [another link|{em avec de la typo!}->/tests/]
+
+[link|title with {em avec de la typo!}->http://example.com] and [another link|title with {em avec de la typo!}->/tests/]
+
+[link|title with {{bold avec de la typo!}}->http://example.com] and [another link|title with {{bold avec de la typo!}}->/tests/]
+
+[link|title avec de la typo!{fr}->http://example.com] and [another link|title avec de la typo!{fr}->/tests/]
+
+[link with {em avec de la typo!}|title{fr}->http://example.com] and [another link with {em avec de la typo!}|title{fr}->/tests/]
+
+[link|title with <b>bold avec de la typo!</b>->http://example.com] and [another link|title with <b>bold avec de la typo!</b>->/tests/]

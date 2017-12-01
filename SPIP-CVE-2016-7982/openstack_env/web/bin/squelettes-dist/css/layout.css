@@ -1,0 +1,92 @@
+/* --------------------------------------------------------------
+
+   layout.css
+   Disposition des blocs principaux
+   cf.: http://romy.tetue.net/structure-html-de-base
+
+-------------------------------------------------------------- */
+
+/* Elements principaux
+------------------------------------------ */
+body { text-align: center; background:#ddd;}
+.page { position: relative; width: 960px; max-width:95%; margin:2em auto; text-align: left;  }
+.header {}
+.main { padding: 1.5em 0; }
+.footer { clear: both; padding: 1em 0 0; margin:1em 0 0 0; border-top:1px solid #999; }
+
+/* largeur calculee du wrapper: 960*70%  = 672px */
+.wrapper { clear: both; float: left; width: 70%; overflow: hidden; }
+.content { min-height: 350px; }
+/* largeur calculee du aside: 672px / 3 = 224px = 23.333 %*/
+.aside { float: right; width: 23.333%; overflow: hidden; }    
+  
+/* Entete et barre de navigation
+------------------------------------------ */
+.header { padding-bottom: 1.5em;  }
+.header .spip_logo_site { display: block; margin: 0; line-height: 1; font-weight: bold;  }
+.header .spip_logo_site,
+.header .spip_logo_site a,
+.header .spip_logo_site a:hover { background: transparent; text-decoration:none; color:#222; }
+.header .spip_logo_site a:hover  {color:#c85000;}
+.header .spip_logo_site a:hover img {opacity:0.7;}
+.header .spip_logo {margin-bottom:0;}
+.header #slogan { margin: 0; }
+
+.formulaire_menu_lang { position: absolute; right: 0; top: .9em; display: block; width: 30%; }
+
+.nav {}
+.nav li {display:inline;}
+.nav li a {  display: inline-block; padding:0.25em 0.5em; margin:0 0.25em 0.5em 0;border-radius:0.25em;text-decoration: none;  background: #EED; color: #222; }
+.nav li.on a { background:#c85000;color:#fff;  font-weight: normal; }
+.nav li a:focus,
+.nav li a:hover,
+.nav li a:active { background: #222; color:#fff; }
+ 
+
+.footer .colophon { float: left; height: 40px; width: 70%; margin: 0; }
+.footer .generator { float: right; }
+.footer .generator a { padding: 0; background: none; }
+
+/* Gabarit d'impression
+------------------------------------------ */
+@media print {
+    .page,
+    .wrapper,
+    .content { width: auto; }
+    .nav,
+    .arbo,
+    .aside,
+    .footer { display: none; }
+}
+
+/* Affichage sur petits ecrans  
+Cf.: http://www.alsacreations.com/astuce/lire/1177
+------------------------------------------ */
+
+/* largeur maximum 767px */
+@media (max-width: 767px) {
+	body {   	width: 100%;		padding: 0 20px;	}
+	.page {  	width: 100%;  	max-width: none; 	}
+}
+ 
+/* largeur maximum 640px */
+@media (max-width: 640px) {
+     /* layout */
+    .wrapper,
+    .content,
+    .aside { width: 100%;}
+    .content,
+    .aside { clear: both; float: none; width: 100%; }
+
+    /* Passer a une seule colonne (a appliquer aux elements multi-colonnes) */
+    .nav ul li a { float: none; border: 0; }
+    .arbo { display: none; }
+    .footer .colophon { width: auto; float: none; }
+    .footer .generator { display: none; }
+
+    /* header du calendrier full-calendar */
+    table.fc-header td { display: block; text-align: left; }
+
+}
+
+/* fin */

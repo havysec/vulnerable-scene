@@ -1,0 +1,34 @@
+
+#SET{lister,#ENV{lister}|=={rubrique}|?{'',#ENV{lister}}}
+#SET{conteneur,#ENV{lister}|in_any{#LISTE{tout,rubrique}}|?{oui,non}}
+
+<B_rubriques>
+[(#ENV{conteneur}|=={non}|non) <ul class="menu-items rubriques"> ]
+		<BOUCLE_rubriques(RUBRIQUES)
+			{id_parent ?}{id_rubrique?} {statut==.*}
+			{par num titre,titre}>
+[(#ENV{conteneur}|=={non}|non)
+			<li id="rubrique-#ID_RUBRIQUE"
+				class="item[ (#ENV{lister}|in_any{#LISTE{rubrique,tout}}|non)jstree-closed]"
+				data-objet='rubrique'>
+				<a
+					href="[(#ID_RUBRIQUE|generer_url_entite{rubrique})]"
+					[hreflang="(#ENV{lang}|=={#LANG}|non|?{#LANG})"]
+					title="[(#VAL{rubrique}|objet_info{texte_objet}|_T) #ID_RUBRIQUE]">
+						<strong>[(#TITRE|couper{100}|sinon{<:info_sans_titre:>})]</strong>
+				</a>
+]
+				<BOUCLE_lister(CONDITION){si #ENV{lister}|in_any{#LISTE{rubrique,tout}}|oui}>
+					<BOUCLE_objets(DATA){source table,#REM|plan_lister_objets_rubrique}{par cle}>
+						[(#ENV{objet}|non|ou{#ENV{objet}|=={#VALEUR}})
+							<INCLURE{fond=prive/squelettes/inclure/plan-#VALEUR, id_rubrique=#_rubriques:ID_RUBRIQUE, env,
+								lister=#GET{lister}, conteneur=#GET{conteneur}}>
+						]
+					</BOUCLE_objets>
+					<INCLURE{fond=prive/squelettes/inclure/plan-rubriques, id_parent=#ID_RUBRIQUE, id_rubrique='', env,
+						lister=#GET{lister}, conteneur=#GET{conteneur}}>
+				</BOUCLE_lister>
+[(#ENV{conteneur}|=={non}|non) </li> ]
+		</BOUCLE_rubriques>
+[(#ENV{conteneur}|=={non}|non) </ul> ]
+</B_rubriques>

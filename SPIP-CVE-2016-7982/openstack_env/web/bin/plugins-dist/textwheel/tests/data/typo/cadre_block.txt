@@ -1,0 +1,9 @@
+Une ligne avant avec de la typo !
+<cadre>
+<?php
+
+$message = 'Hello World avec de la typo !';
+echo $message;
+
+</cadre>
+Et ensuite une ligne avec de la typo !

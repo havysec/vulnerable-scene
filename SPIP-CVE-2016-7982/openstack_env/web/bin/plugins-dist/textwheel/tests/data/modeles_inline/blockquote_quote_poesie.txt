@@ -1,0 +1,18 @@
+<quote> quote
+the rest of it <textwheel1|inline>
+</quote>
+
+<quote>
+quote
+the rest of it <textwheel1|inline>
+</quote>
+
+<blockquote>
+quote
+the rest of it <textwheel1|inline>
+</blockquote>
+
+<poesie>
+quote
+the rest of it <textwheel1|inline>
+</poesie>

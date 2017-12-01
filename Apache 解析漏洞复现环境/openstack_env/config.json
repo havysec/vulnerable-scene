@@ -1,0 +1,23 @@
+{
+    "scene": {
+        "name": "Apache 解析漏洞",
+        "vulns": [""],
+        "tools": ["chrome"],
+        "tag": ["web"],
+        "desc": "web"
+    },
+     "servers": [
+        {
+            "id":"Apache 解析漏洞",
+            "name": "Apache 解析漏洞 Target-Server",
+            "imageType":"linux",
+            "image":"ubuntu14-64-web",
+            "role":"target",
+			"flavor":"m2.1c-1g-10g",
+            "initScript":"web/init.sh {FLAG[0]}",
+            "accessMode":[{"protocol":"http","port":80}]
+        }
+    ],
+     "check": [],
+     "attack": []
+}

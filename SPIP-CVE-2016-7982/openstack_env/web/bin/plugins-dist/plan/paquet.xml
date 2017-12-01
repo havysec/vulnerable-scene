@@ -1,0 +1,19 @@
+<paquet
+	prefix="plan"
+	categorie="navigation"
+	version="2.1.1"
+	etat="stable"
+	compatibilite="[3.1.0;3.1.*]"
+	logo="prive/themes/spip/images/plan-64.png"
+	documentation="http://contrib.spip.net/4718"
+>
+	<nom>Plan du site dans l’espace privé</nom>
+	<!-- Améliore la page plan du site de l’espace privé -->
+
+	<auteur>Matthieu Marcillaud</auteur>
+
+	<credit lien="http://www.picol.org/">Picol (logo)</credit>
+	<credit lien="https://www.jstree.com/">Ivan Bozhanov (jstree)</credit>
+
+	<licence>GNU/GPL</licence>
+</paquet>

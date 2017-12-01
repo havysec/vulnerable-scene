@@ -1,0 +1,50 @@
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {border:0; padding:0; margin:0; overflow:visible; width:auto; background:none; }
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
+#colorbox{outline:0;}
+
+/* 
+    ColorBox example user style
+    The following rules are ordered and tabbed in a way that represents the
+    order/nesting of the generated HTML, so that the structure easier to understand.
+*/
+#cboxOverlay{background:transparent;}
+#colorbox{}
+    #cboxTopLeft,#cboxTopRight,#cboxBottomLeft,#cboxBottomRight,#cboxMiddleLeft,#cboxMiddleRight,#cboxTopCenter,#cboxBottomCenter{width:20px;height:20px;}
+    #cboxContent{background: transparent;}
+        #cboxLoadedContent{padding:10px;}
+        .cboxPhoto{ -webkit-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3); -moz-box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3); box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.3);}
+        #cboxTitle{ position: absolute; left: 10px; right: 10px; bottom: 10px; padding: 0 10px;
+        	text-align: center; color: #fff; font-weight: bold; font-size: 0.9em; background-image: url('images/fancy_title_over.png'); }
+        #cboxCurrent{position: absolute; left: -3000em}
+        #cboxPrevious{position: absolute; top: 0; left: 15px; width: 35% ; height: 100%; text-indent:-9999px;}
+        #cboxPrevious.hover{background:url(images/fancy_shadow-spt1.png) -170px 50% no-repeat;}
+        #cboxNext{position: absolute; top: 0; right: 15px; width: 35% ; height: 100%; text-indent:-9999px;}
+        #cboxNext.hover{background:url(images/fancy_right.png) right 50% no-repeat;}
+        #cboxSlideshow{position:absolute; top: -12px; left:-15px; width: 30px; height: 30px;
+        	background:url(images/fancy_shadow-spt2.png) -40px -35px no-repeat; text-indent:-9999px;}
+        #cboxLoadingOverlay{background:#fff;}
+        #cboxLoadingGraphic{background:url(images/loading.gif) center center no-repeat;}
+        #cboxClose{position:absolute; top: -12px; right: -15px; height: 30px; width: 30px;
+        	background:url(images/fancy_shadow-spt2.png) -0px -35px no-repeat; text-indent:-9999px;border:0}
+
+        .cboxSlideshow_on #cboxSlideshow{background-position:-80px -35px;}
+        .cboxSlideshow_off #cboxSlideshow{background-position:-40px -35px;}

@@ -1,0 +1,21 @@
+.mybg1{
+	background: url(bg.png);
+}
+.mybg2{
+	background: url("bg.png");
+}
+.mybg3{
+	background: url('bg.png');
+}
+.mybg3{
+	background: url('img/bg.png');
+}
+.mybg4{
+	background: url('/img/bg.png');
+}
+.mybg5{
+	background: url('http://example.com/bg.png');
+}
+path.area.perspective1_haute,path.area.perspective2_haute{
+		fill: url( #gradient_perspective1 );
+}

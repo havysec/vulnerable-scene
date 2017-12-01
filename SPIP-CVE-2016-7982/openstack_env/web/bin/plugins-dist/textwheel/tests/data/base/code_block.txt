@@ -1,0 +1,9 @@
+Une ligne avant
+<code>
+<?php
+
+$message = 'Hello World';
+echo $message;
+
+</code>
+Et ensuite une ligne

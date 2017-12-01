@@ -1,0 +1,35 @@
+<script type='text/javascript'>var img_unpick='#CHEMIN_IMAGE{supprimer-12.png}';
+jQuery.getScript('[(#CHEMIN{formulaires/selecteur/jquery.picker.js}|timestamp)]');
+</script>
+[(#REM)
+
+afficher la selection dans un ul class item_picked
+
+@param int select
+	1 => le selecteur se comporte comme un select, avec un seul choix possible
+@param string name
+	nom de l'input envoye
+@param string|array selected
+	liste de valeurs sour la forme array("rubrique|9","article|8",...) ou "rubrique|9,article|8,..."
+@param int id_rubrique
+@param int id_article
+@param int afficher_langue
+
+]<ul class='item_picked[ (#ENV{select,''}|?{select})]'>
+<INCLURE{fond=formulaires/selecteur/inc-sel-rubriques}{name}{selected}{select}{img_unpick=#CHEMIN_IMAGE{supprimer-12.png}}{afficher_langue}>
+</ul>
+
+#SET{id_rubrique,#ENV{id_rubrique}}
+<BOUCLE_art(ARTICLES){statut?}{tout}{id_article}>#SET{id_rubrique,#ID_RUBRIQUE}</BOUCLE_art>
+
+[(#REM) le container item_picker est ici pour etre voisin de item_picked ------]
+<div class='item_picker'>
+<INCLURE{fond=formulaires/selecteur/picker-ajax}{id_rubrique=#GET{id_rubrique}}{id_article}{rubriques=1}{articles=0}{ajax}{env}>
+</div>
+[(#ENV{sortable,'non'}|=={oui}|oui)
+<script type='text/javascript'>
+jQuery.getScript('[(#PRODUIRE{fond=formulaires/selecteur/jquery.selecteur.js}|timestamp)]',function(){
+	jQuery(function() {jQuery("ul.item_picked").sortable(); });
+});
+</script>
+]

@@ -1,0 +1,5 @@
+[link->http://example.com] and [another link->/tests/]
+
+[<code>link</code>->http://example.com]
+
+and an autolink http://example.com

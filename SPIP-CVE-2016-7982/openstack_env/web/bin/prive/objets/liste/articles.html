@@ -1,0 +1,46 @@
+[(#SET{defaut_tri,#ARRAY{
+	date,#ENV{date_sens,-1},
+	num titre,1,
+	id_article,1,
+	points,-1
+}|defaut_tri_defined})
+]<B_liste_art>
+#ANCRE_PAGINATION
+<div class="liste-objets articles">
+<table class='spip liste'>
+[<caption><strong class="caption">(#ENV*{titre,#GRAND_TOTAL|singulier_ou_pluriel{info_1_article,info_nb_articles}})</strong></caption>]
+	<thead>
+		<tr class='first_row'>
+			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
+			<th class='titre principale' scope='col' colspan='2'>[(#TRI{num titre,<:info_titre:>,ajax})]</th>
+			<th class='auteur' scope='col'><:auteur:></th>
+			<th class='date secondaire' scope='col'>[(#TRI{date,<:date:>,ajax})]</th>
+			<th class='id' scope='col'>[(#TRI{id_article,<:info_numero_abbreviation:>,ajax})]</th>
+		</tr>
+	</thead>
+	<tbody>
+	<BOUCLE_liste_art(ARTICLES){id_article?}{id_rubrique?}{id_mot?}{id_auteur?}{where?}{statut?}{recherche?}{tri #ENV{par,date}|defaut_tri_par{#GET{defaut_tri}},#GET{defaut_tri},session_liste_art}{par titre}{pagination #ENV{nb,10}}{!lang_select}>
+		[(#LANG|changer_typo)]
+		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
+			<td class='statut'>[(#STATUT|puce_statut{article,#ID_ARTICLE,#ID_RUBRIQUE})]</td>
+			<td class='titre principale'[(#LOGO_ARTICLE_NORMAL|non)colspan='2']><a href="[(#ID_ARTICLE|generer_url_entite{article})]"
+						[hreflang="(#ENV{lang}|=={#LANG}|non|?{#LANG})"]
+						title="<:info_numero_abbreviation|attribut_html:> #ID_ARTICLE">[<span
+						class="surtitre">(#SURTITRE|image_reduire{150,70})</span>][(#RANG). ]<strong>#TITRE</strong>[<span class="soustitre">(#SOUSTITRE)</span>]</a></td>
+			[<td class='logo'>(#LOGO_ARTICLE_NORMAL|image_reduire{90,70})</td>]
+			<td class='auteur'><div class="inner"><BOUCLE_auteurs(AUTEURS){id_article}{', '}><a href="[(#ID_AUTEUR|generer_url_entite{auteur})]">#NOM</a></BOUCLE_auteurs></div></td>
+			<td class='date secondaire'>[<span title="[(#DATE|heures_minutes)]">(#DATE|affdate_jourcourt)</span>]</td>
+			<td class='id'>[(#AUTORISER{modifier,article,#ID_ARTICLE}|?{
+				<a href="[(#URL_ECRIRE{article_edit,id_article=#ID_ARTICLE})]">#ID_ARTICLE</a>,
+				#ID_ARTICLE
+			})]</td>
+		</tr>
+	</BOUCLE_liste_art>
+	[(#REM|changer_typo)]
+	</tbody>
+</table>
+[<p class='pagination'>(#PAGINATION{#ENV{pagination,prive}})</p>]
+</div>
+</B_liste_art>[
+<div class="liste-objets articles caption-wrap"><strong class="caption">(#ENV*{sinon,''})</strong></div>
+]<//B_liste_art>

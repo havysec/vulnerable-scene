@@ -1,0 +1,62 @@
+/* SPIP-STYLE                                                           */
+/* Cette feuille contient les styles associes au code genere par SPIP.  */
+/* Ces styles sont indispensables et doivent necessairement etre        */
+/* definis pour le bon fonctionnement de vos squelettes.                */
+
+
+/* Intertitre */
+h3.spip { text-align: center; margin-top: 2em; margin-bottom: 1.4em; font-size: 1.15em; font-weight: bold; }
+hr.spip { margin: 2em auto; }
+
+/* Listes SPIP */
+ul.spip {}
+ol.spip { list-style: decimal; }
+
+/* Citations, code et poesie */
+blockquote.spip { margin: 2em 0; padding-left: 1em; border-left: 0.30em solid; }
+blockquote.spip_poesie { margin: 2em 0; padding-left: 1em; border-left: 1px solid; font-family: Garamond, Georgia, Times, serif; }
+blockquote.spip_poesie div { text-indent: -3em; margin-left: 3em; }
+
+.spip_code, .spip_cadre { font-family: Courier, "Courier New", monospace; color: #036; }
+.spip_cadre { width: 99%; background-color: #F4F8F8; border: 1px inset; font-size:inherit; }
+div.spip_code, .spip_cadre { margin-bottom: 1em;  }
+
+.spip_surligne { background: #FF6; }
+
+/* Tableaux */
+table.spip { max-width: 99%; margin-right: auto; margin-left: auto; margin-bottom: 1em; border-collapse: collapse; border-spacing: 0; line-height: normal; }
+table.spip caption { caption-side: top; /* bottom pas pris en compte par IE */ text-align: center; margin-right: auto; margin-left: auto; font-weight: bold; }
+table.spip tr.row_first { background: #fff; }
+table.spip tr.row_odd { background: #f0f0f0; }
+table.spip tr.row_even { background: #e0e0e0; }
+table.spip th, table.spip td { padding: 0.20em 0.40em; text-align: left; border: 1px solid #ccc; }
+table.spip th { vertical-align: bottom; font-weight: bold; }
+table.spip td { vertical-align: top; }
+table.spip td.numeric {text-align:right;}
+
+/* Logos, documents et images */
+img, .spip_logo { margin: 0; padding: 0; border: 0; }
+.spip_documents { text-align: center; line-height: normal; }
+.spip_documents p { margin: 0.10em; padding: 0; }
+.spip_documents_center { display: block; clear: both; width: 100%; margin: 1em auto; }
+.spip_documents_left { float: left; margin-right: 15px; margin-bottom: 5px; }
+.spip_documents_right { float: right; margin-left: 15px; margin-bottom: 5px; }
+.spip_doc_titre { margin-right: auto; margin-left: auto; font-weight: bold; font-size: 0.90em; }
+.spip_doc_descriptif { clear: both; margin-right: auto; margin-left: auto; font-size: 0.90em; }
+
+/* modeles par defaut */
+.spip_modele { float: right; display: block; padding: 1em; border: 1px solid; width: 180px; }
+
+/* Couleurs des liens de SPIP */
+a.spip_note {} /* liens vers notes de bas de page */
+a.spip_ancre {} /* liens internes a la page */
+a.spip_in {} /* liens internes */
+a.spip_mail { color: #900; }
+a.spip_mail:before { content: "\002709"; } /* liens vers un email */
+a.spip_out,a[rel=external] { color: #009; } /* liens sortants */
+a.spip_url { color: #009; } /* liens url sortants */
+a.spip_glossaire { color: #060; } /* liens vers encyclopedie */
+a.spip_glossaire:hover { text-decoration: underline overline; }
+a[hreflang]:after { content: "\0000a0(" attr(hreflang) ")"; }
+.on { font-weight: bold; } /* liens exposes */
+

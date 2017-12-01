@@ -1,0 +1,61 @@
+/*
+    Colorbox Core Style:
+    The following CSS is consistent between example themes and should not be altered.
+*/
+#colorbox, #cboxOverlay, #cboxWrapper{position:absolute; top:0; left:0; z-index:9999; overflow:hidden;}
+#cboxWrapper {max-width:none;}
+#cboxOverlay{position:fixed; width:100%; height:100%;}
+#cboxMiddleLeft, #cboxBottomLeft{clear:left;}
+#cboxContent{position:relative;}
+#cboxLoadedContent{overflow:auto; -webkit-overflow-scrolling: touch;}
+#cboxTitle{margin:0;}
+#cboxLoadingOverlay, #cboxLoadingGraphic{position:absolute; top:0; left:0; width:100%; height:100%;}
+#cboxPrevious, #cboxNext, #cboxClose, #cboxSlideshow{cursor:pointer;}
+.cboxPhoto{float:left; margin:auto; border:0; display:block; max-width:none; -ms-interpolation-mode:bicubic;}
+.cboxIframe{width:100%; height:100%; display:block; border:0; padding:0; margin:0;}
+#colorbox, #cboxContent, #cboxLoadedContent{-webkit-box-sizing: content-box;-moz-box-sizing: content-box;box-sizing: content-box;}
+
+/* these elements are buttons, and may need to have additional styles reset to avoid unwanted base styles */
+#cboxPrevious, #cboxNext, #cboxSlideshow, #cboxClose {border:0; padding:0; margin:0; overflow:visible; width:auto; background:none; }
+/* avoid outlines on :active (mouseclick), but preserve outlines on :focus (tabbed navigating) */
+#cboxPrevious:active, #cboxNext:active, #cboxSlideshow:active, #cboxClose:active {outline:0;}
+#colorbox{outline:0;}
+
+/* 
+    Example user style
+    The following rules are ordered and tabbed in a way that represents the
+    order/nesting of the generated HTML, so that the structure easier to understand.
+*/
+#cboxOverlay{background:#000000;}
+#colorbox{}
+    #cboxTopLeft{width:10px; height:10px; background:#fff;}
+    #cboxTopRight{width:10px; height:10px; background:#fff;}
+    #cboxBottomLeft{width:10px; height:10px; background:#fff;}
+    #cboxBottomRight{width:10px; height:10px; background:#fff;}
+    #cboxMiddleLeft{width:10px; background:#fff;}
+    #cboxMiddleRight{width:10px; background:#fff;}
+    #cboxTopCenter{height:10px; background:#fff;}
+    #cboxBottomCenter{height:10px; background:#fff;}
+    #cboxContent{background:#fff;}
+        #cboxLoadedContent{margin:0 0 58px;}
+        #cboxTitle{position:absolute; bottom:28px; right:0; text-align:right; width:100%; color:#000; font-weight:bold;font-size:0.9em;}
+        #cboxCurrent{position:absolute; bottom:0px; right:0px; color:#666666; font-size:0.85em;}
+        #cboxPrevious{position:absolute; bottom:4px; right:40px; background:url(images/controls.png) -13px 0px no-repeat; width:13px; height:13px; text-indent:-9999px;}
+        #cboxPrevious.hover{background-position:-13px -13px;}
+        #cboxNext{position:absolute; bottom:4px; right:60px; background:url(images/controls.png) 0px 0px no-repeat; width:13px; height:13px; text-indent:-9999px;}
+        #cboxNext.hover{background-position:0px -13px;}
+        #cboxSlideshow{position:absolute; bottom:0px; right:80px; color:#666666;font-size:0.85em;}
+        #cboxLoadingOverlay{background:#fff;}
+        #cboxLoadingGraphic{background:url(images/loading.gif) center center no-repeat;}
+        #cboxClose{position:absolute; bottom:20px; left:0; background:url(images/close.gif) 0px 0px no-repeat; width:26px; height:26px; text-indent:-9999px;border:0}
+
+/*
+    The following fixes png-transparency for IE6.  
+    It is also necessary for png-transparency in IE7 & IE8 to avoid 'black halos' with the fade transition
+    
+    Since this method does not support CSS background-positioning, it is incompatible with CSS sprites.
+    Colorbox preloads navigation hover classes to account for this.
+    
+    !! Important Note: AlphaImageLoader src paths are relative to the HTML document,
+    while regular CSS background images are relative to the CSS document.
+*/

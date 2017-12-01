@@ -1,0 +1,243 @@
+/* --------------------------------------------------------------
+
+   theme.css
+   Theme par defaut de SPIP 3.1 
+   2014 - theme neodist - collectif SPIP
+
+-------------------------------------------------------------- */
+
+/* ------------------------------------------
+/* Habillage des balises HTML
+/* ------------------------------------------ */
+
+/* Elements principaux
+------------------------------------------ */
+body {font-family: "Luxi sans", "Lucida Grande", Lucida, "Lucida Sans Unicode", sans-serif; color:#222222;background:#ffffff;} 
+
+h1,.h1,
+h2,.h2 { line-height: 1.2;}
+
+/* Hyperliens
+---------------------------------------------- */
+a, a:visited { color: #c85000;  } 
+ 
+a:focus, 
+a:hover, 
+a:active { background-color:#c85000; color:#fff;}
+
+/* ------------------------------------------
+/* Habillage des elements du contenu
+/* ------------------------------------------ */
+
+/* fil d'ariane */
+.arbo { clear: both; font-size: .9em; color: #666; }
+.arbo * { font-weight: normal; }
+.arbo a,
+.arbo a:visited { color: #666; }
+.arbo a:hover { background: #666; color: white; }  
+
+.cartouche { margin-bottom: 1.5em; }
+.cartouche h1 { margin-bottom: 0; }
+.cartouche p { margin-bottom: 0; }
+.surtitre{}
+.soustitre {}
+abbr.published { border: 0; }
+@media print {
+	abbr[title].published:after { content: ""; }
+	abbr[title].dtreviewed:after { content: ""; }
+}
+.info-publi { margin: 1.5em 0 0; font-size: .9em; font-style: italic; }
+html[dir="rtl"] .info-publi { font-style: normal; }
+.traductions { font-size: .9em; }
+.traductions a[hreflang]:after { content: ''; }
+
+.chapo { font-weight: bold; }
+.texte {}
+.hyperlien { display: block; padding: 1.5em 50px; background: #EED url(img/def.png) no-repeat 25px 1.9em; font-weight: bold; }
+.ps, .notes { margin-bottom: 1.5em; }
+.notes { clear: both; font-size: .9em; }
+
+/* Listes et tableaux */
+dl.spip dt { background: url(img/def.png) no-repeat 25px .5em; }
+dl.spip dd {}
+
+table.spip {margin:1em 0;}
+table.spip caption {  background: none; border-bottom: 1px solid; text-align: left; font-weight: bold; }
+table.spip thead th { background: none; border: 1px solid; border-width: 1px 0; }
+table.spip tbody tr th,
+table.spip tr td { background: none; }
+table.spip tbody tr.odd th,
+table.spip tr.odd td { background: #EED; }
+table.spip tr:hover td {background: #AAD;}
+table.spip tfoot { border-top: 1px solid; }
+
+/* Formulaires : variantes et cas particuliers
+----------------------------------------------- */
+.formulaire_spip { margin-bottom: 1.5em; }
+
+fieldset {
+  width: 100%; margin: 0;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+}
+
+label { display: block; }
+.formulaire_recherche label { display: block; }
+.erreur_message { display: block; }
+input.text,textarea {
+  width: 100%;
+  -ms-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.content input.text { width: 50%; }
+textarea { width: 100%; }
+
+/* Selection des langues */
+.formulaire_menu_lang { margin: 0; padding: 0; background: none; }
+
+/* Formulaires de recherche (site / petitions) */
+.formulaire_recherche input.text { width: 9em; padding-left: 20px;border:solid 1px #aaa; background:#fff url(img/recherche.png) no-repeat left center; }
+.formulaire_recherche input.submit {padding:0.1em;}
+
+/* Choix des mots-clefs */
+ul.choix_mots { display: block; margin: 0; padding: 0; list-style: none; }
+ul.choix_mots li { clear: none; float: left; display: block; width: 30%; padding: 1%; }
+ul.choix_mots li label { display: inline; font-weight: normal; }
+
+.formulaire_spip .bugajaxie { display: none; } /*IE/Win*/
+
+/* Formulaire de login dans une page */
+.formulaire_login .editer-groupe .editer { clear: left; }
+.formulaire_login .editer_password .details { display: block; }
+.formulaire_login #spip_logo_auteur { float: right; }
+
+/* Fomulaire de contact */
+.formulaire_ecrire_auteur {}
+.formulaire_ecrire_auteur .saisie_sujet_message_auteur input.text { width: 100%; }
+
+
+/* Habillage des portfolios
+---------------------------------------------- */
+.documents_portfolio li {display:inline;margin:0;padding:0;}
+.documents_portfolio a {display:inline-block;padding:10px;margin:5px;border:1px solid #ccc !important;color:#EED;background:#fff;box-shadow: 5px 7px 5px 2px rgba(85,85,85,0.3);}
+.documents_portfolio a:hover {color:#999;opacity:0.8;}
+.documents_portfolio img {margin:0;}
+
+.documents_joints .descriptif p {margin:0;}
+
+/* Habillage des forums
+---------------------------------------------- */
+.comments  {margin-top:2em;padding:1em 0;border-top:10px solid #EED;}
+.comments  ul {list-style:none;}
+.comment-item {margin:0.5em 0 0 0;padding:0.5em 0 0 0;border-top:1px solid #EED;}
+.comments-items .comments-items {margin-left: 25px;padding-left: 20px;border-left:5px solid #ddd;}
+.comment-meta { margin: 0; font-weight: bold; }
+.comment-meta small { font-size: 100%; }
+.comment-meta abbr { border: 0; }
+.comment-meta a { text-decoration:none;}
+.comment-content .hyperlien { padding: 0; background: transparent; font-weight: normal; }
+
+/* Formulaire de forum */
+.forum-titre  {margin-top:2em;padding:1em 0;border-top:10px solid #EED;}
+.formulaire_forum {}
+.formulaire_forum legend { display: none; }
+.formulaire_forum .saisie_titre input.text { width: 100% }
+.formulaire_forum .session_qui { display: none; }
+.formulaire_forum .saisie_texte .explication { font-size: .9em; font-style: italic; }
+html[dir="rtl"] .formulaire_forum .saisie_texte .explication { font-style: normal; }
+
+/* Habillage des petitions
+---------------------------------------------- */
+#signatures td.signature-date small { white-space: nowrap; }
+#signatures .formulaire_recherche { margin: 1.5em auto; text-align: center; }
+
+/* Formulaire de signature */
+.formulaire_signature {}
+
+/* ------------------------------------------
+/* Sous-navigation et autres menus
+/* ------------------------------------------ */
+
+/* Habillage general des menus de nav */
+.menu { clear: both; margin-bottom: 1.5em; text-align: left; }
+.menu p {}
+.menu ul { margin-bottom: 1.5em; }
+.menu ul li {}
+.menu ul li ul { margin-left: 1.5em; list-style: circle; }
+ 
+/* Pagination */
+.pagination a,
+.pagination .on  { padding:.5em; margin: 0em; border-radius:.25em; }
+.pagination a { background: #EED; text-decoration: none; }
+.pagination .on { font-weight: bold; background: #222; color: #fff; }
+.pagination .sep { visibility: hidden; }
+.menu_articles .pagination strong {font-size:1em;}
+
+/* Listes d'articles et extraits introductifs */
+.menu_articles li { clear: both; margin-bottom: 1.5em; }
+.menu_articles li h3,
+.menu_articles li h2 { margin: 0 0 0.2em 0; }
+.menu_articles li p { margin: 0; }
+.menu_articles li small {  }
+.menu_articles li .enclosures { float: right; text-align: right; max-width: 60%; margin: 0; }
+.menu_articles li div {margin-top:0.2em;margin-bottom:0.5em;}
+.menu_articles a {text-decoration:none;}
+.menu_articles strong {font-size:1.2em;}
+ 
+.menu_breves li {}
+.menu_breves li h3 { margin: 0; }
+
+.aside h2 {border-bottom:3px solid #EED;padding-bottom:.1em;}
+.aside li {margin:1em 0;}
+.aside a {text-decoration:none;}
+
+.footer a {text-decoration:none;}
+.footer a.spip_out:after {
+  content: "";
+}
+
+/* ------------------------------------------
+/* Autres medias
+/* ------------------------------------------ */
+
+@media print {
+
+	/*  Ne pas imprimer */
+	.spip-admin,
+	.spip-admin-float,
+	.spip-previsu { display: none; }
+	.repondre,
+	.formulaire_spip { display: none; }
+
+	/* Souligner et expliciter les liens */
+	a { color: #600; text-decoration: underline !important; }
+	a.spip_out:after,
+	a.spip_glossaire:after,
+	a.spip_mail:after { display: inline; content: " [" attr(href) "]"; }
+
+}
+
+
+/* ------------------------------------------
+/* Responsive
+/* ------------------------------------------ */
+
+/* largeur maximum 767px */
+@media (max-width: 767px) { 
+  .pagination {line-height:3;}
+}
+
+ 
+/* largeur maximum 640px */
+@media (max-width: 640px) {
+  body {font-size:.95em;}
+  h1,.h1,
+  h2,.h2 { line-height:1;}
+
+}
+
+
+/* fin */

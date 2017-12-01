@@ -1,0 +1,11 @@
+<BOUCLE_B(BREVES){!par date}{statut=prop}{0,10}>
+	<item>
+		<title><:breves:titre_breve_proposee|texte_backend:> : [(#TITRE|texte_backend)]</title>
+		<link>[(#URL_ECRIRE{breve, id_breve=#ID_BREVE}|url_absolue|texte_backend)]</link>
+		<guid isPermaLink="true">[(#URL_ECRIRE{breves_voir, id_breve=#ID_BREVE}|url_absolue|texte_backend)]</guid>
+		<dc:date>[(#DATE|date_iso)]</dc:date>
+		<dc:format>text/html</dc:format>
+		[<dc:language>(#LANG|texte_backend)</dc:language>]
+		<description>[(#TEXTE|texte_backend)]</description>
+	</item>
+</BOUCLE_B>

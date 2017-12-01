@@ -1,0 +1,9 @@
+a <code>code span <textwheel1|block></code>
+
+<code>this is also a codespan <textwheel1|block></code> trailing text
+
+<code>and look at this one <textwheel1|block></code>
+
+single &lt;code&gt; in a code span: <code><code></code>
+
+&lt; in a code span: <code><</code>

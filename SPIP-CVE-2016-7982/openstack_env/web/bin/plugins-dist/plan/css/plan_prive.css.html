@@ -1,0 +1,59 @@
+#CACHE{3600*100,cache-client}
+#HTTP_HEADER{Content-Type: text/css; charset=iso-8859-15}
+#HTTP_HEADER{Vary: Accept-Encoding}
+
+.plan #contenu p.removable { cursor:pointer; }
+.plan #contenu p.removable:hover { opacity:.6; }
+#mytree_actions { margin-bottom:1em; margin-top:1em; }
+#mytree_actions input,
+#mytree_actions .pliage { margin-right:2em; }
+#mytree_actions .statut {
+	padding-left:20px;
+	background: transparent left 5px no-repeat;
+	display:inline-block;
+}
+#mytree_actions .statut form { display:inline; }
+#mytree_actions .statut form optgroup {
+	margin-top:.3em; padding:5px 5px 5px 25px;
+	background: transparent 3px 5px no-repeat;
+}
+#mytree_actions .statut form option {
+	padding:2px 2px 2px 20px;
+	background: transparent 2px center no-repeat;
+}
+<BOUCLE_objets_statuts(DATA){source table, #REM|plan_lister_objets_rubrique_statuts}>
+#mytree_actions .statut.#CLE {
+	background-image: url([(#CLE|objet_icone{16}|extraire_attribut{src})]);
+}
+#mytree_actions .statut form optgroup.#CLE {
+	background-image: url([(#CLE|objet_icone{16}|extraire_attribut{src})]);
+}
+<BOUCLE_statuts(DATA){source table, #VALEUR}>
+[(#SET{class,[(#_objets_statuts:CLE)]-#CLE})]
+#mytree_actions .statut form option.#GET{class} {
+	background-image: url(#CHEMIN_IMAGE{#IMAGE});
+}
+</BOUCLE_statuts>
+</BOUCLE_objets_statuts>
+.plan .jstree-icon.rubrique {
+	background:url([(#VAL{rubrique}|objet_icone{16}|extraire_attribut{src})]) center center no-repeat;
+}
+.plan .menu-items .menu-items { margin-top:.5em; }
+.plan .menu-items .item.group { margin-bottom: 1em; padding-top: 5px; }
+.plan .menu-items.rubriques .item > a {
+	padding-left:20px;
+	background:url([(#VAL{rubrique}|objet_icone{16}|extraire_attribut{src})]) center left no-repeat;
+}
+.plan .jstree .puce_objet { margin-right:2px; }
+.plan .jstree.drag .item .jstree-icon { cursor: move; }
+.plan .jstree.drag .item .jstree-ocl { cursor: pointer; }
+<BOUCLE_icone_objets(DATA){source table, #REM|plan_lister_objets_rubrique}>
+.plan .jstree-icon.[(#VALEUR|objet_type)] {
+	background:url([(#VALEUR|objet_icone{16}|extraire_attribut{src})]) center center no-repeat;
+}
+.plan .menu-items.[(#VALEUR|table_objet)] .item > a ,
+.plan .menu-items.[(#VALEUR|table_objet)] .item > strong {
+	padding-left:20px;
+	background:url([(#VALEUR|objet_icone{16}|extraire_attribut{src})]) center left no-repeat;
+}
+</BOUCLE_icone_objets>

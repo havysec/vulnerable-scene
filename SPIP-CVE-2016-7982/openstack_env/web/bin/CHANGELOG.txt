@@ -1,0 +1,139 @@
+
+SPIP-Core spip-3.1.1 -> spip-3.1.2  23 septembre 2016
+-------------------------------------------------------------
+
+r22921 | erational |  (ven. 11 mars 2016) | recuperer_lapage est obsolète et ne fonctionne plus sur certains serveurs
+r22922 | erational |  (ven. 11 mars 2016) | revert. il faut tenir compter du parametre $a
+r22925 | erational |  (ven. 11 mars 2016) | recuperer_lapage est obsolète et ne fonctionne plus sur certains serveurson passe donc par recuperer_url_cache
+r22930 | fil       |  (dim. 13 mars 2016) | report de r22929 : le robot facebook est mechant mais il est aussi bete, il faut donc le laisser faire son travail + mise a jour de la version de l'écran
+r22931 | erational |  (mer. 16 mars 2016) | la fonction recuperer_url_cache sort un tableau plus complet que recuperer_lapage
+r22935 | b_b       |  (mer. 16 mars 2016) | report de r22933ajout d'une fonction spip_strtolower pour gérer strtolower en utf8, cf #3624
+r22936 | b_b       |  (mer. 16 mars 2016) | report de r22934retour sur r19394 : ajouter mb_strtoupper() aux tests de init_mb_string() pour spip_ucfirst()
+r22938 | b_b       |  (mer. 16 mars 2016) | report de r22937simplification dans spip_ucfirst() et spip_strtolower()
+r22940 | b_b       |  (mer. 16 mars 2016) | report de r22939Fix #3737 : test sur autorisation pour le lien vers la page de configuration du site
+r22942 | cedric    |  (jeu. 17 mars 2016) | Report de r22941 : define('_CALCUL_PROFILER',300) permet de loger dans le profiler les calculs de squelette qui prennent plus de 300ms(a eclaircir : quand une boucle est lente et prends plusieurs secondes, cela n'affecte pas le temps calcule ici)
+r22947 | cedric    |  (jeu. 17 mars 2016) | Report de r22946 : un pipeline auth_administrer permet de personaliser le retour des differentes fonctions d'auth (par exemple pour renforcer la verification du mot de passe, quand flux['args']['fonction']=='verifier_pass'
+r22952 | b_b       |  (jeu. 17 mars 2016) | report de r22944 et r22945 : règles de codage (double quotes + indentation)
+r22953 | b_b       |  (jeu. 17 mars 2016) | report de r22949Fix #3734 : conditionner le lien vers exec=configurer_identite sur le nom du site dans le bandeau haut du privéPas trouvé mieux que ça comme code, car lien_ou_expose ne permet pas de gérer la classe sur le strong généré.
+r22960 | b_b       |  (ven. 18 mars 2016) | report de r22959jQuery 1.12.2 dans SPIP
+r22961 | marcimat  |  (lun. 21 mars 2016) | Notice PHP en moins : parfois la taille n'est pas récupérée non plus.
+r22963 | marcimat  |  (lun. 21 mars 2016) | Contructeur pour PHP7 (notice PHP)
+r22966 | b_b       |  (mar. 22 mars 2016) | report de r22964retour sur r21163 qui n'était destiné qu'aux input radio et checkbox pour rétablir la possiblité de saisir une url de proxy cf #3755
+r22967 | b_b       |  (mar. 22 mars 2016) | report de r22965Fix #3755 : ne pas afficher de message d'erreur si le test du proxy est un succès
+r22968 | cedric    |  (jeu. 24 mars 2016) | Gros bug de nom de cache dans la fonction recuperer_url_cache() qui en gros ignorait l'URL concernait et melangeait les caches, donc
+r22972 | b_b       |  (lun. 28 mars 2016) | report de r22971Fix #3300 : réparer le changement de couleur du privé sous IE11Il faut modifier le href du link en dernier, après avoir ajouté le link au head donc.
+r22976 | b_b       |  (ven. 01 avril 2016) | report de r22975report de r22970 : transcoder les crochets des urls en notation "%" pour la balise SELF
+r22978 | b_b       |  (mer. 06 avril 2016) | report de r22977 : jQuery 1.12.3 dans SPIP
+r22982 | b_b       |  (mer. 13 avril 2016) | report de r22981ne plus limiter la longueur maxi des logins dans test_login()
+r22987 | cedric    |  (sam. 23 avril 2016) | bugfix input+.explication et cibler div.choix plutot que .choix (les span.choix ne sont pas en block)
+r22989 | cedric    |  (lun. 25 avril 2016) | les variantes de style de labal dans .pleine_largeur et .choix ne s'appliquent qu'au premier niveau, et pas aux .editer enfants
+r22994 | eric      |  (dim. 01 mai 2016) | Report de 22993 pour faire fonctionner le reload de info_plugin correctement.
+r23010 | b_b       |  (sam. 21 mai 2016) | report de r23009 : jQuery 1.12.4 dans SPIP
+r23012 | b_b       |  (dim. 22 mai 2016) | report de r23011 : Mettre à jour la version jQuery que SPIP procure
+r23014 | denisb    |  (lun. 23 mai 2016) | ecrire/inc/utils.php : on affecte une vraie valeur à $prefs. report de #23013
+r23016 | cedric    |  (jeu. 02 juin 2016) | 2 bugfixes sur les urls ajax avec des tableaux d'argument : unescape pour redresser les crochets de %5B vers [ et n'injecter qu'une seule fois un arg, ce qui se fait en comparant avec l'url modifiee et pas le href origin
+r23022 | b_b       |  (lun. 06 juin 2016) | report de r23021 / console.log en trop
+r23024 | b_b       |  (lun. 06 juin 2016) | report de r23023complément à r20876 : pas de data dans le champ url_site
+r23030 | cedric    |  (sam. 11 juin 2016) | Bugfix erreur SQL sur langue_choisie, notamment lors de la syndication :il faut verifier l'existence du champ qui n'est pas systematique avec un champ lang+ prendre un argument $serveur en plus par coherence
+r23034 | rasta     |  (dim. 12 juin 2016) | Backport 3.1 de r23033 : Nouveau pipeline "chercher_logo", qui permet de compléter ou ajouter des infos de logos après que SPIP ait cherché avec sa méthode classique. On peut donc fournir autre chose, et surtout on peut définir un logo si SPIP n'en a pas trouvé avant (exemple : prendre la première image jointe trouvée, comme dans Logo auto de Tetue). Sans avoir à surcharger salement ni bloquer d'autres méthodes ensuite.
+r23035 | cedric    |  (lun. 13 juin 2016) | complement a r22411 : il faut aussi styler la liste des visiteurs, et il faut forcer la largeur du td.logo pour que ca tombe bien
+r23036 | cedric    |  (lun. 13 juin 2016) | fixer le bug d'inclusion introduit par r23030
+r23040 | rasta     |  (lun. 13 juin 2016) | Backport 3.1 de r23039 : Amélioration plus pérenne des ajouts d'hier : on supprime le pipeline "chercher_logo" qu'on remplace par un pipeline "quete_logo_objet" dans une nouvelle fonction API du même nom. Ce déplacement fait que ce n'est plus que pour l'affichage, sans rapport avec le formulaire d'édition de logo. Merci cerdic :)
+r23041 | rasta     |  (mar. 14 juin 2016) | Oups, il avait pété les logos du noyau, ce con.
+r23043 | marcimat  |  (mar. 14 juin 2016) | Notice PHP en moins un cas particulier d'utilisation du critère par date.
+r23045 | rasta     |  (jeu. 16 juin 2016) | Correction pour l'auth HTTP Basic : contrairement au formulaire de login HTML, ça ne fonctionnait pas en donnant aussi l'email plutôt que le champ login (qui est de moins en moins utilisé).
+r23056 | b_b       |  (mer. 22 juin 2016) | report de r23055 : fix phpdoc (peetdu)
+r23057 | cedric    |  (sam. 25 juin 2016) | recuperer_infos_distantes() renvoyait a tort un tableau avec pour seul argument un mime_type vide quand le document n'existait pas, pouvant laisser croire a son existence. On sort explicitement avec false dans ce cas, comme prevu. Et on essaye meme pas de recuperer l'URL si la source fournie n'en est pas une
+r23060 | cedric    |  (lun. 27 juin 2016) | suite de r23023 et r20876 : soyons carrement restrictif sur ce qu'on attend
+r23063 | cedric    |  (lun. 27 juin 2016) | Sanitizer/controler les entree fournies a valider_xml_ok (Thomas Chauchefoin)
+r23066 | cedric    |  (lun. 27 juin 2016) | passer entites_html sur les id ajax par precaution (Guillaume Fahrer)
+r23069 | cedric    |  (lun. 27 juin 2016) | quand on faisait recherche=/ cela etait considere a tort comme une regexp (Thomas Chauchefoin)
+r23074 | cedric    |  (lun. 27 juin 2016) | quand le formulaire de login est appele en popin ajax, et que les JS sont charges depuis un domaine static, jQuery prend la liberte d'executer le code inline avant que le js externe ne soit charge. On inline donc la fonction affiche_login_secure ici, c'est un moindre mal qui passera partout
+r23075 | cedric    |  (lun. 27 juin 2016) | un lien .popin peut prendre un attribut data-href-popin qui sera utilise pour le chargement de la popin. Cela peut permettre d'enlever une url de retour qui n'a pas de sens et d'alleger le cache
+r23076 | cedric    |  (lun. 27 juin 2016) | suite de r23074 : ne pas referencer les fonctions pas encore chargees
+r23077 | cedric    |  (mar. 28 juin 2016) | report de r23049 sans le bug : si la request string contient le protocole et le host, il faut les depiler (cf test http://zone.spip.org/trac/spip-zone/changeset/98585)
+r23086 | b_b       |  (jeu. 30 juin 2016) | report de r23085 / Fix #3793 : utiliser la langue de l'environnement lors de l'inscription d'un auteur (g0uz)
+r23088 | b_b       |  (jeu. 30 juin 2016) | report de r23087 / Fix #3707 : réparer le formulaire de traduction quand le site est configuré en multilinguisme par secteur (g0uz)
+r23089 | cedric    |  (jeu. 30 juin 2016) | Retour sur r22989, trop strict sur les .choix>label qui cassait le formulaire de configuration URLs
+r23092 | marcimat  |  (jeu. 30 juin 2016) | Report de r23091 : Complément à r23087 et #3707 : ne pas charger $res d'un booléen.
+r23095 | cedric    |  (lun. 04 juil. 2016) | petit ajustement visuel
+r23099 | cedric    |  (mer. 06 juil. 2016) | Report de r23098 : tester_url_absolue() n'accepte pas le protocole file:// car on est sur le web
+r23101 | marcimat  |  (jeu. 07 juil. 2016) | Complément à r6036, insuffisant : une autre inversion de paramètres s'était glissée en r4605 qui ajoutait la compilation des critères `{a,b}` ou `{n-a,b}` ou `{a, n-b}`avec a ou b dynamiques. Le cas `{n-#GET{nb}, 5}` devrait mieux se passer. 
+r23104 | cedric    |  (jeu. 07 juil. 2016) | Report de r23103 : completer r23098 : exclure tous les protocoles qui ne sont pas des URL mais que php accepte dans ses fonctions de lecture (guy)
+r23107 | cedric    |  (jeu. 07 juil. 2016) | Report de r23106 : suite de 23103 : la casse qui peut tout casser
+r23110 | marcimat  |  (jeu. 07 juil. 2016) | Report de r23109 : Compléter r23103 : retirer le protocole 'zip' également, et phpdoc plus à jour.
+r23122 | b_b       |  (sam. 13 août 2016) | report de r23121Fix #3790 : annuler l'éventuel paramètre de pagination quand on utilise le formulaire de recherche présent dans la page des résultats d'une recherche du privé
+r23124 | b_b       |  (sam. 13 août 2016) | report de r23123Fix #3759 : chaîne de langue manquante dans le form de configuration du proxy
+r23126 | b_b       |  (sam. 13 août 2016) | report de r23125Fix #3746 : retour sur r22399, corriger spip_release_lock() même si elle est dépréciée
+r23128 | b_b       |  (sam. 13 août 2016) | report de r23127Fix #3616 : maj des versions de procure du core pour iterateurs et queue
+r23130 | b_b       |  (sam. 13 août 2016) | report de r23129Fix #3594 : couleur et opacité des placeholder sous firefoxRef https://css-tricks.com/almanac/selectors/p/placeholder/#firefox-placeholder-color
+r23133 | marcimat  |  (mar. 16 août 2016) | Report de r23132Ticket https://core.spip.net/issues/3817 : la compilation du critère `{branche ?}`avec une jointure sur id_rubrique créait toujours une jointuremême si id_rubrique n'était pas présent dans l'environnement.On transmet le type de champ attendu à l'appel de sql_quote pour réparer.
+r23137 | b_b       |  (mer. 24 août 2016) | report de r23136fix css pour le sélecteur de rubriquene pas appliquer de max-height au select (on traine ça depuis un moment) afin de ne pas tronquer le contenu de celui-ci sur certains environnements
+r23138 | b_b       |  (ven. 26 août 2016) | report de r23116Ajouter https://www.megaindex.ru/ dans les bots
+r23140 | b_b       |  (lun. 29 août 2016) | report de r23139ajout d'un colonne id qui permet de trier les auteurs par id (et donc de connaitre les derniers auteurs inscrits). voir aussi https://core.spip.net/issues/3820#change-12021
+r23142 | erational |  (mar. 30 août 2016) | report de r23141message plus direct lorsqu'une page ou action n'est pas trouvéeon affiche le message complet uniquement pour les admins connectés + utiliser minipres quand charger_fonction ne trouve pas ce qui est demandé
+r23143 | erational |  (mar. 06 sept. 2016) | phpinfo uniquement pour les webmestres.
+r23144 | erational |  (mar. 06 sept. 2016) | coquille
+r23146 | rasta     |  (mar. 06 sept. 2016) | Ce test ne marchait pas suivant l'ordre des opérateurs, et empêchait (depuis toujours ?) de tester le RETRY_DELAY juste après, et donc de pas refaire la connexion à chaque fois si déjà faite pas longtemps avant.
+r23149 | b_b       |  (mar. 06 sept. 2016) | report de r23148retour sur r23141 : message complet uniquement pour les admins
+r23152 | cedric    |  (ven. 09 sept. 2016) | Report de r23151 : Eviter d'accepter n'importe quoi dans les redirect de l'espace prive (Tim Coen)
+r23155 | cedric    |  (mar. 13 sept. 2016) | Report de r23154 : Quand un charger_fonction echoue renvoyer un 404 (et inliner les css si jamais on cherhcait un /truc.api/ pour que le rendu soit bon)
+r23166 | cedric    |  (jeu. 22 sept. 2016) | Report de r23165 : le modele de mail utilise lors de l'inscription est modifiable via le tableau options de inscrire_auteur()
+
+SPIP-plugins-dist spip-3.1.1 -> spip-3.1.2  23 septembre 2016
+-------------------------------------------------------------
+
+r96024 | b_b       |  (mer. 16 mars 2016) | report de r96023suite de r95590 : utiliser la nouvelle fonction spip_strtolower() pour les urls propres et arbos en minusculesref https://core.spip.net/issues/3624
+r96190 | b_b       |  (jeu. 24 mars 2016) | version 1.0.3 : report de r96187 et r96188
+r96222 | rasta     |  (dim. 27 mars 2016) | Report de [96221] : Correction du bug de fullscreen, qui fermait le fullscreen en même temps de fermer la fenêtre de lien, si on utilisait la touche Échap. On utilise une variable globale, dans laquelle on indique qu'un prompt est ouvert. Quand ce dernier se ferme, on re-prévient qu'il est fermé. Et on ne ferme alors le fullscreen qui si un prompt n'est PAS ouvert.ferme #3743https://core.spip.net/issues/3743
+r96229 | b_b       |  (lun. 28 mars 2016) | report de r96228maj de la lib getid3 en version 1.9.12 + ajout de getid3 et mejs aux créditsref ​https://core.spip.net/issues/3693
+r96261 | b_b       |  (lun. 28 mars 2016) | report de r96223suivons la mode des logos ronds pour les auteurs sur la page d'un message
+r96313 | b_b       |  (mar. 29 mars 2016) | report de r96312ignorer la casse lors de la détection des modèles pour le marquage de doublons des documents (critère vu)ref ​https://core.spip.net/issues/3714
+r96344 | marcimat  |  (jeu. 31 mars 2016) | Lorsque des roles sont présents, faire en sorte que les boutons "Détacher" et "Supprimer" enlèvent effectivement tous les rôles.Le comportement n'est pas modifié s'il n'y a pas de colonne de rôle, juste que la spec des fonctions objet_dissocier() indiquebien que sans précision, seul le lien avec le rôle par défaut est dissocié, ce qui ne semble pas le comportement souhaité ici.
+r96352 | rasta     |  (jeu. 31 mars 2016) | Backport de [96351] : Finir enfin les corrections de fullscreen, en enregistrant la taille d'origine, et en la remettant quand on sort du plein écran.
+r96354 | rasta     |  (jeu. 31 mars 2016) | Oups le console.log inutile.
+r96423 | cedric    |  (lun. 04 avril 2016) | Report de r95385 : Amelioration : on peut definir une URL statique pour servir les ressources (images, js) sans cookie.L'URL definie est alors utilisee pour les images contenues dans les CSS minifiees, et dans le HTML des pages servies, sans modification du squelette.On n'utilise pas cette URL pour servir la CSS minifiee car celle-ci est prefetch avec une header http link, et la servir sur un domaine different retarde son arrivee car il faut une requete DNS en plus.
+r96424 | cedric    |  (lun. 04 avril 2016) | Report de r95389 : on a dit qu'on appliquait pas aux CSS, mais uniquement aux JS et images
+r96425 | cedric    |  (lun. 04 avril 2016) | Report de r95416 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.netLa langue 'he' devrait Ãªtre supprimÃ©e car trop peu traduite (9.09 %)La langue 'sv' devrait Ãªtre supprimÃ©e car trop peu traduite (27.27 %)
+r96426 | cedric    |  (lun. 04 avril 2016) | Report de r95454 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue de
+r96427 | cedric    |  (lun. 04 avril 2016) | Report de r95532 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue en
+r96428 | cedric    |  (lun. 04 avril 2016) | Report de r95691 : eviter de linker une ressource http si le back-office est en https
+r96429 | cedric    |  (lun. 04 avril 2016) | Report de r95692 : Perf issue : affichage_final est appele a chaque hit, le mettre dans le fichier _options plutot que de faire une inclusion de plus
+r96430 | cedric    |  (lun. 04 avril 2016) | Report de r95696 : Accompagner l'utilisation du domaine static par un dns-prefetch pour eviter d'ajouter un temps d'attente
+r96431 | cedric    |  (lun. 04 avril 2016) | Report de r95712 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue nl
+r96432 | cedric    |  (lun. 04 avril 2016) | Report de r95713 : [Salvatore] [source:_core_/plugins/compresseur/lang/ paquet-compresseur] Export depuis http://trad.spip.net de la langue nl
+r96433 | cedric    |  (lun. 04 avril 2016) | Report de r95795 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue fr_fem
+r96434 | cedric    |  (lun. 04 avril 2016) | Report de r95868 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue ar
+r96435 | cedric    |  (lun. 04 avril 2016) | Report de r95938 : [Salvatore] [source:_core_/plugins/compresseur/lang/ compresseur] Export depuis http://trad.spip.net de la langue sk
+r96475 | b_b       |  (mar. 05 avril 2016) | report de r96474Réparer l'affichage du protfolio lors de l'utilisation des urls arbosPasser un id_rubrique vide à l'inclure des documents sans quoi la boucle génère une requête qui fait une jointure sur les rubrique (en plus de celle sur les articles).Ref ​https://core.spip.net/issues/3765
+r96639 | Nicod     |  (ven. 15 avril 2016) | report de r96638Générer des urls publiques dans les notifications de forums publics.
+r97965 | cedric    |  (lun. 23 mai 2016) | pas de #CACHE{0} dans le sitemap, et pas de traduction sur les rubriques, ca n'existe pas par defaut et ca provoque une erreur de compilation
+r97980 | Yohann    |  (mar. 24 mai 2016) | Ajout d’une fonction aux statistiques pour désactiver les referers. Des fois, on en a pas besoin, et ça prend de la place (beaucoup !) dans les tables SQL.
+r98071 | cedric    |  (jeu. 26 mai 2016) | Report de r98068 : Certains flux RSS publient l'integralite de leur contenus (par exemple http://www.lelotenaction.org/pages/do/rss.xml) ce qui produit inevitablement un timeout lors de l'analyse et de la syndication.On optimise les fonctions cdata_echappe et cdata_echappe_retour, et on limite la syndication aux 1000 premiers items, surchargeable par la constante _SYNDICATION_MAX_ITEMS
+r98072 | cedric    |  (jeu. 26 mai 2016) | Report de r98068 : Certains flux RSS publient l'integralite de leur contenus (par exemple http://www.lelotenaction.org/pages/do/rss.xml) ce qui produit inevitablement un timeout lors de l'analyse et de la syndication.On optimise les fonctions cdata_echappe et cdata_echappe_retour, et on limite la syndication aux 1000 premiers items, surchargeable par la constante _SYNDICATION_MAX_ITEMS
+r98131 | Yohann    |  (mar. 31 mai 2016) | Utiliser l’écriture lire_config plutôt que la globale meta
+r98132 | Yohann    |  (mar. 31 mai 2016) | Laisser la définition par défaut de l’activation
+r98138 | Yohann    |  (mar. 31 mai 2016) | Si on appelle lire_config, il faut bien inclure ces fonctions.
+r98272 | rasta     |  (jeu. 09 juin 2016) | Correction de bug : il manquait <!--affiche_milieu--> pour les documents, ce qui empêchait par exemple l'inseration des traductions ou autre ajout de ce genre.
+r98301 | cedric    |  (ven. 10 juin 2016) | bugfix pagination sur la liste des sites quand on est dans la page d'un site (kent1)
+r98374 | cedric    |  (lun. 13 juin 2016) | bugfix css
+r98433 | cedric    |  (mer. 15 juin 2016) | une constante _STATS_COMPTE_EN_ATTENTE pour ajouter le nombre de visites en attente de depouillement dans la prediction des visites du jour, que l'on peut utiliser sur les hebergements assez rapides
+r98434 | cedric    |  (jeu. 16 juin 2016) | Eviter un depassement memoire lors du comptage de la prevision quand on a vraiment un tres gros pic de trafic
+r98560 | cedric    |  (sam. 25 juin 2016) | plusieurs petits bugs sur les documents distants mal formates qui pourraient exister en base par des operations peu avouables, on teste systematiquement que le fichier ressemble bien a une URL avant de s'y fier
+r98570 | fil       |  (dim. 26 juin 2016) | resoudre le bug https://core.spip.net/issues/3796 sur les stats du jour qui emportent toutes les visites
+r98572 | cedric    |  (lun. 27 juin 2016) | r97980 avait remis les ul/li sur le formulaire au lieu des .editer-groupe/.editer, et la lecture de la config par lire_config pour une simple meta n'est pas optimale, surtout dans public/stats appele a chaque hit
+r98589 | b_b       |  (mar. 28 juin 2016) | report de r98588 /  retour sur r83728 : fixer le gestion du renommage des scripts effectzapilou sur ​http://article.gmane.org/gmane.comp.web.spip.zone/40994
+r98604 | cedric    |  (mer. 29 juin 2016) | fix r96639 qui annoncait reporter r96638 mais avait reporte le true en false
+r98660 | b_b       |  (lun. 04 juil. 2016) | report de r98659version 1.0.2 : fix js pour afficher le sélecteur de datecf nouvelle norme html des formulaires, singalé par Pierre sur ​http://article.gmane.org/gmane.comp.web.spip.devel/67136
+r98866 | b_b       |  (mer. 13 juil. 2016) | report de r98863 et r98865
+r99143 | real3t    |  (jeu. 11 août 2016) | Autorisation manquante (le bouton était affiché, mais l'action ne se faisait pas. Testé en intégrant le formulaire côté public avec utilisateur non connecté).
+r99152 | b_b       |  (sam. 13 août 2016) | report de r99151Fix ​https://core.spip.net/issues/3520 : déplier les blocs des referers uniquement au clic gaucheOpera est un peu concon car il déclenche l'event onclick si on utilise le clic milieu
+r99154 | b_b       |  (dim. 14 août 2016) | report de r99153revert de r86810Ref la kermesse de ​https://core.spip.net/issues/3368
+r99177 | marcimat  |  (mar. 16 août 2016) | Report de r99161 et r99162 :  Homogénéisation du tableau de description des dépendances (nécessite, librairie, utilise et procure)qui dans certains cas étaient décrites dans un tableau intermédiaire d'index 0, et parfois non.En fait SVP lorsqu'il analyse les paquet/plugin.xml présents dans une archivelist.xml metces informations de dépendances dans un index 0, et parfois en plus semble t'il dans un indexde compatibilité de version de spip SI la balise <spip> est présente dans le paquet/plugin.xml en question.Cependant que lorsqu'on récupère les informations de paquet.xml présents dans plugins/ ou plugins-dist/par la fonction prévue par SPIP, les informations de dépendances ne sont pas indéxées elles dans cette clé 0,inutile d'ailleurs car on ne récupère que les infos correspondante à notre version de SPIP utilisée.Pour harmoniser, un morceau de code était utilisé dans SVP, mais un peu tard. Cela faisait quela fonction plugins_preparer_sql_paquet() recevait à l'ajout d'un dépot des paquets avec des dépendances utilisant la clé [0],mais actualisait ensuite les paquets locaux sans cet index ensuite lors de l'appel à svp_actualiser_paquets_locaux().Et l'ajout récent du code relatif à la balise <procure> montrait des notices PHP dans la fonction preparer_sql (avant ceproblème n'était pas visible).En déplaçant un peu plus tôt le code qui harmonise tout dans l'index 0 et en ajoutant 'procure' au passage dedans, ce problème rentre dans l'ordre.Je pense que cela pouvait entrainer des erreurs dans le calcul de l'ordre d'installation / désinstallation des plugins locaux.En relation donc avec ​https://core.spip.net/issues/3689
+r99178 | marcimat  |  (mar. 16 août 2016) | Report de r99168 : Amélioration de l'analyse de l'ordre des actions à réaliser (ticket : ​https://core.spip.net/issues/3689)Lorsqu'un plugin A dépend de B, et B dépend de C, et qu'on désactive ou active les 3 plugins en même temps,le placement pouvait être incorrect, car A n'avait pas connaissance directement de sa dépendance à C,et C n'avait pas directement connaissance d'être dépendant de A. On se limitait à 1 niveau n'analyse.Du coup, on complète la description d'un paquet et de ses dépendances avec la liste des dépendancescomplètes que l'on connait pour les paquets qui font partie du lot d'actions à traiter (si A dépend de D,mais que D ne fait pas partie des paquets à activer ou enlever, on s'en fiche). Ainsi, pour chaque paquet,dans l'Actionneur, on a une entrée 'dp' (dépendances préfixes) qui liste tous les préfixes des plugins nécessités, avec leurs descendances(jusqu'à 10 générations, ça devrait suffire). Inversement on a une entrée 'dmp' (dépendent de moi préfixes) qui listeles préfixes des plugins actionnés qui dépendent de moi.Avec ces 2 listes, on peut améliorer le placement des actions 'on' / 'geton' (activer / télécharger un plugin et l'activer)et 'off' pour désactiver / désinstaller.ScolaSPIP ou Soyez Créateurs se téléchargent et téléchargent et activent tous leurs plugins sans erreur d'ordre des dépendances.De même en désinstallant tout.
+r99179 | marcimat  |  (mar. 16 août 2016) | Report de r99172 : Notice PHP en moins (Franck).
+r99304 | b_b       |  (mer. 31 août 2016) | report de r99280Ajouter id_mot au tableau de retour du formulaire.
+r99305 | rasta     |  (mer. 31 août 2016) | Ne jamais préjuger d'où sont utilisées les choses : si on utilise une API, on DOIT inclure la librairie nécessaire.
+r99401 | b_b       |  (mar. 06 sept. 2016) | report de r99400ne pas permettre n'importe quoi en url de site (Tim Coen)
+r99413 | marcimat  |  (mer. 07 sept. 2016) | Report de r99412 :  Suite de r99168 : il restait des erreurs de calcul de dépendances avec les plugin.xmlqui sortent un schéma de dépendances légèrement différent des paquet.xml.On adapte le code pour eux. Et vivement array_column() soit partout…Merci b_b pour la découverte !
+r99433 | cedric    |  (ven. 09 sept. 2016) | Report de r99431 : l'URL de rappel de mot de passe doit etre une URL safe, on la force sur l'adresse_site parametree dans la configuration du site
